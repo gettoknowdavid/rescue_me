@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "319008293946",
+    "project_id": "rescue-me-49d3f",
+    "storage_bucket": "rescue-me-49d3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319008293946:android:c09daf0392bd9cc5246103",
+        "android_client_info": {
+          "package_name": "com.example.rescue_me"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM40PL76LhEpT3gTLiQjM9nvUkf9_AxeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

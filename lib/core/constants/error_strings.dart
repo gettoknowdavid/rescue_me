@@ -1,0 +1,10 @@
+const keInvalidEmail = 'Invalid email or password';
+const keServer = 'There seems to be an error, try again';
+const keNoGoogleAccount = 'No Google account found';
+const keInvalidEmailPassword = 'Invalid email or password';
+const keEmailAlreadyInUse = 'Email already in use';
+const keNoUserFound = 'No user found with this email';
+const keNoNetworkConn = 'Check your internet connection and try again later';
+const keTokenExpired = 'Token expired. Log in to complete request';
+const keTimeout = 'Oops! The connection timed out. Try again.';
+const ksVerificationSent = 'Verification email sent';
