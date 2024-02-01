@@ -1022,11 +1022,21 @@ class MockOpenMailAppService extends _i1.Mock
 class MockSharedPreferencesService extends _i1.Mock
     implements _i13.SharedPreferencesService {
   @override
-  bool get isInitialStartup => (super.noSuchMethod(
-        Invocation.getter(#isInitialStartup),
+  bool get onboarded => (super.noSuchMethod(
+        Invocation.getter(#onboarded),
         returnValue: false,
         returnValueForMissingStub: false,
       ) as bool);
+
+  @override
+  _i6.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValue: _i6.Future<void>.value(),
+        returnValueForMissingStub: _i6.Future<void>.value(),
+      ) as _i6.Future<void>);
 
   @override
   _i6.Future<dynamic> delete(String? key) => (super.noSuchMethod(

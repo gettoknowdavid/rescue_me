@@ -5,20 +5,23 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i11;
+import 'package:flutter/material.dart' as _i14;
 import 'package:flutter/material.dart';
 import 'package:rescue_me/ui/views/confirmation/confirmation_view.dart' as _i9;
+import 'package:rescue_me/ui/views/contact/contact_view.dart' as _i12;
 import 'package:rescue_me/ui/views/home/home_view.dart' as _i2;
 import 'package:rescue_me/ui/views/layout/layout_view.dart' as _i8;
 import 'package:rescue_me/ui/views/login/login_view.dart' as _i6;
 import 'package:rescue_me/ui/views/onboarding/onboarding_view.dart' as _i4;
 import 'package:rescue_me/ui/views/password_recovery/password_recovery_view.dart'
     as _i7;
+import 'package:rescue_me/ui/views/profile/profile_view.dart' as _i11;
 import 'package:rescue_me/ui/views/register/register_view.dart' as _i5;
+import 'package:rescue_me/ui/views/settings/settings_view.dart' as _i13;
 import 'package:rescue_me/ui/views/startup/startup_view.dart' as _i3;
 import 'package:rescue_me/ui/views/verify_email/verify_email_view.dart' as _i10;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i12;
+import 'package:stacked_services/stacked_services.dart' as _i15;
 
 class Routes {
   static const homeView = '/home-view';
@@ -39,6 +42,12 @@ class Routes {
 
   static const verifyEmailView = '/verify-email-view';
 
+  static const profileView = '/profile-view';
+
+  static const contactView = '/contact-view';
+
+  static const settingsView = '/settings-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -49,6 +58,9 @@ class Routes {
     layoutView,
     confirmationView,
     verifyEmailView,
+    profileView,
+    contactView,
+    settingsView,
   };
 }
 
@@ -90,60 +102,90 @@ class StackedRouter extends _i1.RouterBase {
       Routes.verifyEmailView,
       page: _i10.VerifyEmailView,
     ),
+    _i1.RouteDef(
+      Routes.profileView,
+      page: _i11.ProfileView,
+    ),
+    _i1.RouteDef(
+      Routes.contactView,
+      page: _i12.ContactView,
+    ),
+    _i1.RouteDef(
+      Routes.settingsView,
+      page: _i13.SettingsView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.OnboardingView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.OnboardingView(),
         settings: data,
       );
     },
     _i5.RegisterView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.RegisterView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.PasswordRecoveryView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PasswordRecoveryView(),
         settings: data,
       );
     },
     _i8.LayoutView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.LayoutView(),
         settings: data,
       );
     },
     _i9.ConfirmationView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ConfirmationView(),
         settings: data,
       );
     },
     _i10.VerifyEmailView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.VerifyEmailView(),
+        settings: data,
+      );
+    },
+    _i11.ProfileView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i11.ProfileView(),
+        settings: data,
+      );
+    },
+    _i12.ContactView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.ContactView(),
+        settings: data,
+      );
+    },
+    _i13.SettingsView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i13.SettingsView(),
         settings: data,
       );
     },
@@ -156,7 +198,65 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i12.NavigationService {
+class LayoutViewRoutes {
+  static const homeView = 'home-view';
+
+  static const contactView = 'contact-view';
+
+  static const profileView = 'profile-view';
+
+  static const all = <String>{
+    homeView,
+    contactView,
+    profileView,
+  };
+}
+
+class LayoutViewRouter extends _i1.RouterBase {
+  final _routes = <_i1.RouteDef>[
+    _i1.RouteDef(
+      LayoutViewRoutes.homeView,
+      page: _i2.HomeView,
+    ),
+    _i1.RouteDef(
+      LayoutViewRoutes.contactView,
+      page: _i12.ContactView,
+    ),
+    _i1.RouteDef(
+      LayoutViewRoutes.profileView,
+      page: _i11.ProfileView,
+    ),
+  ];
+
+  final _pagesMap = <Type, _i1.StackedRouteFactory>{
+    _i2.HomeView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i2.HomeView(),
+        settings: data,
+      );
+    },
+    _i12.ContactView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i12.ContactView(),
+        settings: data,
+      );
+    },
+    _i11.ProfileView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i11.ProfileView(),
+        settings: data,
+      );
+    },
+  };
+
+  @override
+  List<_i1.RouteDef> get routes => _routes;
+
+  @override
+  Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+extension NavigatorStateExtension on _i15.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -283,6 +383,90 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
+  Future<dynamic> navigateToProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.profileView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToContactView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.contactView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToSettingsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.settingsView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToNestedHomeViewInLayoutViewRouter([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(LayoutViewRoutes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToNestedContactViewInLayoutViewRouter([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(LayoutViewRoutes.contactView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToNestedProfileViewInLayoutViewRouter([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(LayoutViewRoutes.profileView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
   Future<dynamic> replaceWithHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -403,6 +587,90 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.verifyEmailView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.profileView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithContactView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.contactView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithSettingsView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.settingsView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithNestedHomeViewInLayoutViewRouter([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(LayoutViewRoutes.homeView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithNestedContactViewInLayoutViewRouter([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(LayoutViewRoutes.contactView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithNestedProfileViewInLayoutViewRouter([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(LayoutViewRoutes.profileView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

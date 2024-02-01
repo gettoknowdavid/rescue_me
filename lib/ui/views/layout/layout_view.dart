@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rescue_me/app/app.router.dart';
+import 'package:rescue_me/ui/widgets/app_bottom_navigation_bar.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import 'layout_viewmodel.dart';
 
@@ -13,10 +16,12 @@ class LayoutView extends StackedView<LayoutViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      body: ExtendedNavigator(
+        navigatorKey: StackedService.nestedNavigationKey(1),
+        initialRoute: LayoutViewRoutes.homeView,
+        router: LayoutViewRouter(),
       ),
+      bottomNavigationBar: const AppBottomNavigationBar(),
     );
   }
 

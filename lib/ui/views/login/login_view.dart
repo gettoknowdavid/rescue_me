@@ -22,7 +22,7 @@ class LoginView extends StackedView<LoginViewModel> {
     final textTheme = theme.textTheme;
 
     return Scaffold(
-      appBar:   AppBar()  ,
+      appBar: AppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0).r,
         child: Column(

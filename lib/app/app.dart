@@ -5,12 +5,15 @@ import 'package:rescue_me/services/network_service.dart';
 import 'package:rescue_me/services/open_mail_app_service.dart';
 import 'package:rescue_me/services/shared_preferences_service.dart';
 import 'package:rescue_me/ui/views/confirmation/confirmation_view.dart';
+import 'package:rescue_me/ui/views/contact/contact_view.dart';
 import 'package:rescue_me/ui/views/home/home_view.dart';
 import 'package:rescue_me/ui/views/layout/layout_view.dart';
 import 'package:rescue_me/ui/views/login/login_view.dart';
 import 'package:rescue_me/ui/views/onboarding/onboarding_view.dart';
 import 'package:rescue_me/ui/views/password_recovery/password_recovery_view.dart';
+import 'package:rescue_me/ui/views/profile/profile_view.dart';
 import 'package:rescue_me/ui/views/register/register_view.dart';
+import 'package:rescue_me/ui/views/settings/settings_view.dart';
 import 'package:rescue_me/ui/views/startup/startup_view.dart';
 import 'package:rescue_me/ui/views/verify_email/verify_email_view.dart';
 import 'package:stacked/stacked_annotations.dart';
@@ -30,9 +33,19 @@ import 'app.router.dart';
     MaterialRoute(page: RegisterView),
     MaterialRoute(page: LoginView),
     MaterialRoute(page: PasswordRecoveryView),
-    MaterialRoute(page: LayoutView),
+    MaterialRoute(
+      page: LayoutView,
+      children: [
+        MaterialRoute(page: HomeView),
+        MaterialRoute(page: ContactView),
+        MaterialRoute(page: ProfileView),
+      ],
+    ),
     MaterialRoute(page: ConfirmationView),
     MaterialRoute(page: VerifyEmailView),
+    MaterialRoute(page: ProfileView),
+    MaterialRoute(page: ContactView),
+    MaterialRoute(page: SettingsView),
 // @stacked-route
   ],
   dependencies: [
