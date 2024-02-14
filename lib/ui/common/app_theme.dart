@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   AppTheme._();
@@ -10,7 +11,7 @@ class AppTheme {
         usedColors: 1,
         surfaceMode: FlexSurfaceMode.highBackgroundLowScaffold,
         blendLevel: 2,
-        lightIsWhite: true,
+        // lightIsWhite: true,
         appBarElevation: 0.0,
         subThemesData: FlexSubThemesData(
           appBarBackgroundSchemeColor: SchemeColor.background,
@@ -66,15 +67,16 @@ class AppTheme {
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,
         // To use the Playground font, add GoogleFonts package and uncomment
-        // fontFamily: GoogleFonts.notoSans().fontFamily,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+        fontFamily: GoogleFonts.poppins().fontFamily,
       );
 
   static ThemeData get dark => FlexThemeData.dark(
         scheme: FlexScheme.red,
         usedColors: 1,
         surfaceMode: FlexSurfaceMode.highBackgroundLowScaffold,
-        blendLevel: 8,
-        darkIsTrueBlack: true,
+        blendLevel: 12,
+        // darkIsTrueBlack: true,
         appBarElevation: 0.0,
         appBarBackground: Colors.transparent,
         subThemesData: FlexSubThemesData(
@@ -130,6 +132,7 @@ class AppTheme {
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,
         // To use the Playground font, add GoogleFonts package and uncomment
-        // fontFamily: GoogleFonts.notoSans().fontFamily,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+        fontFamily: GoogleFonts.poppins().fontFamily,
       );
 }

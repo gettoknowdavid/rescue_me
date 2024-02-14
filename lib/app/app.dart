@@ -23,6 +23,7 @@ import '../ui/common/app_theme.dart';
 import '../ui/dialogs/mail_app/mail_app_dialog.dart';
 import '../ui/dialogs/no_mail_app/no_mail_app_dialog.dart';
 import 'app.router.dart';
+import 'package:rescue_me/services/cloud_store_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -57,7 +58,8 @@ import 'app.router.dart';
     LazySingleton(classType: NetworkService),
     LazySingleton(classType: OpenMailAppService),
     InitializableSingleton(classType: SharedPreferencesService),
-    // @stacked-service
+    LazySingleton(classType: CloudStoreService),
+// @stacked-service
   ],
   dialogs: [
     StackedDialog(classType: MailAppDialog),

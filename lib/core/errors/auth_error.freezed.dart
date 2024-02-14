@@ -179,7 +179,7 @@ class _$AuthErrorMessageImpl implements _AuthErrorMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthErrorMessageImpl &&
@@ -357,7 +357,7 @@ class _$EmailInUseImpl implements _EmailInUse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$EmailInUseImpl);
   }
@@ -520,7 +520,7 @@ class _$RequiresRecentLoginImpl implements _RequiresRecentLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequiresRecentLoginImpl);
@@ -684,7 +684,7 @@ class _$InvalidEmailImpl implements _InvalidEmail {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InvalidEmailImpl);
   }
@@ -847,7 +847,7 @@ class _$InvalidPasswordImpl implements _InvalidPassword {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InvalidPasswordImpl);
   }
@@ -1012,7 +1012,7 @@ class _$InvalidEmailOrPasswordImpl implements _InvalidEmailOrPassword {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InvalidEmailOrPasswordImpl);
@@ -1176,7 +1176,7 @@ class _$NoGoogleAccountImpl implements _NoGoogleAccount {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$NoGoogleAccountImpl);
   }
@@ -1339,7 +1339,7 @@ class _$NotVerifiedImpl implements _NotVerified {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$NotVerifiedImpl);
   }
@@ -1502,7 +1502,7 @@ class _$ServerErrorImpl implements _ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
@@ -1665,7 +1665,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
   }
@@ -1828,7 +1828,7 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NoNetworkConnectionImpl);
@@ -1992,7 +1992,7 @@ class _$TimeOutImpl implements _TimeOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$TimeOutImpl);
   }
