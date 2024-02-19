@@ -1,24 +1,14 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:rescue_me/ui/views/layout/layout_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
-const items = [
-  BottomNavigationBarItem(
-    label: 'Home',
-    icon: Icon(PhosphorIconsLight.houseSimple),
-    activeIcon: Icon(PhosphorIconsFill.houseSimple),
-  ),
-  BottomNavigationBarItem(
-    label: 'SOS',
-    icon: Icon(PhosphorIconsLight.firstAid),
-    activeIcon: Icon(PhosphorIconsFill.firstAid),
-  ),
-  BottomNavigationBarItem(
-    label: 'Profile',
-    icon: Icon(PhosphorIconsLight.userCircle),
-    activeIcon: Icon(PhosphorIconsFill.userCircle),
-  ),
+const _icons = [
+  PhosphorIconsLight.houseSimple,
+  PhosphorIconsLight.firstAid,
+  PhosphorIconsLight.userCircle,
+  PhosphorIconsLight.gear,
 ];
 
 class AppBottomNavigationBar extends ViewModelWidget<LayoutViewModel> {
@@ -26,10 +16,19 @@ class AppBottomNavigationBar extends ViewModelWidget<LayoutViewModel> {
 
   @override
   Widget build(BuildContext context, LayoutViewModel viewModel) {
-    return BottomNavigationBar(
-      currentIndex: viewModel.currentIndex,
+    final theme = Theme.of(context).bottomNavigationBarTheme;
+
+    return AnimatedBottomNavigationBar(
+      icons: _icons,
+      activeIndex: viewModel.currentIndex,
       onTap: viewModel.handleNavigation,
-      items: items,
+      gapLocation: GapLocation.center,
+      notchSmoothness: NotchSmoothness.sharpEdge,
+      notchMargin: 0,
+      activeColor: theme.selectedItemColor,
+      inactiveColor: theme.unselectedItemColor,
+      iconSize: theme.selectedIconTheme?.size,
+      backgroundColor: theme.backgroundColor,
     );
   }
 }

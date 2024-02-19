@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rescue_me/services/auth_service.dart';
+import 'package:rescue_me/services/cloud_store_service.dart';
 import 'package:rescue_me/services/network_service.dart';
 import 'package:rescue_me/services/open_mail_app_service.dart';
 import 'package:rescue_me/services/shared_preferences_service.dart';
@@ -23,7 +24,10 @@ import '../ui/common/app_theme.dart';
 import '../ui/dialogs/mail_app/mail_app_dialog.dart';
 import '../ui/dialogs/no_mail_app/no_mail_app_dialog.dart';
 import 'app.router.dart';
-import 'package:rescue_me/services/cloud_store_service.dart';
+import 'package:rescue_me/ui/views/hospitals/hospitals_view.dart';
+import 'package:rescue_me/ui/views/emergency_contacts/emergency_contacts_view.dart';
+import 'package:rescue_me/ui/views/first_aid/first_aid_view.dart';
+import 'package:rescue_me/ui/views/courses/courses_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -40,13 +44,17 @@ import 'package:rescue_me/services/cloud_store_service.dart';
         MaterialRoute(page: HomeView),
         MaterialRoute(page: ContactView),
         MaterialRoute(page: ProfileView),
+        MaterialRoute(page: SettingsView),
       ],
     ),
     MaterialRoute(page: ConfirmationView),
     MaterialRoute(page: VerifyEmailView),
     MaterialRoute(page: ProfileView),
     MaterialRoute(page: ContactView),
-    MaterialRoute(page: SettingsView),
+    MaterialRoute(page: HospitalsView),
+    MaterialRoute(page: EmergencyContactsView),
+    MaterialRoute(page: FirstAidView),
+    MaterialRoute(page: CoursesView),
 // @stacked-route
   ],
   dependencies: [

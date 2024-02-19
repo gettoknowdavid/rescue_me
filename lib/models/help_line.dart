@@ -13,7 +13,6 @@ class HelpLine with _$HelpLine {
     required String title,
     required String subtitle,
     String? imageUrl,
-    
   }) = _HelpLine;
 
   factory HelpLine.fromJson(Map<String, dynamic> json) =>

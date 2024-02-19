@@ -17,6 +17,9 @@ class LayoutViewModel extends IndexTrackingViewModel
 
   User? get user => _authService.user;
 
+  bool get hasPhoto => user != null && user!.photoURL != null;
+  String? get photoURL => user?.photoURL;
+
   void handleNavigation(int index) {
     switch (index) {
       case 0:
@@ -37,6 +40,13 @@ class LayoutViewModel extends IndexTrackingViewModel
         setIndex(2);
         _navigationService.pushNamedAndRemoveUntil(
           LayoutViewRoutes.profileView,
+          id: 1,
+        );
+        break;
+      case 3:
+        setIndex(3);
+        _navigationService.pushNamedAndRemoveUntil(
+          LayoutViewRoutes.settingsView,
           id: 1,
         );
         break;
