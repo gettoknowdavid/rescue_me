@@ -15,7 +15,7 @@ import 'register_viewmodel.dart';
   FormTextField(name: 'password', validator: FormValidator.password),
 ])
 class RegisterView extends StackedView<RegisterViewModel> {
-  const RegisterView({Key? key}) : super(key: key);
+  const RegisterView({super.key});
 
   @override
   Widget builder(context, viewModel, child) {

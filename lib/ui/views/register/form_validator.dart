@@ -66,10 +66,6 @@ class FormValidator {
       return 'Phone Number cannot be empty';
     }
 
-    if (RegExp(_phoneRegex).hasMatch(input)) {
-      return null;
-    }
-
-    return 'Please provide a valid phone number';
+    return null;
   }
 }

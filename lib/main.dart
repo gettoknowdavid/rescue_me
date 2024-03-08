@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'app/app.bottomsheets.dart';
 import 'app/app.dart';
 import 'app/app.locator.dart';
 import 'app/app.snackbars.dart';
@@ -14,7 +15,8 @@ Future<void> main() async {
     Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     Supabase.initialize(url: Env.supabaseUrl, anonKey: Env.supabaseAnonKey),
     setupLocator(),
-    setupSnackbarUI()
+    setupSnackbarUI(),
   ]);
+  setupBottomSheetUi();
   runApp(const App());
 }

@@ -5,9 +5,15 @@ import 'package:rescue_me/services/cloud_store_service.dart';
 import 'package:rescue_me/services/network_service.dart';
 import 'package:rescue_me/services/open_mail_app_service.dart';
 import 'package:rescue_me/services/shared_preferences_service.dart';
+import 'package:rescue_me/ui/bottom_sheets/emergency_contact/emergency_contact_sheet.dart';
+import 'package:rescue_me/ui/views/add_emergency_contact/add_emergency_contact_view.dart';
 import 'package:rescue_me/ui/views/confirmation/confirmation_view.dart';
 import 'package:rescue_me/ui/views/contact/contact_view.dart';
+import 'package:rescue_me/ui/views/courses/courses_view.dart';
+import 'package:rescue_me/ui/views/emergency_contacts/emergency_contacts_view.dart';
+import 'package:rescue_me/ui/views/first_aid/first_aid_view.dart';
 import 'package:rescue_me/ui/views/home/home_view.dart';
+import 'package:rescue_me/ui/views/hospitals/hospitals_view.dart';
 import 'package:rescue_me/ui/views/layout/layout_view.dart';
 import 'package:rescue_me/ui/views/login/login_view.dart';
 import 'package:rescue_me/ui/views/onboarding/onboarding_view.dart';
@@ -24,10 +30,9 @@ import '../ui/common/app_theme.dart';
 import '../ui/dialogs/mail_app/mail_app_dialog.dart';
 import '../ui/dialogs/no_mail_app/no_mail_app_dialog.dart';
 import 'app.router.dart';
-import 'package:rescue_me/ui/views/hospitals/hospitals_view.dart';
-import 'package:rescue_me/ui/views/emergency_contacts/emergency_contacts_view.dart';
-import 'package:rescue_me/ui/views/first_aid/first_aid_view.dart';
-import 'package:rescue_me/ui/views/courses/courses_view.dart';
+import 'package:rescue_me/services/media_service.dart';
+import 'package:rescue_me/ui/bottom_sheets/image_source/image_source_sheet.dart';
+import 'package:rescue_me/services/emergency_contacts_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -55,6 +60,7 @@ import 'package:rescue_me/ui/views/courses/courses_view.dart';
     MaterialRoute(page: EmergencyContactsView),
     MaterialRoute(page: FirstAidView),
     MaterialRoute(page: CoursesView),
+    MaterialRoute(page: AddEmergencyContactView),
 // @stacked-route
   ],
   dependencies: [
@@ -67,13 +73,20 @@ import 'package:rescue_me/ui/views/courses/courses_view.dart';
     LazySingleton(classType: OpenMailAppService),
     InitializableSingleton(classType: SharedPreferencesService),
     LazySingleton(classType: CloudStoreService),
+    LazySingleton(classType: MediaService),
+    LazySingleton(classType: EmergencyContactsService),
 // @stacked-service
   ],
   dialogs: [
     StackedDialog(classType: MailAppDialog),
     StackedDialog(classType: NoMailAppDialog),
-  ],
 // @stacked-dialog
+  ],
+  bottomsheets: [
+    StackedBottomsheet(classType: EmergencyContactSheet),
+    StackedBottomsheet(classType: ImageSourceSheet),
+// @stacked-bottom-sheet
+  ],
 )
 class App extends StatelessWidget {
   const App({super.key});

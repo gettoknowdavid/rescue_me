@@ -14,6 +14,7 @@ class AppTheme {
         // lightIsWhite: true,
         appBarElevation: 0.0,
         subThemesData: FlexSubThemesData(
+          appBarCenterTitle: true,
           appBarBackgroundSchemeColor: SchemeColor.background,
           appBarScrolledUnderElevation: 0.0,
           buttonPadding: const EdgeInsets.symmetric(
@@ -63,6 +64,7 @@ class AppTheme {
           bottomNavigationBarSelectedLabelSize: 10,
           bottomNavigationBarUnselectedLabelSize: 10,
           bottomNavigationBarElevation: 0.0,
+          bottomSheetRadius: 24.r,
         ),
         useMaterial3ErrorColors: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
@@ -82,6 +84,7 @@ class AppTheme {
         appBarBackground: Colors.transparent,
         subThemesData: FlexSubThemesData(
           appBarBackgroundSchemeColor: SchemeColor.background,
+          appBarCenterTitle: true,
           appBarScrolledUnderElevation: 0.0,
           buttonPadding: const EdgeInsets.symmetric(
             vertical: 12,
@@ -129,6 +132,11 @@ class AppTheme {
           bottomNavigationBarSelectedLabelSize: 10,
           bottomNavigationBarUnselectedLabelSize: 10,
           bottomNavigationBarElevation: 0.0,
+          bottomSheetRadius: 24.r,
+          bottomSheetBackgroundColor: SchemeColor.error,
+          bottomSheetElevation: 0.0,
+          bottomSheetModalBackgroundColor: null,
+          bottomSheetModalElevation: 0.0,
         ),
         useMaterial3ErrorColors: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,

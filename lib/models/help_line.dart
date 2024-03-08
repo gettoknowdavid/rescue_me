@@ -5,6 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'help_line.freezed.dart';
 part 'help_line.g.dart';
 
+@Collection<HelpLine>('helplines')
+final helplinesRef = HelpLineCollectionReference();
+
 @Freezed(fromJson: false)
 @JsonSerializable(converters: firestoreJsonConverters, includeIfNull: false)
 class HelpLine with _$HelpLine {
@@ -21,6 +24,3 @@ class HelpLine with _$HelpLine {
   @override
   Map<String, dynamic> toJson() => _$HelpLineToJson(this);
 }
-
-@Collection<HelpLine>('helplines')
-final helplinesRef = HelpLineCollectionReference();

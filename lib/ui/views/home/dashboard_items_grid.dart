@@ -5,9 +5,7 @@ import 'package:rescue_me/ui/views/home/home_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
 class DashboardItemsGrid extends ViewModelWidget<HomeViewModel> {
-  const DashboardItemsGrid({
-    super.key
-  });
+  const DashboardItemsGrid({super.key});
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {

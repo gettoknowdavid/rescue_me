@@ -5,8 +5,13 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i17;
+import 'dart:io' as _i20;
+
+import 'package:flutter/material.dart' as _i18;
 import 'package:flutter/material.dart';
+import 'package:rescue_me/models/emergency_contact.dart' as _i19;
+import 'package:rescue_me/ui/views/add_emergency_contact/add_emergency_contact_view.dart'
+    as _i17;
 import 'package:rescue_me/ui/views/confirmation/confirmation_view.dart' as _i9;
 import 'package:rescue_me/ui/views/contact/contact_view.dart' as _i12;
 import 'package:rescue_me/ui/views/courses/courses_view.dart' as _i16;
@@ -22,11 +27,11 @@ import 'package:rescue_me/ui/views/password_recovery/password_recovery_view.dart
     as _i7;
 import 'package:rescue_me/ui/views/profile/profile_view.dart' as _i11;
 import 'package:rescue_me/ui/views/register/register_view.dart' as _i5;
-import 'package:rescue_me/ui/views/settings/settings_view.dart' as _i18;
+import 'package:rescue_me/ui/views/settings/settings_view.dart' as _i21;
 import 'package:rescue_me/ui/views/startup/startup_view.dart' as _i3;
 import 'package:rescue_me/ui/views/verify_email/verify_email_view.dart' as _i10;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i19;
+import 'package:stacked_services/stacked_services.dart' as _i22;
 
 class Routes {
   static const homeView = '/home-view';
@@ -59,6 +64,8 @@ class Routes {
 
   static const coursesView = '/courses-view';
 
+  static const addEmergencyContactView = '/add-emergency-contact-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -75,6 +82,7 @@ class Routes {
     emergencyContactsView,
     firstAidView,
     coursesView,
+    addEmergencyContactView,
   };
 }
 
@@ -140,96 +148,113 @@ class StackedRouter extends _i1.RouterBase {
       Routes.coursesView,
       page: _i16.CoursesView,
     ),
+    _i1.RouteDef(
+      Routes.addEmergencyContactView,
+      page: _i17.AddEmergencyContactView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.OnboardingView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.OnboardingView(),
         settings: data,
       );
     },
     _i5.RegisterView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.RegisterView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.PasswordRecoveryView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PasswordRecoveryView(),
         settings: data,
       );
     },
     _i8.LayoutView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.LayoutView(),
         settings: data,
       );
     },
     _i9.ConfirmationView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ConfirmationView(),
         settings: data,
       );
     },
     _i10.VerifyEmailView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.VerifyEmailView(),
         settings: data,
       );
     },
     _i11.ProfileView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
     },
     _i12.ContactView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ContactView(),
         settings: data,
       );
     },
     _i13.HospitalsView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i13.HospitalsView(),
         settings: data,
       );
     },
     _i14.EmergencyContactsView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i14.EmergencyContactsView(),
         settings: data,
       );
     },
     _i15.FirstAidView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i15.FirstAidView(),
         settings: data,
       );
     },
     _i16.CoursesView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i16.CoursesView(),
+        settings: data,
+      );
+    },
+    _i17.AddEmergencyContactView: (data) {
+      final args = data.getArgs<AddEmergencyContactViewArguments>(
+        orElse: () => const AddEmergencyContactViewArguments(),
+      );
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => _i17.AddEmergencyContactView(
+            key: args.key,
+            contact: args.contact,
+            isEditing: args.isEditing,
+            imageFile: args.imageFile),
         settings: data,
       );
     },
@@ -240,6 +265,45 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class AddEmergencyContactViewArguments {
+  const AddEmergencyContactViewArguments({
+    this.key,
+    this.contact,
+    this.isEditing = false,
+    this.imageFile,
+  });
+
+  final _i18.Key? key;
+
+  final _i19.EmergencyContact? contact;
+
+  final bool isEditing;
+
+  final _i20.File? imageFile;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "contact": "$contact", "isEditing": "$isEditing", "imageFile": "$imageFile"}';
+  }
+
+  @override
+  bool operator ==(covariant AddEmergencyContactViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.contact == contact &&
+        other.isEditing == isEditing &&
+        other.imageFile == imageFile;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^
+        contact.hashCode ^
+        isEditing.hashCode ^
+        imageFile.hashCode;
+  }
 }
 
 class LayoutViewRoutes {
@@ -275,32 +339,32 @@ class LayoutViewRouter extends _i1.RouterBase {
     ),
     _i1.RouteDef(
       LayoutViewRoutes.settingsView,
-      page: _i18.SettingsView,
+      page: _i21.SettingsView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i12.ContactView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ContactView(),
         settings: data,
       );
     },
     _i11.ProfileView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
+      return _i18.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
     },
-    _i18.SettingsView: (data) {
-      return _i17.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i18.SettingsView(),
+    _i21.SettingsView: (data) {
+      return _i18.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i21.SettingsView(),
         settings: data,
       );
     },
@@ -313,7 +377,7 @@ class LayoutViewRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i19.NavigationService {
+extension NavigatorStateExtension on _i22.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -518,6 +582,29 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.coursesView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToAddEmergencyContactView({
+    _i18.Key? key,
+    _i19.EmergencyContact? contact,
+    bool isEditing = false,
+    _i20.File? imageFile,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.addEmergencyContactView,
+        arguments: AddEmergencyContactViewArguments(
+            key: key,
+            contact: contact,
+            isEditing: isEditing,
+            imageFile: imageFile),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -784,6 +871,29 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.coursesView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithAddEmergencyContactView({
+    _i18.Key? key,
+    _i19.EmergencyContact? contact,
+    bool isEditing = false,
+    _i20.File? imageFile,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.addEmergencyContactView,
+        arguments: AddEmergencyContactViewArguments(
+            key: key,
+            contact: contact,
+            isEditing: isEditing,
+            imageFile: imageFile),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

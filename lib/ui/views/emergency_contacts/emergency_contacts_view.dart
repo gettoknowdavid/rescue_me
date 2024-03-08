@@ -1,28 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../widgets/app_back_button.dart';
+import 'emergency_contacts_list.dart';
 import 'emergency_contacts_viewmodel.dart';
 
-class EmergencyContactsView extends StackedView<EmergencyContactsViewModel> {
-  const EmergencyContactsView({Key? key}) : super(key: key);
+class EmergencyContactsView extends StackedView<EMCViewModel> {
+  const EmergencyContactsView({super.key});
 
   @override
-  Widget builder(
-    BuildContext context,
-    EmergencyContactsViewModel viewModel,
-    Widget? child,
-  ) {
+  Widget builder(context, viewModel, child) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      appBar: AppBar(
+        title: Text('Emergency Contacts', style: context.appBarTitleStyle),
+        leading: const AppBackButton(),
+      ),
+      body: RefreshIndicator(
+        onRefresh: viewModel.refresh,
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12).r,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Click on any of the names listed to call the contact. Or tap the + to add a new Emergency Contact.',
+                style: context.subtitleStyle,
+              ),
+              32.verticalSpace,
+              const EmergencyContactsList(),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: viewModel.goToContactFormView,
+        child: const Icon(PhosphorIconsBold.plus),
       ),
     );
   }
 
   @override
-  EmergencyContactsViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      EmergencyContactsViewModel();
+  EMCViewModel viewModelBuilder(context) => EmergencyContactsViewModel();
 }
