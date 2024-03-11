@@ -36,6 +36,7 @@ import 'package:rescue_me/services/emergency_contacts_service.dart';
 import 'package:rescue_me/ui/views/edit_bio/edit_bio_view.dart';
 import 'package:rescue_me/ui/bottom_sheets/edit_name/edit_name_sheet.dart';
 import 'package:rescue_me/ui/views/edit_password/edit_password_view.dart';
+import 'package:rescue_me/ui/views/re_auth/re_auth_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -66,6 +67,7 @@ import 'package:rescue_me/ui/views/edit_password/edit_password_view.dart';
     MaterialRoute(page: AddEmergencyContactView),
     MaterialRoute(page: EditBioView),
     MaterialRoute(page: EditPasswordView),
+    MaterialRoute(page: ReAuthView),
 // @stacked-route
   ],
   dependencies: [

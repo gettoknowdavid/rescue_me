@@ -55,9 +55,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
               onTap: viewModel.goToEditBio,
             ),
             const Divider(),
-            const ProfileOptionTile(
+            ProfileOptionTile(
               title: 'Edit Email',
               icon: PhosphorIconsDuotone.envelope,
+              onTap: viewModel.goToEditEmail,
             ),
             const Divider(),
             const ProfileOptionTile(

@@ -956,6 +956,42 @@ class MockAuthService extends _i1.Mock implements _i9.AuthService {
       ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
 
   @override
+  _i7.Future<void> reload() => (super.noSuchMethod(
+        Invocation.method(
+          #reload,
+          [],
+        ),
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
+
+  @override
+  _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>> changeName(String? name) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changeName,
+          [name],
+        ),
+        returnValue: _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+            _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #changeName,
+            [name],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+                _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #changeName,
+            [name],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
+
+  @override
   _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>> removeAvatar() =>
       (super.noSuchMethod(
         Invocation.method(

@@ -198,4 +198,21 @@ class AuthService with ListenableServiceMixin {
   }
 
   bool get hasAvatar => _firebaseAuth.currentUser?.photoURL != null;
+
+  Future<Either<AuthError, Unit>> reauthenticate(String password) async {
+    try {
+      final credential = EmailAuthProvider.credential(
+        email: _firebaseAuth.currentUser!.email!,
+        password: password,
+      );
+      await _firebaseAuth.currentUser!
+          .reauthenticateWithCredential(credential)
+          .timeout(timeLimit);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(AuthError.error(e.message));
+    } on TimeoutException {
+      return left(const AuthError.error(keTimeout));
+    }
+  }
 }

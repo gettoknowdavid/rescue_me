@@ -5,11 +5,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:io' as _i22;
+import 'dart:io' as _i23;
 
-import 'package:flutter/material.dart' as _i20;
+import 'package:flutter/material.dart' as _i21;
 import 'package:flutter/material.dart';
-import 'package:rescue_me/models/emergency_contact.dart' as _i21;
+import 'package:rescue_me/models/emergency_contact.dart' as _i22;
 import 'package:rescue_me/ui/views/add_emergency_contact/add_emergency_contact_view.dart'
     as _i17;
 import 'package:rescue_me/ui/views/confirmation/confirmation_view.dart' as _i9;
@@ -29,12 +29,13 @@ import 'package:rescue_me/ui/views/onboarding/onboarding_view.dart' as _i4;
 import 'package:rescue_me/ui/views/password_recovery/password_recovery_view.dart'
     as _i7;
 import 'package:rescue_me/ui/views/profile/profile_view.dart' as _i11;
+import 'package:rescue_me/ui/views/re_auth/re_auth_view.dart' as _i20;
 import 'package:rescue_me/ui/views/register/register_view.dart' as _i5;
-import 'package:rescue_me/ui/views/settings/settings_view.dart' as _i23;
+import 'package:rescue_me/ui/views/settings/settings_view.dart' as _i24;
 import 'package:rescue_me/ui/views/startup/startup_view.dart' as _i3;
 import 'package:rescue_me/ui/views/verify_email/verify_email_view.dart' as _i10;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i24;
+import 'package:stacked_services/stacked_services.dart' as _i25;
 
 class Routes {
   static const homeView = '/home-view';
@@ -73,6 +74,8 @@ class Routes {
 
   static const editPasswordView = '/edit-password-view';
 
+  static const reAuthView = '/re-auth-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -92,6 +95,7 @@ class Routes {
     addEmergencyContactView,
     editBioView,
     editPasswordView,
+    reAuthView,
   };
 }
 
@@ -169,95 +173,99 @@ class StackedRouter extends _i1.RouterBase {
       Routes.editPasswordView,
       page: _i19.EditPasswordView,
     ),
+    _i1.RouteDef(
+      Routes.reAuthView,
+      page: _i20.ReAuthView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.OnboardingView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.OnboardingView(),
         settings: data,
       );
     },
     _i5.RegisterView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.RegisterView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.PasswordRecoveryView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PasswordRecoveryView(),
         settings: data,
       );
     },
     _i8.LayoutView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.LayoutView(),
         settings: data,
       );
     },
     _i9.ConfirmationView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ConfirmationView(),
         settings: data,
       );
     },
     _i10.VerifyEmailView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.VerifyEmailView(),
         settings: data,
       );
     },
     _i11.ProfileView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
     },
     _i12.ContactView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ContactView(),
         settings: data,
       );
     },
     _i13.HospitalsView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i13.HospitalsView(),
         settings: data,
       );
     },
     _i14.EmergencyContactsView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i14.EmergencyContactsView(),
         settings: data,
       );
     },
     _i15.FirstAidView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i15.FirstAidView(),
         settings: data,
       );
     },
     _i16.CoursesView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i16.CoursesView(),
         settings: data,
       );
@@ -266,7 +274,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<AddEmergencyContactViewArguments>(
         orElse: () => const AddEmergencyContactViewArguments(),
       );
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => _i17.AddEmergencyContactView(
             key: args.key,
             contact: args.contact,
@@ -276,14 +284,20 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i18.EditBioView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i18.EditBioView(),
         settings: data,
       );
     },
     _i19.EditPasswordView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i19.EditPasswordView(),
+        settings: data,
+      );
+    },
+    _i20.ReAuthView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i20.ReAuthView(),
         settings: data,
       );
     },
@@ -304,13 +318,13 @@ class AddEmergencyContactViewArguments {
     this.imageFile,
   });
 
-  final _i20.Key? key;
+  final _i21.Key? key;
 
-  final _i21.EmergencyContact? contact;
+  final _i22.EmergencyContact? contact;
 
   final bool isEditing;
 
-  final _i22.File? imageFile;
+  final _i23.File? imageFile;
 
   @override
   String toString() {
@@ -368,32 +382,32 @@ class LayoutViewRouter extends _i1.RouterBase {
     ),
     _i1.RouteDef(
       LayoutViewRoutes.settingsView,
-      page: _i23.SettingsView,
+      page: _i24.SettingsView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i12.ContactView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ContactView(),
         settings: data,
       );
     },
     _i11.ProfileView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
+      return _i21.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
     },
-    _i23.SettingsView: (data) {
-      return _i20.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i23.SettingsView(),
+    _i24.SettingsView: (data) {
+      return _i21.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i24.SettingsView(),
         settings: data,
       );
     },
@@ -406,7 +420,7 @@ class LayoutViewRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i24.NavigationService {
+extension NavigatorStateExtension on _i25.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -618,10 +632,10 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToAddEmergencyContactView({
-    _i20.Key? key,
-    _i21.EmergencyContact? contact,
+    _i21.Key? key,
+    _i22.EmergencyContact? contact,
     bool isEditing = false,
-    _i22.File? imageFile,
+    _i23.File? imageFile,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -662,6 +676,20 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.editPasswordView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToReAuthView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.reAuthView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -935,10 +963,10 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithAddEmergencyContactView({
-    _i20.Key? key,
-    _i21.EmergencyContact? contact,
+    _i21.Key? key,
+    _i22.EmergencyContact? contact,
     bool isEditing = false,
-    _i22.File? imageFile,
+    _i23.File? imageFile,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -979,6 +1007,20 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.editPasswordView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithReAuthView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.reAuthView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
