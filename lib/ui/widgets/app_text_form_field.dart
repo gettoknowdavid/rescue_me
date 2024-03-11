@@ -14,6 +14,7 @@ class AppTextFormField extends StatefulWidget {
     this.validator,
     this.keyboardType,
     this.prefixText,
+    this.enabled,
   });
 
   final String label;
@@ -24,6 +25,7 @@ class AppTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
   final String? prefixText;
+  final bool? enabled;
 
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
@@ -50,6 +52,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         ),
         4.verticalSpace,
         TextFormField(
+          enabled: widget.enabled,
           controller: widget.controller,
           focusNode: widget.focusNode,
           validator: widget.validator,

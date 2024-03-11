@@ -25,7 +25,7 @@ class EmergencyContactsViewModel extends ReactiveViewModel with Initialisable {
 
   List<EmergencyContact?> get contacts => _emcService.contacts;
   bool get isLoading => _emcService.isLoading;
- 
+
   Future<void> call(String phoneNumber) async {
     final url = Uri.parse('tel:+$phoneNumber');
     if (await canLaunchUrl(url)) {

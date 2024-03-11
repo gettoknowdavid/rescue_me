@@ -735,6 +735,13 @@ class MockAuthService extends _i1.Mock implements _i9.AuthService {
       ) as bool);
 
   @override
+  bool get hasAvatar => (super.noSuchMethod(
+        Invocation.getter(#hasAvatar),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
   int get listenersCount => (super.noSuchMethod(
         Invocation.getter(#listenersCount),
         returnValue: 0,
@@ -916,6 +923,59 @@ class MockAuthService extends _i1.Mock implements _i9.AuthService {
           this,
           Invocation.method(
             #sendVerificationEmail,
+            [],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
+
+  @override
+  _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>> changeAvatar(
+          String? photoURL) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changeAvatar,
+          [photoURL],
+        ),
+        returnValue: _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+            _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #changeAvatar,
+            [photoURL],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+                _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #changeAvatar,
+            [photoURL],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
+
+  @override
+  _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>> removeAvatar() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeAvatar,
+          [],
+        ),
+        returnValue: _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+            _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #removeAvatar,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+                _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #removeAvatar,
             [],
           ),
         )),

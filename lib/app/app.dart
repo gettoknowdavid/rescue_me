@@ -33,6 +33,9 @@ import 'app.router.dart';
 import 'package:rescue_me/services/media_service.dart';
 import 'package:rescue_me/ui/bottom_sheets/image_source/image_source_sheet.dart';
 import 'package:rescue_me/services/emergency_contacts_service.dart';
+import 'package:rescue_me/ui/views/edit_bio/edit_bio_view.dart';
+import 'package:rescue_me/ui/bottom_sheets/edit_name/edit_name_sheet.dart';
+import 'package:rescue_me/ui/views/edit_password/edit_password_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -61,6 +64,8 @@ import 'package:rescue_me/services/emergency_contacts_service.dart';
     MaterialRoute(page: FirstAidView),
     MaterialRoute(page: CoursesView),
     MaterialRoute(page: AddEmergencyContactView),
+    MaterialRoute(page: EditBioView),
+    MaterialRoute(page: EditPasswordView),
 // @stacked-route
   ],
   dependencies: [
@@ -85,6 +90,7 @@ import 'package:rescue_me/services/emergency_contacts_service.dart';
   bottomsheets: [
     StackedBottomsheet(classType: EmergencyContactSheet),
     StackedBottomsheet(classType: ImageSourceSheet),
+    StackedBottomsheet(classType: EditNameSheet),
 // @stacked-bottom-sheet
   ],
 )

@@ -3,11 +3,6 @@ import 'package:password_policy/password_policy.dart';
 const String _emailRegex =
     r"""^[\w!#$%&\'*+/=?^_`{|}~-]+(?:\.[\w!#$%&\'*+/=?^_`{|}~-]+)*@(?:[\w-]+\.)+[\w]{2,}$""";
 
-const String _passwordRegex =
-    r'''^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=?!])(?=.{8,})''';
-
-const String _phoneRegex = r'''^(?:[+0][1-9])?[0-9]{10,12}$''';
-
 PasswordPolicy passwordPolicy = PasswordPolicy(
   minimumScore: 0.8,
   validationRules: [

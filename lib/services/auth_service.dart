@@ -17,7 +17,7 @@ class AuthService with ListenableServiceMixin {
 
   AuthService() {
     listenToReactiveValues([_user]);
-    _firebaseAuth.authStateChanges().listen((event) {
+    _firebaseAuth.userChanges().listen((event) {
       _user.value = event;
 
       if (event != null) {
@@ -158,4 +158,44 @@ class AuthService with ListenableServiceMixin {
       return left(const AuthError.error(keTimeout));
     }
   }
+
+  Future<Either<AuthError, Unit>> changeAvatar(String? photoURL) async {
+    try {
+      await _firebaseAuth.currentUser!.updatePhotoURL(photoURL);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(AuthError.error(e.message));
+    } on TimeoutException {
+      return left(const AuthError.error(keTimeout));
+    }
+  }
+
+  Future<void> reload() async {
+    if (_firebaseAuth.currentUser == null) return;
+    return _firebaseAuth.currentUser!.reload().then((_) => notifyListeners());
+  }
+
+  Future<Either<AuthError, Unit>> changeName(String name) async {
+    try {
+      await _firebaseAuth.currentUser!.updateDisplayName(name);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(AuthError.error(e.message));
+    } on TimeoutException {
+      return left(const AuthError.error(keTimeout));
+    }
+  }
+
+  Future<Either<AuthError, Unit>> removeAvatar() async {
+    try {
+      await _firebaseAuth.currentUser!.updatePhotoURL(' ');
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(AuthError.error(e.message));
+    } on TimeoutException {
+      return left(const AuthError.error(keTimeout));
+    }
+  }
+
+  bool get hasAvatar => _firebaseAuth.currentUser?.photoURL != null;
 }
