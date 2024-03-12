@@ -33,6 +33,9 @@ class AppTextFormField extends StatefulWidget {
 
 class _AppTextFormFieldState extends State<AppTextFormField> {
   bool isObscure = false;
+
+
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -57,7 +60,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
           focusNode: widget.focusNode,
           validator: widget.validator,
           keyboardType: widget.keyboardType,
-          obscureText: isObscure,
+          obscureText: widget.isPassword ? !isObscure : isObscure,
           decoration: InputDecoration(
             hintText: widget.hint,
             contentPadding: const EdgeInsets.all(12).r,
