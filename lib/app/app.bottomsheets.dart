@@ -7,14 +7,12 @@
 import 'package:stacked_services/stacked_services.dart';
 
 import 'app.locator.dart';
-import '../ui/bottom_sheets/edit_name/edit_name_sheet.dart';
 import '../ui/bottom_sheets/emergency_contact/emergency_contact_sheet.dart';
 import '../ui/bottom_sheets/image_source/image_source_sheet.dart';
 
 enum BottomSheetType {
   emergencyContact,
   imageSource,
-  editName,
 }
 
 void setupBottomSheetUi() {
@@ -25,8 +23,6 @@ void setupBottomSheetUi() {
         EmergencyContactSheet(request: request, completer: completer),
     BottomSheetType.imageSource: (context, request, completer) =>
         ImageSourceSheet(request: request, completer: completer),
-    BottomSheetType.editName: (context, request, completer) =>
-        EditNameSheet(request: request, completer: completer),
   };
 
   bottomsheetService.setCustomSheetBuilders(builders);

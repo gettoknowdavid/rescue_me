@@ -26,7 +26,7 @@ class ReAuthViewModel extends FormViewModel {
 
       return result.fold(
         (failure) => _navigationService.back(result: failure),
-        (success) => _navigationService.navigateToEditPasswordView(),
+        (success) => _navigationService.replaceWithEditEmailView(),
       );
     }
   }

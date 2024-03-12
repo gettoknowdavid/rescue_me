@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:rescue_me/app/app.dialogs.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'app/app.bottomsheets.dart';
@@ -18,5 +19,6 @@ Future<void> main() async {
     setupSnackbarUI(),
   ]);
   setupBottomSheetUi();
+  setupDialogUi();
   runApp(const App());
 }

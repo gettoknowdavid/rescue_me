@@ -34,9 +34,10 @@ import 'package:rescue_me/services/media_service.dart';
 import 'package:rescue_me/ui/bottom_sheets/image_source/image_source_sheet.dart';
 import 'package:rescue_me/services/emergency_contacts_service.dart';
 import 'package:rescue_me/ui/views/edit_bio/edit_bio_view.dart';
-import 'package:rescue_me/ui/bottom_sheets/edit_name/edit_name_sheet.dart';
 import 'package:rescue_me/ui/views/edit_password/edit_password_view.dart';
 import 'package:rescue_me/ui/views/re_auth/re_auth_view.dart';
+import 'package:rescue_me/ui/views/edit_email/edit_email_view.dart';
+import 'package:rescue_me/ui/dialogs/logout/logout_dialog.dart';
 // @stacked-import
 
 @StackedApp(
@@ -68,6 +69,7 @@ import 'package:rescue_me/ui/views/re_auth/re_auth_view.dart';
     MaterialRoute(page: EditBioView),
     MaterialRoute(page: EditPasswordView),
     MaterialRoute(page: ReAuthView),
+    MaterialRoute(page: EditEmailView),
 // @stacked-route
   ],
   dependencies: [
@@ -87,13 +89,13 @@ import 'package:rescue_me/ui/views/re_auth/re_auth_view.dart';
   dialogs: [
     StackedDialog(classType: MailAppDialog),
     StackedDialog(classType: NoMailAppDialog),
+    StackedDialog(classType: LogoutDialog),
 // @stacked-dialog
   ],
   bottomsheets: [
     StackedBottomsheet(classType: EmergencyContactSheet),
     StackedBottomsheet(classType: ImageSourceSheet),
-    StackedBottomsheet(classType: EditNameSheet),
-// @stacked-bottom-sheet
+    // @stacked-bottom-sheet
   ],
 )
 class App extends StatelessWidget {

@@ -1018,6 +1018,59 @@ class MockAuthService extends _i1.Mock implements _i9.AuthService {
       ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
 
   @override
+  _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>> reauthenticate(
+          String? password) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #reauthenticate,
+          [password],
+        ),
+        returnValue: _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+            _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #reauthenticate,
+            [password],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+                _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #reauthenticate,
+            [password],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
+
+  @override
+  _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>> updateEmail(String? email) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateEmail,
+          [email],
+        ),
+        returnValue: _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+            _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #updateEmail,
+            [email],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+                _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #updateEmail,
+            [email],
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
+
+  @override
   void listenToReactiveValues(List<dynamic>? reactiveValues) =>
       super.noSuchMethod(
         Invocation.method(

@@ -215,4 +215,17 @@ class AuthService with ListenableServiceMixin {
       return left(const AuthError.error(keTimeout));
     }
   }
+
+  Future<Either<AuthError, Unit>> updateEmail(String email) async {
+    try {
+      await _firebaseAuth.currentUser!
+          .verifyBeforeUpdateEmail(email)
+          .timeout(timeLimit);
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(AuthError.error(e.message));
+    } on TimeoutException {
+      return left(const AuthError.error(keTimeout));
+    }
+  }
 }
