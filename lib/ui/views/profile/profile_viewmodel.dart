@@ -15,6 +15,11 @@ class ProfileViewModel extends ReactiveViewModel {
 
   User get user => _authService.user!;
 
+  Future<void> logout() async {
+    _navService.clearStackAndShow(Routes.loginView);
+    await _authService.logout();
+  }
+
   Future<void> goToEditBio() async => _navService.navigateToEditBioView();
 
   Future<void> goToEditEmail() async {

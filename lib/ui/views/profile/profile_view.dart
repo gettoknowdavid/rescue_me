@@ -71,9 +71,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
               icon: PhosphorIconsDuotone.note,
             ),
             const Divider(),
-            const ProfileOptionTile(
-              title: 'Sign Out',
+            ProfileOptionTile(
+              title: 'Logout',
               icon: PhosphorIconsDuotone.signOut,
+              onTap: viewModel.logout,
             ),
           ],
         ),
