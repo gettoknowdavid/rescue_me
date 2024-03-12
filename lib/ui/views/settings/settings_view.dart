@@ -1,28 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:rescue_me/ui/widgets/app_list_tile.dart';
 import 'package:stacked/stacked.dart';
 
 import 'settings_viewmodel.dart';
 
 class SettingsView extends StackedView<SettingsViewModel> {
-  const SettingsView({Key? key}) : super(key: key);
+  const SettingsView({super.key});
 
   @override
-  Widget builder(
-    BuildContext context,
-    SettingsViewModel viewModel,
-    Widget? child,
-  ) {
+  Widget builder(context, viewModel, child) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      appBar: AppBar(
+        title: const Text('App Settings'),
+        titleTextStyle: textTheme.headlineSmall?.copyWith(
+          fontWeight: FontWeight.bold,
+          fontSize: 18.r,
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(32, 16, 32, 16).r,
+        child: Column(
+          children: [
+            AppListTile(
+              title: 'Dark Mode',
+              icon: PhosphorIconsDuotone.moon,
+              trailing: Switch(value: false, onChanged: (_) {}),
+            ),
+            const Divider(),
+            const AppListTile(
+              title: 'About RescueMe',
+              icon: PhosphorIconsDuotone.info,
+            ),
+            const Divider(),
+            const AppListTile(
+              title: 'Help & Support',
+              icon: PhosphorIconsDuotone.question,
+            ),
+          ],
+        ),
       ),
     );
   }
 
   @override
-  SettingsViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      SettingsViewModel();
+  SettingsViewModel viewModelBuilder(context) => SettingsViewModel();
 }

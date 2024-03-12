@@ -6,12 +6,14 @@ class AppListTile extends StatelessWidget {
   final String title;
   final VoidCallback? onTap;
   final IconData icon;
+  final Widget? trailing;
 
   const AppListTile({
     super.key,
     required this.title,
     this.onTap,
     required this.icon,
+    this.trailing,
   });
 
   @override
@@ -25,6 +27,7 @@ class AppListTile extends StatelessWidget {
       title: Text(title),
       visualDensity: VisualDensity.comfortable,
       onTap: onTap,
+      trailing: trailing,
     );
   }
 }
