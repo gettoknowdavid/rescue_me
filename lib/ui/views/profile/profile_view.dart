@@ -4,7 +4,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:rescue_me/ui/widgets/avatar.dart';
 import 'package:stacked/stacked.dart';
 
-import 'profile_option_tile.dart';
+import '../../widgets/app_list_tile.dart';
 import 'profile_viewmodel.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
@@ -49,30 +49,30 @@ class ProfileView extends StackedView<ProfileViewModel> {
               ),
             ),
             30.verticalSpace,
-            ProfileOptionTile(
+            AppListTile(
               title: 'Edit Bio',
               icon: PhosphorIconsDuotone.user,
               onTap: viewModel.goToEditBio,
             ),
             const Divider(),
-            ProfileOptionTile(
+            AppListTile(
               title: 'Edit Email',
               icon: PhosphorIconsDuotone.envelope,
               onTap: viewModel.goToEditEmail,
             ),
             const Divider(),
-            ProfileOptionTile(
+            AppListTile(
               title: 'Change Password',
               icon: PhosphorIconsDuotone.key,
               onTap: viewModel.goToEditPassword,
             ),
             const Divider(),
-            const ProfileOptionTile(
+            const AppListTile(
               title: 'Privacy & Policy',
               icon: PhosphorIconsDuotone.note,
             ),
             const Divider(),
-            ProfileOptionTile(
+            AppListTile(
               title: 'Logout',
               icon: PhosphorIconsDuotone.signOut,
               onTap: viewModel.logout,

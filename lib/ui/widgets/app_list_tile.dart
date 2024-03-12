@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class ProfileOptionTile extends StatelessWidget {
+class AppListTile extends StatelessWidget {
   final String title;
   final VoidCallback? onTap;
   final IconData icon;
 
-  const ProfileOptionTile({
+  const AppListTile({
     super.key,
     required this.title,
     this.onTap,
