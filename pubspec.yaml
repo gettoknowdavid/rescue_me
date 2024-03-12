@@ -48,7 +48,7 @@ dependencies:
   uuid: ^4.3.3
   fluttercontactpicker: ^4.7.0
   flutter_hooks: ^0.20.5
-  permission_handler: ^11.3.0
+  stacked_themes: ^0.3.12
 
 dev_dependencies:
   build_runner: ^2.4.8

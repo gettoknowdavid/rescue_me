@@ -14,6 +14,8 @@ class SettingsView extends StackedView<SettingsViewModel> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
 
+    final isDark = theme.brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('App Settings'),
@@ -29,7 +31,10 @@ class SettingsView extends StackedView<SettingsViewModel> {
             AppListTile(
               title: 'Dark Mode',
               icon: PhosphorIconsDuotone.moon,
-              trailing: Switch(value: false, onChanged: (_) {}),
+              trailing: Switch(
+                value: isDark,
+                onChanged: (value) => viewModel.onThemeChanged(value, context),
+              ),
             ),
             const Divider(),
             const AppListTile(
