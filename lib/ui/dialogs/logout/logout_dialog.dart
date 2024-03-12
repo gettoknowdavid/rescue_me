@@ -40,7 +40,7 @@ class LogoutDialog extends StackedView<LogoutDialogModel> {
             Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Verification Sent',
+                request.title ?? 'Logout?',
                 style: textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 16.r,
@@ -48,7 +48,10 @@ class LogoutDialog extends StackedView<LogoutDialogModel> {
               ),
             ),
             const Divider(),
-            LogoutDialogContentText(request: request),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: LogoutDialogContentText(request: request),
+            ),
             10.verticalSpace,
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -58,7 +61,10 @@ class LogoutDialog extends StackedView<LogoutDialogModel> {
                   child: const Text('Cancel'),
                 ),
                 20.horizontalSpace,
-                PrimaryButton(label: 'Okay', onPressed: viewModel.logout),
+                PrimaryButton(
+                  label: request.mainButtonTitle ?? 'Okay',
+                  onPressed: viewModel.logout,
+                ),
               ],
             )
           ],

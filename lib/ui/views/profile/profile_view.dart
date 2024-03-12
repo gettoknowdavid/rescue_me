@@ -61,9 +61,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
               onTap: viewModel.goToEditEmail,
             ),
             const Divider(),
-            const ProfileOptionTile(
+            ProfileOptionTile(
               title: 'Change Password',
               icon: PhosphorIconsDuotone.key,
+              onTap: viewModel.goToEditPassword,
             ),
             const Divider(),
             const ProfileOptionTile(

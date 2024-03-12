@@ -228,4 +228,27 @@ class AuthService with ListenableServiceMixin {
       return left(const AuthError.error(keTimeout));
     }
   }
+
+  Future<Either<AuthError, Unit>> updatePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      final credential = EmailAuthProvider.credential(
+        email: _firebaseAuth.currentUser!.email!,
+        password: oldPassword,
+      );
+
+      await _firebaseAuth.currentUser!
+          .reauthenticateWithCredential(credential)
+          .then((res) async => await res.user?.updatePassword(newPassword))
+          .timeout(timeLimit);
+
+      return right(unit);
+    } on FirebaseAuthException catch (e) {
+      return left(AuthError.error(e.message));
+    } on TimeoutException {
+      return left(const AuthError.error(keTimeout));
+    }
+  }
 }

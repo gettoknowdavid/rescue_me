@@ -20,7 +20,9 @@ class ProfileViewModel extends ReactiveViewModel {
     await _authService.logout();
   }
 
-  Future<void> goToEditBio() async => _navService.navigateToEditBioView();
+  Future<void> goToEditBio() => _navService.navigateToEditBioView();
+
+  Future<void> goToEditPassword() => _navService.navigateToEditPasswordView();
 
   Future<void> goToEditEmail() async {
     final confirmationResponse = await _navService.navigateToReAuthView();

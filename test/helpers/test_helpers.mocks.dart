@@ -1071,6 +1071,47 @@ class MockAuthService extends _i1.Mock implements _i9.AuthService {
       ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
 
   @override
+  _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>> updatePassword({
+    required String? oldPassword,
+    required String? newPassword,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updatePassword,
+          [],
+          {
+            #oldPassword: oldPassword,
+            #newPassword: newPassword,
+          },
+        ),
+        returnValue: _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+            _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #updatePassword,
+            [],
+            {
+              #oldPassword: oldPassword,
+              #newPassword: newPassword,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>.value(
+                _FakeEither_0<_i11.AuthError, _i2.Unit>(
+          this,
+          Invocation.method(
+            #updatePassword,
+            [],
+            {
+              #oldPassword: oldPassword,
+              #newPassword: newPassword,
+            },
+          ),
+        )),
+      ) as _i7.Future<_i2.Either<_i11.AuthError, _i2.Unit>>);
+
+  @override
   void listenToReactiveValues(List<dynamic>? reactiveValues) =>
       super.noSuchMethod(
         Invocation.method(

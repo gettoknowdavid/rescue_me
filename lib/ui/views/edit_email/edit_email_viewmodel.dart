@@ -54,8 +54,8 @@ class EditEmailViewModel extends FormViewModel with ListenableServiceMixin {
           _sent.value = true;
           _dialogService.showCustomDialog(
             variant: DialogType.logout,
-            barrierDismissible: false,
             description: emailValue,
+            title: 'Verification sent',
           );
         },
       );

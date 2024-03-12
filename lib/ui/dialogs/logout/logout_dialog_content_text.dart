@@ -12,25 +12,32 @@ class LogoutDialogContentText extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Text.rich(
-      TextSpan(
-        children: [
-          const TextSpan(text: 'A verification mail has been sent to '),
-          TextSpan(
-            text: request.description,
-            style: context.subtitleStyle?.copyWith(
-              fontSize: 12.r,
-              color: colorScheme.onBackground,
-              fontWeight: FontWeight.bold,
+    if (request.title != null && request.description != null) {
+      return Text.rich(
+        TextSpan(
+          children: [
+            const TextSpan(text: 'A verification mail has been sent to '),
+            TextSpan(
+              text: request.description,
+              style: context.subtitleStyle?.copyWith(
+                fontSize: 12.r,
+                color: colorScheme.onBackground,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          const TextSpan(
-            text: '. Once verified, your mail will be changed. '
-                '\nClick okay to sign out and sign in again.',
-          ),
-        ],
-      ),
-      style: context.subtitleStyle?.copyWith(fontSize: 12.r),
+            const TextSpan(
+              text: '. Once verified, your mail will be changed. '
+                  '\nClick okay to sign out and sign in again.',
+            ),
+          ],
+        ),
+        style: context.subtitleStyle?.copyWith(fontSize: 12.r),
+      );
+    }
+
+    return Text(
+      request.description ?? 'You are about to log out.',
+      style: context.subtitleStyle,
     );
   }
 }
