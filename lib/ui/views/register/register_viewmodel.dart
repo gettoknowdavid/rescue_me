@@ -25,13 +25,7 @@ class RegisterViewModel extends FormViewModel {
   }
 
   bool get disabled =>
-      !isFormValid ||
-      !hasName ||
-      !hasEmail ||
-      !hasPassword ||
-      !hasPhone ||
-      hasPhoneValidationMessage ||
-      isBusy;
+      !isFormValid || !hasName || !hasEmail || !hasPassword || isBusy;
 
   @override
   List<ListenableServiceMixin> get listenableServices => [_networkService];
@@ -48,7 +42,6 @@ class RegisterViewModel extends FormViewModel {
         _authService.register(
           email: emailValue!,
           password: passwordValue!,
-          phone: phoneValue!,
           name: nameValue!,
         ),
       );
@@ -64,10 +57,7 @@ class RegisterViewModel extends FormViewModel {
             timeOut: (_) => keTimeout,
           ),
         ),
-        (_) async {
-          await _authService.sendVerificationEmail();
-          _navigationService.clearStackAndShow(Routes.verifyEmailView);
-        },
+        (_) => _navigationService.clearStackAndShow(Routes.verifyEmailView),
       );
     }
   }

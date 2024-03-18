@@ -13,7 +13,8 @@ class StartupViewModel extends ReactiveViewModel {
   final _preferences = locator<SharedPreferencesService>();
 
   bool get isAuthenticated => _authService.isAuthenticated;
-  bool? get isVerified => _authService.isVerified;
+  bool get isVerified => _authService.isVerified;
+  bool get hasPhoneNumber => _authService.hasPhoneNumber;
 
   @override
   List<ListenableServiceMixin> get listenableServices => [_authService];
@@ -22,11 +23,15 @@ class StartupViewModel extends ReactiveViewModel {
     if (!_preferences.onboarded) {
       _navigationService.clearStackAndShow(Routes.onboardingView);
     } else {
-      if (isAuthenticated && isVerified == false) {
+      if (isAuthenticated && !isVerified) {
         _navigationService.replaceWithVerifyEmailView();
       }
 
-      if (isAuthenticated && isVerified == true) {
+      if (isAuthenticated && isVerified && !hasPhoneNumber) {
+        _navigationService.replaceWithVerifyPhoneView();
+      }
+
+      if (isAuthenticated && isVerified && hasPhoneNumber) {
         _navigationService.replaceWithLayoutView();
       }
 

@@ -15,6 +15,7 @@ class AppTextFormField extends StatefulWidget {
     this.keyboardType,
     this.prefixText,
     this.enabled,
+    this.onChanged,
   });
 
   final String label;
@@ -26,6 +27,8 @@ class AppTextFormField extends StatefulWidget {
   final TextInputType? keyboardType;
   final String? prefixText;
   final bool? enabled;
+  final ValueChanged<String>? onChanged;
+
 
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
@@ -33,8 +36,6 @@ class AppTextFormField extends StatefulWidget {
 
 class _AppTextFormFieldState extends State<AppTextFormField> {
   bool isObscure = false;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +60,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
           controller: widget.controller,
           focusNode: widget.focusNode,
           validator: widget.validator,
+          onChanged: widget.onChanged,
           keyboardType: widget.keyboardType,
           obscureText: widget.isPassword ? !isObscure : isObscure,
           decoration: InputDecoration(

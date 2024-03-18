@@ -56,11 +56,4 @@ class FormValidator {
     return null;
   }
 
-  static String? phone(String? input) {
-    if (input == null || input.isEmpty == true) {
-      return 'Phone Number cannot be empty';
-    }
-
-    return null;
-  }
 }
