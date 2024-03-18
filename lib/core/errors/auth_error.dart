@@ -15,5 +15,6 @@ class AuthError with _$AuthError {
   const factory AuthError.serverError() = _ServerError;
   const factory AuthError.userNotFound() = _UserNotFound;
   const factory AuthError.noNetworkConnection() = _NoNetworkConnection;
+  const factory AuthError.phoneCodeSent(String code) = _PhoneCodeSent;
   const factory AuthError.timeOut() = _TimeOut;
 }

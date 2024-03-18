@@ -29,6 +29,7 @@ mixin _$AuthError {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ mixin _$AuthError {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +63,7 @@ mixin _$AuthError {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) =>
@@ -79,6 +82,7 @@ mixin _$AuthError {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -95,6 +99,7 @@ mixin _$AuthError {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) =>
       throw _privateConstructorUsedError;
@@ -111,6 +116,7 @@ mixin _$AuthError {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) =>
@@ -210,6 +216,7 @@ class _$AuthErrorMessageImpl implements _AuthErrorMessage {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return error(message);
@@ -229,6 +236,7 @@ class _$AuthErrorMessageImpl implements _AuthErrorMessage {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return error?.call(message);
@@ -248,6 +256,7 @@ class _$AuthErrorMessageImpl implements _AuthErrorMessage {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -272,6 +281,7 @@ class _$AuthErrorMessageImpl implements _AuthErrorMessage {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return error(this);
@@ -291,6 +301,7 @@ class _$AuthErrorMessageImpl implements _AuthErrorMessage {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return error?.call(this);
@@ -310,6 +321,7 @@ class _$AuthErrorMessageImpl implements _AuthErrorMessage {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -379,6 +391,7 @@ class _$EmailInUseImpl implements _EmailInUse {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return emailInUse();
@@ -398,6 +411,7 @@ class _$EmailInUseImpl implements _EmailInUse {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return emailInUse?.call();
@@ -417,6 +431,7 @@ class _$EmailInUseImpl implements _EmailInUse {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -441,6 +456,7 @@ class _$EmailInUseImpl implements _EmailInUse {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return emailInUse(this);
@@ -460,6 +476,7 @@ class _$EmailInUseImpl implements _EmailInUse {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return emailInUse?.call(this);
@@ -479,6 +496,7 @@ class _$EmailInUseImpl implements _EmailInUse {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -543,6 +561,7 @@ class _$RequiresRecentLoginImpl implements _RequiresRecentLogin {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return requiresRecentLogin();
@@ -562,6 +581,7 @@ class _$RequiresRecentLoginImpl implements _RequiresRecentLogin {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return requiresRecentLogin?.call();
@@ -581,6 +601,7 @@ class _$RequiresRecentLoginImpl implements _RequiresRecentLogin {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -605,6 +626,7 @@ class _$RequiresRecentLoginImpl implements _RequiresRecentLogin {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return requiresRecentLogin(this);
@@ -624,6 +646,7 @@ class _$RequiresRecentLoginImpl implements _RequiresRecentLogin {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return requiresRecentLogin?.call(this);
@@ -643,6 +666,7 @@ class _$RequiresRecentLoginImpl implements _RequiresRecentLogin {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -706,6 +730,7 @@ class _$InvalidEmailImpl implements _InvalidEmail {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return invalidEmail();
@@ -725,6 +750,7 @@ class _$InvalidEmailImpl implements _InvalidEmail {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return invalidEmail?.call();
@@ -744,6 +770,7 @@ class _$InvalidEmailImpl implements _InvalidEmail {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -768,6 +795,7 @@ class _$InvalidEmailImpl implements _InvalidEmail {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return invalidEmail(this);
@@ -787,6 +815,7 @@ class _$InvalidEmailImpl implements _InvalidEmail {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return invalidEmail?.call(this);
@@ -806,6 +835,7 @@ class _$InvalidEmailImpl implements _InvalidEmail {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -869,6 +899,7 @@ class _$InvalidPasswordImpl implements _InvalidPassword {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return invalidPassword();
@@ -888,6 +919,7 @@ class _$InvalidPasswordImpl implements _InvalidPassword {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return invalidPassword?.call();
@@ -907,6 +939,7 @@ class _$InvalidPasswordImpl implements _InvalidPassword {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -931,6 +964,7 @@ class _$InvalidPasswordImpl implements _InvalidPassword {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return invalidPassword(this);
@@ -950,6 +984,7 @@ class _$InvalidPasswordImpl implements _InvalidPassword {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return invalidPassword?.call(this);
@@ -969,6 +1004,7 @@ class _$InvalidPasswordImpl implements _InvalidPassword {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -1035,6 +1071,7 @@ class _$InvalidEmailOrPasswordImpl implements _InvalidEmailOrPassword {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return invalidEmailOrPassword();
@@ -1054,6 +1091,7 @@ class _$InvalidEmailOrPasswordImpl implements _InvalidEmailOrPassword {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return invalidEmailOrPassword?.call();
@@ -1073,6 +1111,7 @@ class _$InvalidEmailOrPasswordImpl implements _InvalidEmailOrPassword {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -1097,6 +1136,7 @@ class _$InvalidEmailOrPasswordImpl implements _InvalidEmailOrPassword {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return invalidEmailOrPassword(this);
@@ -1116,6 +1156,7 @@ class _$InvalidEmailOrPasswordImpl implements _InvalidEmailOrPassword {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return invalidEmailOrPassword?.call(this);
@@ -1135,6 +1176,7 @@ class _$InvalidEmailOrPasswordImpl implements _InvalidEmailOrPassword {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -1198,6 +1240,7 @@ class _$NoGoogleAccountImpl implements _NoGoogleAccount {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return noGoogleAccount();
@@ -1217,6 +1260,7 @@ class _$NoGoogleAccountImpl implements _NoGoogleAccount {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return noGoogleAccount?.call();
@@ -1236,6 +1280,7 @@ class _$NoGoogleAccountImpl implements _NoGoogleAccount {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -1260,6 +1305,7 @@ class _$NoGoogleAccountImpl implements _NoGoogleAccount {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return noGoogleAccount(this);
@@ -1279,6 +1325,7 @@ class _$NoGoogleAccountImpl implements _NoGoogleAccount {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return noGoogleAccount?.call(this);
@@ -1298,6 +1345,7 @@ class _$NoGoogleAccountImpl implements _NoGoogleAccount {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -1361,6 +1409,7 @@ class _$NotVerifiedImpl implements _NotVerified {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return notVerified();
@@ -1380,6 +1429,7 @@ class _$NotVerifiedImpl implements _NotVerified {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return notVerified?.call();
@@ -1399,6 +1449,7 @@ class _$NotVerifiedImpl implements _NotVerified {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -1423,6 +1474,7 @@ class _$NotVerifiedImpl implements _NotVerified {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return notVerified(this);
@@ -1442,6 +1494,7 @@ class _$NotVerifiedImpl implements _NotVerified {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return notVerified?.call(this);
@@ -1461,6 +1514,7 @@ class _$NotVerifiedImpl implements _NotVerified {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -1524,6 +1578,7 @@ class _$ServerErrorImpl implements _ServerError {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return serverError();
@@ -1543,6 +1598,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return serverError?.call();
@@ -1562,6 +1618,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -1586,6 +1643,7 @@ class _$ServerErrorImpl implements _ServerError {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return serverError(this);
@@ -1605,6 +1663,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return serverError?.call(this);
@@ -1624,6 +1683,7 @@ class _$ServerErrorImpl implements _ServerError {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -1687,6 +1747,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return userNotFound();
@@ -1706,6 +1767,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return userNotFound?.call();
@@ -1725,6 +1787,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -1749,6 +1812,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return userNotFound(this);
@@ -1768,6 +1832,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return userNotFound?.call(this);
@@ -1787,6 +1852,7 @@ class _$UserNotFoundImpl implements _UserNotFound {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -1851,6 +1917,7 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return noNetworkConnection();
@@ -1870,6 +1937,7 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return noNetworkConnection?.call();
@@ -1889,6 +1957,7 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -1913,6 +1982,7 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return noNetworkConnection(this);
@@ -1932,6 +2002,7 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return noNetworkConnection?.call(this);
@@ -1951,6 +2022,7 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
@@ -1963,6 +2035,206 @@ class _$NoNetworkConnectionImpl implements _NoNetworkConnection {
 
 abstract class _NoNetworkConnection implements AuthError {
   const factory _NoNetworkConnection() = _$NoNetworkConnectionImpl;
+}
+
+/// @nodoc
+abstract class _$$PhoneCodeSentImplCopyWith<$Res> {
+  factory _$$PhoneCodeSentImplCopyWith(
+          _$PhoneCodeSentImpl value, $Res Function(_$PhoneCodeSentImpl) then) =
+      __$$PhoneCodeSentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String code});
+}
+
+/// @nodoc
+class __$$PhoneCodeSentImplCopyWithImpl<$Res>
+    extends _$AuthErrorCopyWithImpl<$Res, _$PhoneCodeSentImpl>
+    implements _$$PhoneCodeSentImplCopyWith<$Res> {
+  __$$PhoneCodeSentImplCopyWithImpl(
+      _$PhoneCodeSentImpl _value, $Res Function(_$PhoneCodeSentImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$PhoneCodeSentImpl(
+      null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PhoneCodeSentImpl implements _PhoneCodeSent {
+  const _$PhoneCodeSentImpl(this.code);
+
+  @override
+  final String code;
+
+  @override
+  String toString() {
+    return 'AuthError.phoneCodeSent(code: $code)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PhoneCodeSentImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PhoneCodeSentImplCopyWith<_$PhoneCodeSentImpl> get copyWith =>
+      __$$PhoneCodeSentImplCopyWithImpl<_$PhoneCodeSentImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) error,
+    required TResult Function() emailInUse,
+    required TResult Function() requiresRecentLogin,
+    required TResult Function() invalidEmail,
+    required TResult Function() invalidPassword,
+    required TResult Function() invalidEmailOrPassword,
+    required TResult Function() noGoogleAccount,
+    required TResult Function() notVerified,
+    required TResult Function() serverError,
+    required TResult Function() userNotFound,
+    required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
+    required TResult Function() timeOut,
+  }) {
+    return phoneCodeSent(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? message)? error,
+    TResult? Function()? emailInUse,
+    TResult? Function()? requiresRecentLogin,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? invalidPassword,
+    TResult? Function()? invalidEmailOrPassword,
+    TResult? Function()? noGoogleAccount,
+    TResult? Function()? notVerified,
+    TResult? Function()? serverError,
+    TResult? Function()? userNotFound,
+    TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
+    TResult? Function()? timeOut,
+  }) {
+    return phoneCodeSent?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? error,
+    TResult Function()? emailInUse,
+    TResult Function()? requiresRecentLogin,
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidPassword,
+    TResult Function()? invalidEmailOrPassword,
+    TResult Function()? noGoogleAccount,
+    TResult Function()? notVerified,
+    TResult Function()? serverError,
+    TResult Function()? userNotFound,
+    TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
+    TResult Function()? timeOut,
+    required TResult orElse(),
+  }) {
+    if (phoneCodeSent != null) {
+      return phoneCodeSent(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthErrorMessage value) error,
+    required TResult Function(_EmailInUse value) emailInUse,
+    required TResult Function(_RequiresRecentLogin value) requiresRecentLogin,
+    required TResult Function(_InvalidEmail value) invalidEmail,
+    required TResult Function(_InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidEmailOrPassword value)
+        invalidEmailOrPassword,
+    required TResult Function(_NoGoogleAccount value) noGoogleAccount,
+    required TResult Function(_NotVerified value) notVerified,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
+    required TResult Function(_TimeOut value) timeOut,
+  }) {
+    return phoneCodeSent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthErrorMessage value)? error,
+    TResult? Function(_EmailInUse value)? emailInUse,
+    TResult? Function(_RequiresRecentLogin value)? requiresRecentLogin,
+    TResult? Function(_InvalidEmail value)? invalidEmail,
+    TResult? Function(_InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult? Function(_NoGoogleAccount value)? noGoogleAccount,
+    TResult? Function(_NotVerified value)? notVerified,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
+    TResult? Function(_TimeOut value)? timeOut,
+  }) {
+    return phoneCodeSent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AuthErrorMessage value)? error,
+    TResult Function(_EmailInUse value)? emailInUse,
+    TResult Function(_RequiresRecentLogin value)? requiresRecentLogin,
+    TResult Function(_InvalidEmail value)? invalidEmail,
+    TResult Function(_InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidEmailOrPassword value)? invalidEmailOrPassword,
+    TResult Function(_NoGoogleAccount value)? noGoogleAccount,
+    TResult Function(_NotVerified value)? notVerified,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
+    TResult Function(_TimeOut value)? timeOut,
+    required TResult orElse(),
+  }) {
+    if (phoneCodeSent != null) {
+      return phoneCodeSent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PhoneCodeSent implements AuthError {
+  const factory _PhoneCodeSent(final String code) = _$PhoneCodeSentImpl;
+
+  String get code;
+  @JsonKey(ignore: true)
+  _$$PhoneCodeSentImplCopyWith<_$PhoneCodeSentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2014,6 +2286,7 @@ class _$TimeOutImpl implements _TimeOut {
     required TResult Function() serverError,
     required TResult Function() userNotFound,
     required TResult Function() noNetworkConnection,
+    required TResult Function(String code) phoneCodeSent,
     required TResult Function() timeOut,
   }) {
     return timeOut();
@@ -2033,6 +2306,7 @@ class _$TimeOutImpl implements _TimeOut {
     TResult? Function()? serverError,
     TResult? Function()? userNotFound,
     TResult? Function()? noNetworkConnection,
+    TResult? Function(String code)? phoneCodeSent,
     TResult? Function()? timeOut,
   }) {
     return timeOut?.call();
@@ -2052,6 +2326,7 @@ class _$TimeOutImpl implements _TimeOut {
     TResult Function()? serverError,
     TResult Function()? userNotFound,
     TResult Function()? noNetworkConnection,
+    TResult Function(String code)? phoneCodeSent,
     TResult Function()? timeOut,
     required TResult orElse(),
   }) {
@@ -2076,6 +2351,7 @@ class _$TimeOutImpl implements _TimeOut {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_NoNetworkConnection value) noNetworkConnection,
+    required TResult Function(_PhoneCodeSent value) phoneCodeSent,
     required TResult Function(_TimeOut value) timeOut,
   }) {
     return timeOut(this);
@@ -2095,6 +2371,7 @@ class _$TimeOutImpl implements _TimeOut {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult? Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult? Function(_TimeOut value)? timeOut,
   }) {
     return timeOut?.call(this);
@@ -2114,6 +2391,7 @@ class _$TimeOutImpl implements _TimeOut {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_NoNetworkConnection value)? noNetworkConnection,
+    TResult Function(_PhoneCodeSent value)? phoneCodeSent,
     TResult Function(_TimeOut value)? timeOut,
     required TResult orElse(),
   }) {
