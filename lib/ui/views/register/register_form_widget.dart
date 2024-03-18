@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_text_form_field.dart';
-import '../../widgets/phone_form_field.dart';
 import '../../widgets/primary_button.dart';
 import 'form_validator.dart';
 import 'register_view.form.dart';
@@ -35,12 +34,6 @@ class RegisterFormWidget extends StackedView<RegisterViewModel>
                 hint: 'johndoe@example.com',
                 keyboardType: TextInputType.emailAddress,
                 validator: FormValidator.email,
-              ),
-              15.verticalSpace,
-              PhoneFormField(
-                label: 'Phone Number',
-                controller: phoneController,
-                focusNode: phoneFocusNode,
               ),
               15.verticalSpace,
               AppTextFormField(

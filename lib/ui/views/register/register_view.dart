@@ -11,7 +11,6 @@ import 'register_viewmodel.dart';
 @FormView(fields: [
   FormTextField(name: 'name', validator: FormValidator.name),
   FormTextField(name: 'email', validator: FormValidator.email),
-  FormTextField(name: 'phone', validator: FormValidator.phone),
   FormTextField(name: 'password', validator: FormValidator.password),
 ])
 class RegisterView extends StackedView<RegisterViewModel> {

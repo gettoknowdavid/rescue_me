@@ -6,7 +6,7 @@ import 'package:stacked/stacked.dart';
 import 'verify_email_viewmodel.dart';
 
 class VerifyEmailView extends StackedView<VerifyEmailViewModel> {
-  const VerifyEmailView({Key? key}) : super(key: key);
+  const VerifyEmailView({super.key});
 
   @override
   Widget builder(context, viewModel, child) {

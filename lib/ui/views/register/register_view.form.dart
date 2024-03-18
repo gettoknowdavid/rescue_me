@@ -14,7 +14,6 @@ const bool _autoTextFieldValidation = true;
 
 const String NameValueKey = 'name';
 const String EmailValueKey = 'email';
-const String PhoneValueKey = 'phone';
 const String PasswordValueKey = 'password';
 
 final Map<String, TextEditingController> _RegisterViewTextEditingControllers =
@@ -25,7 +24,6 @@ final Map<String, FocusNode> _RegisterViewFocusNodes = {};
 final Map<String, String? Function(String?)?> _RegisterViewTextValidations = {
   NameValueKey: FormValidator.name,
   EmailValueKey: FormValidator.email,
-  PhoneValueKey: FormValidator.phone,
   PasswordValueKey: FormValidator.password,
 };
 
@@ -34,14 +32,11 @@ mixin $RegisterView {
       _getFormTextEditingController(NameValueKey);
   TextEditingController get emailController =>
       _getFormTextEditingController(EmailValueKey);
-  TextEditingController get phoneController =>
-      _getFormTextEditingController(PhoneValueKey);
   TextEditingController get passwordController =>
       _getFormTextEditingController(PasswordValueKey);
 
   FocusNode get nameFocusNode => _getFormFocusNode(NameValueKey);
   FocusNode get emailFocusNode => _getFormFocusNode(EmailValueKey);
-  FocusNode get phoneFocusNode => _getFormFocusNode(PhoneValueKey);
   FocusNode get passwordFocusNode => _getFormFocusNode(PasswordValueKey);
 
   TextEditingController _getFormTextEditingController(
@@ -70,7 +65,6 @@ mixin $RegisterView {
   void syncFormWithViewModel(FormStateHelper model) {
     nameController.addListener(() => _updateFormData(model));
     emailController.addListener(() => _updateFormData(model));
-    phoneController.addListener(() => _updateFormData(model));
     passwordController.addListener(() => _updateFormData(model));
 
     _updateFormData(model, forceValidate: _autoTextFieldValidation);
@@ -85,7 +79,6 @@ mixin $RegisterView {
   void listenToFormUpdated(FormViewModel model) {
     nameController.addListener(() => _updateFormData(model));
     emailController.addListener(() => _updateFormData(model));
-    phoneController.addListener(() => _updateFormData(model));
     passwordController.addListener(() => _updateFormData(model));
 
     _updateFormData(model, forceValidate: _autoTextFieldValidation);
@@ -98,7 +91,6 @@ mixin $RegisterView {
         ..addAll({
           NameValueKey: nameController.text,
           EmailValueKey: emailController.text,
-          PhoneValueKey: phoneController.text,
           PasswordValueKey: passwordController.text,
         }),
     );
@@ -143,7 +135,6 @@ extension ValueProperties on FormStateHelper {
 
   String? get nameValue => this.formValueMap[NameValueKey] as String?;
   String? get emailValue => this.formValueMap[EmailValueKey] as String?;
-  String? get phoneValue => this.formValueMap[PhoneValueKey] as String?;
   String? get passwordValue => this.formValueMap[PasswordValueKey] as String?;
 
   set nameValue(String? value) {
@@ -166,16 +157,6 @@ extension ValueProperties on FormStateHelper {
     }
   }
 
-  set phoneValue(String? value) {
-    this.setData(
-      this.formValueMap..addAll({PhoneValueKey: value}),
-    );
-
-    if (_RegisterViewTextEditingControllers.containsKey(PhoneValueKey)) {
-      _RegisterViewTextEditingControllers[PhoneValueKey]?.text = value ?? '';
-    }
-  }
-
   set passwordValue(String? value) {
     this.setData(
       this.formValueMap..addAll({PasswordValueKey: value}),
@@ -192,9 +173,6 @@ extension ValueProperties on FormStateHelper {
   bool get hasEmail =>
       this.formValueMap.containsKey(EmailValueKey) &&
       (emailValue?.isNotEmpty ?? false);
-  bool get hasPhone =>
-      this.formValueMap.containsKey(PhoneValueKey) &&
-      (phoneValue?.isNotEmpty ?? false);
   bool get hasPassword =>
       this.formValueMap.containsKey(PasswordValueKey) &&
       (passwordValue?.isNotEmpty ?? false);
@@ -203,8 +181,6 @@ extension ValueProperties on FormStateHelper {
       this.fieldsValidationMessages[NameValueKey]?.isNotEmpty ?? false;
   bool get hasEmailValidationMessage =>
       this.fieldsValidationMessages[EmailValueKey]?.isNotEmpty ?? false;
-  bool get hasPhoneValidationMessage =>
-      this.fieldsValidationMessages[PhoneValueKey]?.isNotEmpty ?? false;
   bool get hasPasswordValidationMessage =>
       this.fieldsValidationMessages[PasswordValueKey]?.isNotEmpty ?? false;
 
@@ -212,8 +188,6 @@ extension ValueProperties on FormStateHelper {
       this.fieldsValidationMessages[NameValueKey];
   String? get emailValidationMessage =>
       this.fieldsValidationMessages[EmailValueKey];
-  String? get phoneValidationMessage =>
-      this.fieldsValidationMessages[PhoneValueKey];
   String? get passwordValidationMessage =>
       this.fieldsValidationMessages[PasswordValueKey];
 }
@@ -223,8 +197,6 @@ extension Methods on FormStateHelper {
       this.fieldsValidationMessages[NameValueKey] = validationMessage;
   setEmailValidationMessage(String? validationMessage) =>
       this.fieldsValidationMessages[EmailValueKey] = validationMessage;
-  setPhoneValidationMessage(String? validationMessage) =>
-      this.fieldsValidationMessages[PhoneValueKey] = validationMessage;
   setPasswordValidationMessage(String? validationMessage) =>
       this.fieldsValidationMessages[PasswordValueKey] = validationMessage;
 
@@ -232,7 +204,6 @@ extension Methods on FormStateHelper {
   void clearForm() {
     nameValue = '';
     emailValue = '';
-    phoneValue = '';
     passwordValue = '';
   }
 
@@ -241,7 +212,6 @@ extension Methods on FormStateHelper {
     this.setValidationMessages({
       NameValueKey: getValidationMessage(NameValueKey),
       EmailValueKey: getValidationMessage(EmailValueKey),
-      PhoneValueKey: getValidationMessage(PhoneValueKey),
       PasswordValueKey: getValidationMessage(PasswordValueKey),
     });
   }
@@ -264,6 +234,5 @@ void updateValidationData(FormStateHelper model) =>
     model.setValidationMessages({
       NameValueKey: getValidationMessage(NameValueKey),
       EmailValueKey: getValidationMessage(EmailValueKey),
-      PhoneValueKey: getValidationMessage(PhoneValueKey),
       PasswordValueKey: getValidationMessage(PasswordValueKey),
     });

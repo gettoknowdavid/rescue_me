@@ -34,12 +34,10 @@ class VerifyEmailViewModel extends ReactiveViewModel with Initialisable {
     final result = await _authService.checkEmailVerified();
     result.fold(
       () => _navigationService.clearStackAndShow(Routes.loginView),
-      (either) {
-        either.fold(
-          (failure) => null,
-          (success) => _navigationService.clearStackAndShow(Routes.layoutView),
-        );
-      },
+      (either) => either.fold(
+        (_) => null,
+        (_) => _navigationService.clearStackAndShow(Routes.verifyPhoneView),
+      ),
     );
   }
 
