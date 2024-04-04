@@ -6,7 +6,6 @@ import 'package:stacked/stacked.dart';
 
 const _icons = [
   PhosphorIconsLight.houseSimple,
-  PhosphorIconsLight.firstAid,
   PhosphorIconsLight.userCircle,
   PhosphorIconsLight.gear,
 ];
@@ -22,7 +21,7 @@ class AppBottomNavigationBar extends ViewModelWidget<LayoutViewModel> {
       icons: _icons,
       activeIndex: viewModel.currentIndex,
       onTap: viewModel.handleNavigation,
-      gapLocation: GapLocation.center,
+      gapLocation: GapLocation.none,
       notchSmoothness: NotchSmoothness.sharpEdge,
       notchMargin: 0,
       activeColor: theme.selectedItemColor,

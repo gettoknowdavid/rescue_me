@@ -20,10 +20,13 @@ class LayoutView extends StackedView<LayoutViewModel> {
         router: LayoutViewRouter(),
       ),
       bottomNavigationBar: const AppBottomNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Visibility(
         visible: MediaQuery.viewInsetsOf(context).bottom == 0.0,
-        child: HelpButton(onTap: () {}, radius: 40.r),
+        child: HelpButton(
+          onTap: viewModel.sos,
+          radius: 40.r,
+        ),
       ),
     );
   }

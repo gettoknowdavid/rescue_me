@@ -36,7 +36,7 @@ class EditBioView extends StackedView<EditBioViewModel> with $EditBioView {
                 radius: 60.r,
                 imageFile: viewModel.image,
                 imageUrl: viewModel.imageUrl,
-                name: viewModel.user.displayName,
+                name: viewModel.user.name,
                 onTap: viewModel.isBusy ? null : viewModel.selectAvatar,
                 showEditButton: true,
               ),
@@ -73,7 +73,7 @@ class EditBioView extends StackedView<EditBioViewModel> with $EditBioView {
 
   @override
   void onViewModelReady(EditBioViewModel viewModel) {
-    nameController.text = viewModel.user.displayName!;
+    nameController.text = viewModel.user.name;
     syncFormWithViewModel(viewModel);
   }
 

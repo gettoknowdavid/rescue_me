@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rescue_me/app/app.bottomsheets.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
 import 'package:rescue_me/core/constants/error_strings.dart';
 import 'package:rescue_me/core/errors/auth_error.dart';
+import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/media_service.dart';
 import 'package:rescue_me/services/network_service.dart';
@@ -32,7 +32,7 @@ class EditBioViewModel extends FormViewModel with ListenableServiceMixin {
   User get user => _authService.user!;
 
   bool get hasNewValue =>
-      nameValue != user.displayName ||
+      nameValue != user.name ||
       _image.value != null ||
       _imageUrl.value != user.photoURL;
   bool get isButtonDisabled => !hasNewValue || isBusy;
@@ -69,7 +69,7 @@ class EditBioViewModel extends FormViewModel with ListenableServiceMixin {
 
     final userId = user.uid;
     final ref = _mediaService.storageRef.child('images/profiles/$userId');
-    await _mediaService.uploadFileToCloud(_image.value!.path, userId, ref);
+    await _mediaService.upload(_image.value!.path, userId, ref);
     return await _mediaService.getFileFromCloud(ref);
   }
 
@@ -79,7 +79,7 @@ class EditBioViewModel extends FormViewModel with ListenableServiceMixin {
     }
 
     setBusy(true);
-    final currentName = _authService.user?.displayName;
+    final currentName = _authService.user?.name;
     final hasNewName = currentName != nameValue;
 
     late Either<AuthError, Unit> result;

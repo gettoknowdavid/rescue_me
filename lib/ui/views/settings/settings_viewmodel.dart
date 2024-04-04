@@ -7,7 +7,6 @@ class SettingsViewModel extends BaseViewModel with ListenableServiceMixin {
     listenToReactiveValues([_themeMode]);
   }
 
-
   final _themeMode = ReactiveValue<ThemeMode>(ThemeMode.light);
   ThemeMode get themeMode => _themeMode.value;
 

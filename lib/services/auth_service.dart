@@ -294,4 +294,13 @@ class AuthService with ListenableServiceMixin {
       return left(const AuthError.error(keTimeout));
     }
   }
+
+  Future<User> getUserById(String userId) async {
+    try {
+      final snapshot = await usersRef.doc(userId).get();
+      return snapshot.data!;
+    } catch (e) {
+      throw Exception('User not found.');
+    }
+  }
 }

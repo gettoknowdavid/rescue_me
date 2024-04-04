@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rescue_me/app/app.dialogs.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
@@ -21,8 +20,6 @@ class EditEmailViewModel extends FormViewModel with ListenableServiceMixin {
   final _dialogService = locator<DialogService>();
   final _networkService = locator<NetworkService>();
   final _snackbarService = locator<SnackbarService>();
-
-  User get user => _authService.user!;
 
   final _email = ReactiveValue<String?>(null);
   String? get email => _email.value;
@@ -61,7 +58,4 @@ class EditEmailViewModel extends FormViewModel with ListenableServiceMixin {
       );
     }
   }
-
-  @override
-  List<ListenableServiceMixin> get listenableServices => [_authService];
 }

@@ -25,11 +25,11 @@ class ProfileView extends StackedView<ProfileViewModel> {
             Avatar(
               radius: 60.r,
               imageUrl: viewModel.user.photoURL,
-              name: viewModel.user.displayName,
+              name: viewModel.user.name,
             ),
             20.verticalSpace,
             Text(
-              viewModel.user.displayName!,
+              viewModel.user.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
@@ -40,7 +40,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
             ),
             6.verticalSpace,
             Text(
-              viewModel.user.email!,
+              viewModel.user.email,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

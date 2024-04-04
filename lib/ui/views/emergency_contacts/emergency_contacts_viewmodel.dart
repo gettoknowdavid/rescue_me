@@ -7,7 +7,7 @@ import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
 import 'package:rescue_me/core/constants/error_strings.dart';
-import 'package:rescue_me/models/emergency_contact.dart';
+import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/emergency_contacts_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';

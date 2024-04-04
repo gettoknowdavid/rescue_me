@@ -22,4 +22,14 @@ extension AppTextStylesX on BuildContext {
         fontSize: 11.sp,
         color: theme.colorScheme.onBackground.withOpacity(0.5),
       );
+
+  TextStyle? get fieldLabel => theme.textTheme.bodySmall?.copyWith(
+        fontWeight: FontWeight.bold,
+        color: theme.colorScheme.onBackground.withOpacity(0.8),
+      );
+
+  TextStyle? get fieldLabelFocused => theme.textTheme.bodySmall?.copyWith(
+        fontWeight: FontWeight.bold,
+        color: theme.colorScheme.primary,
+      );
 }

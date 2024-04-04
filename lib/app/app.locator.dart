@@ -13,12 +13,14 @@ import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/auth_service.dart';
-import '../services/cloud_store_service.dart';
 import '../services/emergency_contacts_service.dart';
+import '../services/incident_service.dart';
+import '../services/location_service.dart';
 import '../services/media_service.dart';
 import '../services/network_service.dart';
 import '../services/open_mail_app_service.dart';
 import '../services/shared_preferences_service.dart';
+import '../services/sos_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -38,11 +40,12 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => AuthService());
   locator.registerLazySingleton(() => NetworkService());
   locator.registerLazySingleton(() => OpenMailAppService());
+  locator.registerLazySingleton(() => MediaService());
+  locator.registerLazySingleton(() => EmergencyContactsService());
+  locator.registerLazySingleton(() => SosService());
+  locator.registerLazySingleton(() => LocationService());
+  locator.registerLazySingleton(() => IncidentService());
   final sharedPreferencesService = SharedPreferencesService();
   await sharedPreferencesService.init();
   locator.registerSingleton(sharedPreferencesService);
-
-  locator.registerLazySingleton(() => CloudStoreService());
-  locator.registerLazySingleton(() => MediaService());
-  locator.registerLazySingleton(() => EmergencyContactsService());
 }

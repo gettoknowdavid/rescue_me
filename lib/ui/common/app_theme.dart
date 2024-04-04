@@ -137,7 +137,7 @@ class AppTheme {
           bottomSheetElevation: 0.0,
           bottomSheetModalBackgroundColor: null,
           bottomSheetModalElevation: 0.0,
-        ),
+         ),
         useMaterial3ErrorColors: true,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true,

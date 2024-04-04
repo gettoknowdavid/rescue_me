@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
 import 'package:rescue_me/core/constants/error_strings.dart';
 import 'package:rescue_me/core/errors/auth_error.dart';
+import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/auth_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';

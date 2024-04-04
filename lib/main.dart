@@ -21,7 +21,7 @@ Future<void> main() async {
     ThemeManager.initialise(),
     setupSnackbarUI(),
   ]);
-  
+
   setupBottomSheetUi();
   setupDialogUi();
   runApp(const App());

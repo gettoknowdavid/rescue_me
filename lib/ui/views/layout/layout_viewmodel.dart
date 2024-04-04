@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rescue_me/app/app.dialogs.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
+import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/auth_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -8,9 +9,10 @@ import 'package:stacked_services/stacked_services.dart';
 class LayoutViewModel extends IndexTrackingViewModel
     with ListenableServiceMixin {
   final _authService = locator<AuthService>();
+  final _dialogService = locator<DialogService>();
   final _navigationService = locator<NavigationService>();
 
-  String? get firstName => user?.displayName?.split(' ')[0];
+  String? get firstName => user?.name.split(' ')[0];
 
   @override
   List<ListenableServiceMixin> get listenableServices => [_authService];
@@ -32,19 +34,12 @@ class LayoutViewModel extends IndexTrackingViewModel
       case 1:
         setIndex(1);
         _navigationService.pushNamedAndRemoveUntil(
-          LayoutViewRoutes.contactView,
+          LayoutViewRoutes.profileView,
           id: 1,
         );
         break;
       case 2:
         setIndex(2);
-        _navigationService.pushNamedAndRemoveUntil(
-          LayoutViewRoutes.profileView,
-          id: 1,
-        );
-        break;
-      case 3:
-        setIndex(3);
         _navigationService.pushNamedAndRemoveUntil(
           LayoutViewRoutes.settingsView,
           id: 1,
@@ -53,5 +48,9 @@ class LayoutViewModel extends IndexTrackingViewModel
       default:
     }
     notifyListeners();
+  }
+
+  Future<void> sos() async {
+    await _dialogService.showCustomDialog(variant: DialogType.sos);
   }
 }

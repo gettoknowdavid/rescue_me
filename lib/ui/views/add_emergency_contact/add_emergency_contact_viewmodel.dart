@@ -5,7 +5,7 @@ import 'package:rescue_me/app/app.bottomsheets.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
 import 'package:rescue_me/core/constants/error_strings.dart';
-import 'package:rescue_me/models/emergency_contact.dart';
+import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/emergency_contacts_service.dart';
 import 'package:rescue_me/services/media_service.dart';
 import 'package:rescue_me/services/network_service.dart';
@@ -86,7 +86,7 @@ class AddEmergencyContactViewModel extends FormViewModel
     if (path == null) return null;
 
     final ref = _mediaService.storageRef.child('images/emc/$fileName');
-    await _mediaService.uploadFileToCloud(path, fileName, ref);
+    await _mediaService.upload(path, fileName, ref);
     return await _mediaService.getFileFromCloud(ref);
   }
 

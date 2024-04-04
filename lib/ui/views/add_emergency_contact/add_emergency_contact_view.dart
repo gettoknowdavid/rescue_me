@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:rescue_me/ui/views/add_emergency_contact/add_emergency_contact_view.form.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
-import '../../../models/emergency_contact.dart';
 import '../../widgets/app_back_button.dart';
 import '../../widgets/app_text_form_field.dart';
 import '../../widgets/phone_form_field.dart';

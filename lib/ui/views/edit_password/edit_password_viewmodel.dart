@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rescue_me/app/app.dialogs.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
@@ -19,8 +18,6 @@ class EditPasswordViewModel extends FormViewModel with ListenableServiceMixin {
   final _dialogService = locator<DialogService>();
   final _networkService = locator<NetworkService>();
   final _snackbarService = locator<SnackbarService>();
-
-  User get user => _authService.user!;
 
   final _sent = ReactiveValue<bool>(false);
   bool get sent => _sent.value;
@@ -65,8 +62,5 @@ class EditPasswordViewModel extends FormViewModel with ListenableServiceMixin {
   }
 
   @override
-  List<ListenableServiceMixin> get listenableServices => [
-        _authService,
-        _networkService,
-      ];
+  List<ListenableServiceMixin> get listenableServices => [_networkService];
 }

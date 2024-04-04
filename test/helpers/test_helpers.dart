@@ -6,8 +6,9 @@ import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/network_service.dart';
 import 'package:rescue_me/services/open_mail_app_service.dart';
 import 'package:rescue_me/services/shared_preferences_service.dart';
-import 'package:rescue_me/services/cloud_store_service.dart';
 import 'package:rescue_me/services/media_service.dart';
+import 'package:rescue_me/services/sos_service.dart';
+import 'package:rescue_me/services/location_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -21,8 +22,9 @@ import 'test_helpers.mocks.dart';
   MockSpec<OpenMailAppService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SharedPreferencesService>(
       onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<CloudStoreService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<MediaService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SosService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<LocationService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -35,6 +37,8 @@ void registerServices() {
   getAndRegisterSharedPreferencesService();
   getAndRegisterCloudStoreService();
   getAndRegisterMediaService();
+  getAndRegisterSosService();
+  getAndRegisterLocationService();
 // @stacked-mock-register
 }
 
@@ -130,6 +134,19 @@ MockMediaService getAndRegisterMediaService() {
   return service;
 }
 
+MockSosService getAndRegisterSosService() {
+  _removeRegistrationIfExists<SosService>();
+  final service = MockSosService();
+  locator.registerSingleton<SosService>(service);
+  return service;
+}
+
+MockLocationService getAndRegisterLocationService() {
+  _removeRegistrationIfExists<LocationService>();
+  final service = MockLocationService();
+  locator.registerSingleton<LocationService>(service);
+  return service;
+}
 // @stacked-mock-create
 
 void _removeRegistrationIfExists<T extends Object>() {

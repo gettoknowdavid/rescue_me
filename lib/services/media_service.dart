@@ -20,7 +20,11 @@ class MediaService with ListenableServiceMixin {
     );
   }
 
-  dynamic uploadFileToCloud(String path, String name, Reference ref) async {
+  Future<List<XFile>?> getMultiImages() async {
+    return await _picker.pickMultiImage();
+  }
+
+  dynamic upload(String path, String name, Reference ref) async {
     File file = File(path);
     try {
       await ref.putFile(file);

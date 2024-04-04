@@ -1,0 +1,1 @@
+enum EmergencyStatus { resolved, pending }

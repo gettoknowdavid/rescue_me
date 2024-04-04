@@ -1,10 +1,10 @@
-import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rescue_me/ui/widgets/primary_button.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../dialog_container.dart';
 import 'logout_dialog_content_text.dart';
 import 'logout_dialog_model.dart';
 
@@ -20,18 +20,9 @@ class LogoutDialog extends StackedView<LogoutDialogModel> {
 
   @override
   Widget builder(context, viewModel, child) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
+    final textTheme = Theme.of(context).textTheme;
 
-    return Dialog(
-      shape: SmoothRectangleBorder(
-        side: BorderSide(color: colorScheme.primaryContainer),
-        borderRadius: SmoothBorderRadius(
-          cornerRadius: 20.r,
-          cornerSmoothing: 1,
-        ),
-      ),
+    return DialogContainer(
       child: Padding(
         padding: const EdgeInsets.all(16).r,
         child: Column(

@@ -10,11 +10,13 @@ import 'app.locator.dart';
 import '../ui/dialogs/logout/logout_dialog.dart';
 import '../ui/dialogs/mail_app/mail_app_dialog.dart';
 import '../ui/dialogs/no_mail_app/no_mail_app_dialog.dart';
+import '../ui/dialogs/sos/sos_dialog.dart';
 
 enum DialogType {
   mailApp,
   noMailApp,
   logout,
+  sos,
 }
 
 void setupDialogUi() {
@@ -27,6 +29,8 @@ void setupDialogUi() {
         NoMailAppDialog(request: request, completer: completer),
     DialogType.logout: (context, request, completer) =>
         LogoutDialog(request: request, completer: completer),
+    DialogType.sos: (context, request, completer) =>
+        SosDialog(request: request, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);

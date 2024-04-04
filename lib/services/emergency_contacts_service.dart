@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/core/errors/cloud_error.dart';
-import 'package:rescue_me/models/emergency_contact.dart';
+import 'package:rescue_me/models/user.dart';
+import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/media_service.dart';
 import 'package:rescue_me/services/network_service.dart';
 import 'package:stacked/stacked.dart';
 
 class EmergencyContactsService with ListenableServiceMixin {
+  final _authService = locator<AuthService>();
   final _mediaService = locator<MediaService>();
   final _networkService = locator<NetworkService>();
 
@@ -21,15 +23,29 @@ class EmergencyContactsService with ListenableServiceMixin {
   final _isLoading = ReactiveValue<bool>(false);
   bool get isLoading => _isLoading.value;
 
+  User? get user => _authService.user;
+
   Future<void> getEmergencyContacts() async {
     _isLoading.value = true;
-    final result =
-        await emergencyContactsRef.orderByIsPriority(descending: true).get();
+    final ref = usersRef.doc(user!.uid).emergencyContacts;
+    final result = await ref.orderByIsPriority(descending: true).get();
     final list = result.docs.map((e) => e.data).toList();
     _contacts.value = list;
     _isLoading.value = false;
     notifyListeners();
   }
+
+  // Future<List<EmergencyContact?>> getEmergencyContactsForUser(
+  //   String userId,
+  // ) async {
+
+  //   final result =
+  //       await emergencyContactsRef.whe.orderByIsPriority(descending: true).get();
+  //   final list = result.docs.map((e) => e.data).toList();
+  //   _contacts.value = list;
+  //   _isLoading.value = false;
+  //   notifyListeners();
+  // }
 
   Future<Either<CloudError, EmergencyContact?>> createEmergencyContact(
     EmergencyContact contact,
@@ -39,8 +55,9 @@ class EmergencyContactsService with ListenableServiceMixin {
     }
 
     try {
-      await emergencyContactsRef.doc(contact.uid).set(contact);
-      final result = await emergencyContactsRef.doc(contact.uid).get();
+      final ref = usersRef.doc(user!.uid).emergencyContacts;
+      await ref.doc(contact.uid).set(contact);
+      final result = await ref.doc(contact.uid).get();
       await getEmergencyContacts();
       return right(result.data);
     } on FirebaseException catch (e) {
@@ -59,8 +76,9 @@ class EmergencyContactsService with ListenableServiceMixin {
     final uid = contact.uid;
 
     try {
-      await emergencyContactsRef.doc(uid).set(contact);
-      final result = await emergencyContactsRef.doc(uid).get();
+      final ref = usersRef.doc(user!.uid).emergencyContacts;
+      await ref.doc(uid).set(contact);
+      final result = await ref.doc(uid).get();
       await getEmergencyContacts();
       return right(result.data);
     } on FirebaseException catch (e) {
@@ -74,7 +92,8 @@ class EmergencyContactsService with ListenableServiceMixin {
     EmergencyContact contact,
   ) async {
     try {
-      await emergencyContactsRef.doc(contact.uid).delete().then((_) async {
+      final ref = usersRef.doc(user!.uid).emergencyContacts;
+      await ref.doc(contact.uid).delete().then((_) async {
         if (contact.imageUrl != null) {
           final path = 'images/emc/${contact.uid}';
           await _mediaService.storageRef.child(path).delete();

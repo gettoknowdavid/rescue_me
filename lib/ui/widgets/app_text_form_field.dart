@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 
 class AppTextFormField extends StatefulWidget {
   const AppTextFormField({
@@ -29,7 +30,6 @@ class AppTextFormField extends StatefulWidget {
   final bool? enabled;
   final ValueChanged<String>? onChanged;
 
-
   @override
   State<AppTextFormField> createState() => _AppTextFormFieldState();
 }
@@ -39,20 +39,14 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.label,
-          style: textTheme.bodySmall?.copyWith(
-            color: widget.focusNode?.hasFocus == true
-                ? colorScheme.primary
-                : colorScheme.onBackground.withOpacity(0.6),
-          ),
+          style: widget.focusNode?.hasFocus == true
+              ? context.fieldLabelFocused
+              : context.fieldLabel,
         ),
         4.verticalSpace,
         TextFormField(
