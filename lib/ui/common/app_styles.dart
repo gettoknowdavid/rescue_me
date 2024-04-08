@@ -8,6 +8,10 @@ final borderRadiusAll12 = RoundedRectangleBorder(
 extension AppTextStylesX on BuildContext {
   ThemeData get theme => Theme.of(this);
 
+  TextStyle? get headline => theme.textTheme.headlineMedium?.copyWith(
+        fontWeight: FontWeight.bold,
+      );
+
   TextStyle? get titleStyle => theme.textTheme.bodyMedium?.copyWith(
         fontSize: 14.sp,
         fontWeight: FontWeight.bold,
@@ -21,6 +25,11 @@ extension AppTextStylesX on BuildContext {
   TextStyle? get subtitleStyle => theme.textTheme.bodyMedium?.copyWith(
         fontSize: 11.sp,
         color: theme.colorScheme.onBackground.withOpacity(0.5),
+      );
+
+  TextStyle? get fieldErrorStyle => theme.textTheme.bodyMedium?.copyWith(
+        fontSize: 11.sp,
+        color: theme.colorScheme.error,
       );
 
   TextStyle? get fieldLabel => theme.textTheme.bodySmall?.copyWith(

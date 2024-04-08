@@ -20,8 +20,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<AuthService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<NetworkService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<OpenMailAppService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<SharedPreferencesService>(
-      onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<SharedPreferencesService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<MediaService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SosService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<LocationService>(onMissingStub: OnMissingStub.returnDefault),
@@ -35,7 +34,6 @@ void registerServices() {
   getAndRegisterNetworkService();
   getAndRegisterOpenMailAppService();
   getAndRegisterSharedPreferencesService();
-  getAndRegisterCloudStoreService();
   getAndRegisterMediaService();
   getAndRegisterSosService();
   getAndRegisterLocationService();
@@ -117,13 +115,6 @@ MockSharedPreferencesService getAndRegisterSharedPreferencesService() {
   _removeRegistrationIfExists<SharedPreferencesService>();
   final service = MockSharedPreferencesService();
   locator.registerSingleton<SharedPreferencesService>(service);
-  return service;
-}
-
-MockCloudStoreService getAndRegisterCloudStoreService() {
-  _removeRegistrationIfExists<CloudStoreService>();
-  final service = MockCloudStoreService();
-  locator.registerSingleton<CloudStoreService>(service);
   return service;
 }
 

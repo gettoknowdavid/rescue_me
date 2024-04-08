@@ -15,7 +15,9 @@ class AuthRedirectButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final style = Theme.of(context).textTheme.bodySmall;
+    final style = Theme.of(context).textTheme.bodySmall?.copyWith(
+          letterSpacing: -0.2.r,
+        );
 
     return SizedBox(
       height: 20.h,

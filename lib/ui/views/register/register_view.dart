@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
+import '../../widgets/app_back_button.dart';
 import '../../widgets/auth_redirect_button.dart';
 import 'form_validator.dart';
 import 'register_form_widget.dart';
@@ -18,27 +20,18 @@ class RegisterView extends StackedView<RegisterViewModel> {
 
   @override
   Widget builder(context, viewModel, child) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(leading: const AppBackButton()),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0).r,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'Register',
-              style: textTheme.headlineMedium,
-            ),
+            Text('Register', style: context.headline),
             4.verticalSpace,
             Text(
               "You're new here, register your new account to have a more secured experience.",
-              style: textTheme.bodyMedium?.copyWith(
-                color: colorScheme.onBackground.withOpacity(0.8),
-              ),
+              style: context.subtitleStyle,
             ),
             30.verticalSpace,
             RegisterFormWidget(),

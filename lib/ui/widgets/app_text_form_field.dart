@@ -57,11 +57,13 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
           onChanged: widget.onChanged,
           keyboardType: widget.keyboardType,
           obscureText: widget.isPassword ? !isObscure : isObscure,
+          style: Theme.of(context).textTheme.bodyMedium,
           decoration: InputDecoration(
             hintText: widget.hint,
             contentPadding: const EdgeInsets.all(12).r,
             prefixText: widget.prefixText,
             suffixIcon: !widget.isPassword ? null : _suffixIcon(),
+            errorStyle: context.fieldErrorStyle,
           ),
         ),
       ],
