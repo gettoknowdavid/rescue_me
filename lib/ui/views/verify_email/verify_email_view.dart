@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:rescue_me/ui/widgets/primary_button.dart';
 import 'package:stacked/stacked.dart';
 
@@ -10,24 +11,18 @@ class VerifyEmailView extends StackedView<VerifyEmailViewModel> {
 
   @override
   Widget builder(context, viewModel, child) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-    final colorScheme = theme.colorScheme;
-
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0).r,
+        padding: const EdgeInsets.symmetric(horizontal: 16.0).r,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Spacer(),
-            Text('Verify your email', style: textTheme.headlineMedium),
+            Text('Verify your email', style: context.headline),
             10.verticalSpace,
             Text(
               'Open your mail application to check for the verification mail we just sent to you.',
-              style: textTheme.bodyMedium?.copyWith(
-                color: colorScheme.onBackground.withOpacity(0.8),
-              ),
+              style: context.confirmationBodyStyle,
             ),
             20.verticalSpace,
             PrimaryButton(
@@ -38,7 +33,7 @@ class VerifyEmailView extends StackedView<VerifyEmailViewModel> {
             OutlinedButton(
               onPressed: viewModel.checkEmailVerified,
               style: OutlinedButton.styleFrom(
-                side: BorderSide(color: theme.colorScheme.primary),
+                side: BorderSide(color: Theme.of(context).colorScheme.primary),
                 fixedSize: Size(1.sw, 53),
               ),
               child: const Text('Verify'),
