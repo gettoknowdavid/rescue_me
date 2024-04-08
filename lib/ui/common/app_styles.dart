@@ -41,4 +41,8 @@ extension AppTextStylesX on BuildContext {
         fontWeight: FontWeight.bold,
         color: theme.colorScheme.primary,
       );
+
+  TextStyle? get confirmationBodyStyle => theme.textTheme.bodyMedium?.copyWith(
+        color: theme.colorScheme.onBackground.withOpacity(0.6),
+      );
 }

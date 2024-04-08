@@ -1,3 +1,4 @@
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stacked/stacked.dart';
@@ -5,7 +6,7 @@ import 'package:stacked/stacked.dart';
 import 'onboarding_viewmodel.dart';
 
 class OnboardingView extends StackedView<OnboardingViewModel> {
-  const OnboardingView({Key? key}) : super(key: key);
+  const OnboardingView({super.key});
 
   @override
   Widget builder(context, viewModel, child) {
@@ -27,7 +28,9 @@ class OnboardingView extends StackedView<OnboardingViewModel> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: colorScheme.primary,
-                    borderRadius: BorderRadius.circular(20.r),
+                    borderRadius: SmoothBorderRadius.all(
+                      SmoothRadius(cornerRadius: 20.r, cornerSmoothing: 1),
+                    ),
                   ),
                   child: Image.asset(
                     'assets/onboarding.png',
