@@ -78,6 +78,21 @@ class VerifyPhoneView extends StackedView<VerifyPhoneViewModel>
                 loading: viewModel.isBusy,
                 onPressed: viewModel.updatePhone,
               ),
+              20.verticalSpace,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: viewModel.resend,
+                    child: const Text('Resend'),
+                  ),
+                  TextButton(
+                    onPressed: viewModel.cancel,
+                    child: const Text('Cancel'),
+                  )
+                ],
+              ),
+              60.verticalSpace,
             ]
           ],
         ),

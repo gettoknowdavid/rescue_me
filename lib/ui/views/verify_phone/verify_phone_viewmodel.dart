@@ -95,6 +95,14 @@ class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
     }
   }
 
+  Future<void> resend() async => verifyPhone();
+
+  Future<void> cancel() async {
+    _verificationId.value = null;
+    _codeSent.value = false;
+    notifyListeners();
+  }
+
   @override
   List<ListenableServiceMixin> get listenableServices => [
         _authService,
