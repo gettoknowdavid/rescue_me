@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:rescue_me/ui/widgets/app_text_form_field.dart';
 import 'package:rescue_me/ui/widgets/phone_form_field.dart';
 import 'package:rescue_me/ui/widgets/primary_button.dart';
@@ -20,14 +21,6 @@ class VerifyPhoneView extends StackedView<VerifyPhoneViewModel>
 
   @override
   Widget builder(context, viewModel, child) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-
-    final subtitleStyle = textTheme.bodyMedium?.copyWith(
-      color: colorScheme.onBackground.withOpacity(0.8),
-    );
-
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -35,20 +28,17 @@ class VerifyPhoneView extends StackedView<VerifyPhoneViewModel>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'Verify Phone Number',
-              style: textTheme.headlineMedium,
-            ),
+            Text('Verify Phone Number', style: context.headline),
             4.verticalSpace,
             if (!viewModel.codeSent)
               Text(
                 "Congratulations on successful registration, but yes, there's another form. \n\nWe know, it sucks, but we actually do need your phone number so we can easily contact you in case of an emergency.",
-                style: subtitleStyle,
+                style: context.confirmationBodyStyle,
               )
             else
               Text(
                 'We have just sent a code to you via SMS. \n\nInsert the code and verify your phone number.',
-                style: subtitleStyle,
+                style: context.confirmationBodyStyle,
               ),
             30.verticalSpace,
             if (!viewModel.codeSent) ...[

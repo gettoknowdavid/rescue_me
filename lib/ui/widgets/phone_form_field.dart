@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_field/phone_number.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 
 class PhoneFormField extends StatelessWidget {
   const PhoneFormField({
@@ -29,20 +30,14 @@ class PhoneFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: textTheme.bodySmall?.copyWith(
-            color: focusNode?.hasFocus == true
-                ? colorScheme.primary
-                : colorScheme.onBackground.withOpacity(0.6),
-          ),
+          style: focusNode?.hasFocus == true
+              ? context.fieldLabelFocused
+              : context.fieldLabel,
         ),
         4.verticalSpace,
         IntlPhoneField(
@@ -53,6 +48,7 @@ class PhoneFormField extends StatelessWidget {
           disableLengthCheck: true,
           flagsButtonPadding: const EdgeInsets.only(left: 10),
           keyboardType: TextInputType.phone,
+          style: Theme.of(context).textTheme.bodyMedium,
           decoration: InputDecoration(
             hintText: hint ?? 'Your phone number',
             contentPadding: const EdgeInsets.all(12).r,
