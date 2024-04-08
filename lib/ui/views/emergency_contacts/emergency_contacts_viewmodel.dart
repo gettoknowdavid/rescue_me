@@ -66,7 +66,9 @@ class EmergencyContactsViewModel extends ReactiveViewModel with Initialisable {
       isScrollControlled: true,
     );
 
-    if (result?.data == true) {
+    if (result == null) return;
+
+    if (result.data == true) {
       await _navigationService.navigateToAddEmergencyContactView();
     } else {
       final phoneContact = await fcp.FlutterContactPicker.pickFullContact();
