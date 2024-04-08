@@ -23,8 +23,6 @@ class IncidentCard extends ViewModelWidget<IncidentsViewModel> {
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
 
-    final hasPhotos = incident.photoUrls.isNotEmpty;
-
     return InkWell(
       onTap: () => viewModel.goToAddIncidentDetails(incident),
       borderRadius: _smoothBorderRadius,
@@ -49,7 +47,7 @@ class IncidentCard extends ViewModelWidget<IncidentsViewModel> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _Image(url: hasPhotos ? incident.photoUrls[0] : null),
+              _Image(incident: incident),
               8.verticalSpace,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16).r,
@@ -80,16 +78,21 @@ class IncidentCard extends ViewModelWidget<IncidentsViewModel> {
   }
 }
 
-class _Image extends StatelessWidget {
-  const _Image({this.url});
+class _Image extends ViewModelWidget<IncidentsViewModel> {
+  const _Image({required this.incident});
 
-  final String? url;
+  final Incident incident;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, IncidentsViewModel viewModel) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
+
+    final isMe = viewModel.isMe(incident.uid);
+
+    final hasImages = incident.photoUrls.isNotEmpty;
+    final url = hasImages ? incident.photoUrls[0] : null;
 
     return SizedBox(
       height: 0.4.sw,
@@ -100,7 +103,7 @@ class _Image extends StatelessWidget {
             decoration: BoxDecoration(
               color: colorScheme.surface,
               borderRadius: _smoothBorderRadius,
-              image: url != null
+              image: hasImages
                   ? DecorationImage(
                       image: NetworkImage(url!), fit: BoxFit.cover)
                   : null,
@@ -109,17 +112,18 @@ class _Image extends StatelessWidget {
                 ? const Center(child: Icon(PhosphorIconsRegular.image))
                 : null,
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 6, 10, 6).r,
-            child: Text(
-              'Created by You',
-              style: textTheme.labelSmall?.copyWith(
-                fontSize: 10.r,
-                color: colorScheme.onSurface.withOpacity(0.3),
-                letterSpacing: -0.5.r,
+          if (isMe)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 6, 10, 6).r,
+              child: Text(
+                'Created by You',
+                style: textTheme.labelSmall?.copyWith(
+                  fontSize: 10.r,
+                  color: colorScheme.onSurface.withOpacity(0.3),
+                  letterSpacing: -0.5.r,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

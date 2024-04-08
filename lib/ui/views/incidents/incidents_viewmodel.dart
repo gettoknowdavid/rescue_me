@@ -4,6 +4,8 @@ import 'package:rescue_me/app/app.snackbars.dart';
 import 'package:rescue_me/core/constants/error_strings.dart';
 import 'package:rescue_me/models/incident.dart';
 import 'package:rescue_me/models/incident_filter.dart';
+import 'package:rescue_me/models/user.dart';
+import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/incident_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -23,9 +25,14 @@ class IncidentsViewModel extends StreamViewModel<List<Incident?>>
     notifySourceChanged();
   }
 
+  final _authService = locator<AuthService>();
   final _incidentsService = locator<IncidentService>();
   final _navigationService = locator<NavigationService>();
   final _snackbarService = locator<SnackbarService>();
+
+  User? get user => _authService.user;
+
+  bool isMe(String userId) => userId == user!.uid;
 
   void goToAddIncidentView() => _navigationService.navigateToAddIncidentView();
 
@@ -54,6 +61,9 @@ class IncidentsViewModel extends StreamViewModel<List<Incident?>>
       (success) => setBusy(false),
     );
   }
+
+  @override
+  List<ListenableServiceMixin> get listenableServices => [_authService];
 
   @override
   Stream<List<Incident?>> get stream => _incidentsService.getIncidents(filter);
