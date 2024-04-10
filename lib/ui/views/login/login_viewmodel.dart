@@ -55,7 +55,13 @@ class LoginViewModel extends FormViewModel {
             timeOut: (_) => keTimeout,
           ),
         ),
-        (_) => _navigationService.clearStackAndShow(Routes.layoutView),
+        (_) async {
+          if (_authService.hasPhoneNumber == true) {
+            return _navigationService.clearStackAndShow(Routes.layoutView);
+          } else {
+            return _navigationService.clearStackAndShow(Routes.verifyPhoneView);
+          }
+        },
       );
     }
   }

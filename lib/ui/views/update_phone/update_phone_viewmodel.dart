@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl_phone_field/phone_number.dart';
 import 'package:rescue_me/app/app.locator.dart';
-import 'package:rescue_me/app/app.router.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
 import 'package:rescue_me/core/constants/error_strings.dart';
 import 'package:rescue_me/services/auth_service.dart';
@@ -9,10 +8,10 @@ import 'package:rescue_me/services/network_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-import 'verify_phone_view.form.dart';
+import 'update_phone_view.form.dart';
 
-class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
-  VerifyPhoneViewModel() {
+class UpdatePhoneViewModel extends FormViewModel with ListenableServiceMixin {
+  UpdatePhoneViewModel() {
     listenToReactiveValues([
       _codeSent,
       _isPhoneValid,
@@ -53,22 +52,8 @@ class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
       await _authService.verifyPhone(
         phoneNumber: phoneValue,
         verificationCompleted: (phoneAuthCredential) {},
-        verificationFailed: (p0) {
-          setBusy(false);
-          _snackbarService.showCustomSnackBar(
-            duration: const Duration(seconds: 6),
-            variant: SnackbarType.error,
-            message: p0.message ?? 'An error ocurred. Please try again.',
-          );
-        },
-        codeAutoRetrievalTimeout: (p0) {
-          setBusy(false);
-          _snackbarService.showCustomSnackBar(
-            duration: const Duration(seconds: 6),
-            variant: SnackbarType.error,
-            message: p0,
-          );
-        },
+        verificationFailed: (p0) {},
+        codeAutoRetrievalTimeout: (p0) {},
         codeSent: (verificationId, p1) {
           setBusy(false);
           _verificationId.value = verificationId;
@@ -76,7 +61,6 @@ class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
           notifyListeners();
         },
       );
-      
     }
   }
 
@@ -105,7 +89,7 @@ class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
             timeOut: (_) => keTimeout,
           ),
         ),
-        (_) => _navigationService.clearStackAndShow(Routes.layoutView),
+        (_) => _authService.reload().whenComplete(_navigationService.back),
       );
     }
   }
@@ -117,9 +101,6 @@ class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
     _codeSent.value = false;
     notifyListeners();
   }
-
-  void goToLogin() => _authService.logout().whenComplete(
-      () => _navigationService.clearStackAndShow(Routes.loginView));
 
   @override
   List<ListenableServiceMixin> get listenableServices => [

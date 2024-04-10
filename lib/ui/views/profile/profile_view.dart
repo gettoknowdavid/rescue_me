@@ -67,9 +67,10 @@ class ProfileView extends StackedView<ProfileViewModel> {
               onTap: viewModel.goToEditPassword,
             ),
             const Divider(),
-            const AppListTile(
-              title: 'Privacy & Policy',
-              icon: PhosphorIconsDuotone.note,
+            AppListTile(
+              title: 'Update Phone Number',
+              icon: PhosphorIconsDuotone.phone,
+              onTap: viewModel.goToUpdatePhone,
             ),
             const Divider(),
             AppListTile(

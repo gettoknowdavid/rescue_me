@@ -6,6 +6,7 @@ import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/network_service.dart';
 import 'package:stacked/stacked.dart';
+import 'package:uuid/uuid.dart';
 
 import '../models/emergency_status.dart';
 
@@ -88,6 +89,35 @@ class SosService with ListenableServiceMixin {
       return left(CloudError.error(e.message));
     } on Exception {
       return left(const CloudError.serverError());
+    }
+  }
+
+  Future<User?> _findUserByPhone(String phone) async {
+    final result = await usersRef.wherePhoneNumber(isEqualTo: phone).get();
+    return result.docs.first.data;
+  }
+
+  Future<void> notifyEmergencyContacts(EmergencyReport sos) async {
+    final ref = await usersRef.doc(user!.uid).emergencyContacts.get();
+    final contacts = ref.docs.map((e) => e.data).toList();
+    for (var contact in contacts) {
+      final contactUser = await _findUserByPhone(contact.phone);
+
+      while (contactUser != null) {
+        final notRef = usersRef.doc(contactUser.uid).notifications;
+        final newNotification = Notification(
+          uid: const Uuid().v4(),
+          title: 'SOS Emergency',
+          sosId: sos.uid,
+          specialMessage: sos.description,
+          recipientId: user!.uid,
+          recipientName: user!.name,
+          recipientPhone: user!.phoneNumber!,
+          recipientPhotoURL: user!.photoURL,
+          createdAt: DateTime.now(),
+        );
+        await notRef.doc(newNotification.uid).set(newNotification);
+      }
     }
   }
 }

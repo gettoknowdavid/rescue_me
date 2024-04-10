@@ -479,6 +479,7 @@ class MockBottomSheetService extends _i1.Mock
     Duration? enterBottomSheetDuration,
     bool? ignoreSafeArea,
     bool? useRootNavigator = false,
+    double? elevation = 1.0,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -496,6 +497,7 @@ class MockBottomSheetService extends _i1.Mock
             #enterBottomSheetDuration: enterBottomSheetDuration,
             #ignoreSafeArea: ignoreSafeArea,
             #useRootNavigator: useRootNavigator,
+            #elevation: elevation,
           },
         ),
         returnValue: _i9.Future<_i6.SheetResponse<dynamic>?>.value(),
@@ -518,6 +520,7 @@ class MockBottomSheetService extends _i1.Mock
     String? additionalButtonTitle,
     bool? takesInput = false,
     _i10.Color? barrierColor = const _i10.Color(2315255808),
+    double? elevation = 1.0,
     bool? barrierDismissible = true,
     bool? isScrollControlled = false,
     String? barrierLabel = r'',
@@ -547,6 +550,7 @@ class MockBottomSheetService extends _i1.Mock
             #additionalButtonTitle: additionalButtonTitle,
             #takesInput: takesInput,
             #barrierColor: barrierColor,
+            #elevation: elevation,
             #barrierDismissible: barrierDismissible,
             #isScrollControlled: isScrollControlled,
             #barrierLabel: barrierLabel,
@@ -1650,6 +1654,17 @@ class MockSosService extends _i1.Mock implements _i19.SosService {
           ),
         )),
       ) as _i9.Future<_i2.Either<_i20.CloudError, _i2.Unit>>);
+
+  @override
+  _i9.Future<void> notifyEmergencyContacts(_i3.EmergencyReport? sos) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #notifyEmergencyContacts,
+          [sos],
+        ),
+        returnValue: _i9.Future<void>.value(),
+        returnValueForMissingStub: _i9.Future<void>.value(),
+      ) as _i9.Future<void>);
 
   @override
   void listenToReactiveValues(List<dynamic>? reactiveValues) =>

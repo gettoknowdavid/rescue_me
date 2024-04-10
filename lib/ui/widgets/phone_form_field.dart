@@ -17,6 +17,7 @@ class PhoneFormField extends StatelessWidget {
     this.initialCountryCode = 'NG',
     this.initialValue,
     this.validator,
+    this.enabled = true,
   });
 
   final String label;
@@ -27,6 +28,7 @@ class PhoneFormField extends StatelessWidget {
   final String? initialCountryCode;
   final String? initialValue;
   final FutureOr<String?> Function(PhoneNumber?)? validator;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class PhoneFormField extends StatelessWidget {
           showDropdownIcon: false,
           showCountryFlag: true,
           disableLengthCheck: true,
+          enabled: enabled,
           flagsButtonPadding: const EdgeInsets.only(left: 10),
           keyboardType: TextInputType.phone,
           style: Theme.of(context).textTheme.bodyMedium,

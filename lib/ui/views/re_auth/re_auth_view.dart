@@ -40,6 +40,7 @@ class ReAuthView extends StackedView<ReAuthViewModel> with $ReAuthView {
               label: 'Password',
               hint: 'Your password',
               isPassword: true,
+              enabled: !viewModel.isBusy,
               validator: FormValidator.password,
             ),
             30.verticalSpace,

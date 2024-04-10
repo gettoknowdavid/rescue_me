@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
@@ -12,6 +13,7 @@ class ProfileViewModel extends ReactiveViewModel {
   final _authService = locator<AuthService>();
   final _navService = locator<NavigationService>();
   final _snackbarService = locator<SnackbarService>();
+  final _navigationService = locator<NavigationService>();
 
   User get user => _authService.user!;
 
@@ -23,6 +25,27 @@ class ProfileViewModel extends ReactiveViewModel {
   Future<void> goToEditBio() => _navService.navigateToEditBioView();
 
   Future<void> goToEditPassword() => _navService.navigateToEditPasswordView();
+
+  Future<void> goToUpdatePhone() async {
+    final confirmationResponse = await _navService.navigateToReAuthView();
+
+    if (confirmationResponse is AuthError) {
+      _snackbarService.showCustomSnackBar(
+        duration: const Duration(seconds: 6),
+        variant: SnackbarType.error,
+        message: confirmationResponse.maybeMap(
+          orElse: () => '',
+          serverError: (_) => keServer,
+          error: (value) => value.message ?? 'Some funny kind of error',
+          timeOut: (_) => keTimeout,
+        ),
+      );
+    }
+
+    if (confirmationResponse is Unit) {
+      _navService.navigateToUpdatePhoneView();
+    }
+  }
 
   Future<void> goToEditEmail() async {
     final confirmationResponse = await _navService.navigateToReAuthView();
@@ -37,6 +60,10 @@ class ProfileViewModel extends ReactiveViewModel {
           timeOut: (_) => keTimeout,
         ),
       );
+    }
+
+    if (confirmationResponse is Unit) {
+      _navigationService.navigateToEditEmailView();
     }
   }
 

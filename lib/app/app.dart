@@ -50,6 +50,7 @@ import '../ui/dialogs/mail_app/mail_app_dialog.dart';
 import '../ui/dialogs/no_mail_app/no_mail_app_dialog.dart';
 import 'app.router.dart';
 import 'package:rescue_me/ui/views/incident_details/incident_details_view.dart';
+import 'package:rescue_me/ui/views/update_phone/update_phone_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -88,6 +89,7 @@ import 'package:rescue_me/ui/views/incident_details/incident_details_view.dart';
     MaterialRoute(page: AddIncidentView),
     MaterialRoute(page: SosReportsView),
     MaterialRoute(page: IncidentDetailsView),
+    MaterialRoute(page: UpdatePhoneView),
 // @stacked-route
   ],
   dependencies: [

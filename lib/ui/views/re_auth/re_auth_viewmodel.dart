@@ -1,5 +1,4 @@
 import 'package:rescue_me/app/app.locator.dart';
-import 'package:rescue_me/app/app.router.dart';
 import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/network_service.dart';
 import 'package:stacked/stacked.dart';
@@ -26,7 +25,7 @@ class ReAuthViewModel extends FormViewModel {
 
       return result.fold(
         (failure) => _navigationService.back(result: failure),
-        (success) => _navigationService.replaceWithEditEmailView(),
+        (success) => _navigationService.back(result: success),
       );
     }
   }

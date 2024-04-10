@@ -11,6 +11,7 @@ part 'user.g.dart';
 @Collection<User>('users')
 @Collection<EmergencyContact>('users/*/emergency_contacts')
 @Collection<EmergencyReport>('users/*/emergency_reports')
+@Collection<Notification>('users/*/notifications')
 final usersRef = UserCollectionReference();
 
 @Freezed(fromJson: false)
@@ -84,6 +85,29 @@ class EmergencyContact with _$EmergencyContact {
 
   @override
   Map<String, dynamic> toJson() => _$EmergencyContactToJson(this);
+}
+
+@Freezed(fromJson: false)
+@JsonSerializable(converters: firestoreJsonConverters, includeIfNull: false)
+class Notification with _$Notification {
+  factory Notification({
+    required String uid,
+    required String title,
+    String? specialMessage,
+    required String sosId,
+    required String recipientId,
+    required String recipientName,
+    required String recipientPhone,
+    String? recipientPhotoURL,
+    required DateTime createdAt,
+    @Default(false) bool read,
+  }) = _Notification;
+
+  factory Notification.fromJson(Map<String, dynamic> json) =>
+      _$NotificationFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$NotificationToJson(this);
 }
 
 enum EmergencyContactType {

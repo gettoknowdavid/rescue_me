@@ -35,7 +35,6 @@ class HomeViewModel extends ReactiveViewModel {
       secondaryColor: const Color(0xFFFFDCE2),
       route: Routes.sosReportsView,
     ),
-  
     DashboardItem(
       title: 'Emergency Numbers',
       icon: PhosphorIconsDuotone.usersThree,

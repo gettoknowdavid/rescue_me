@@ -59,7 +59,7 @@ class SosDialog extends StackedView<SosDialogModel> {
                   child: PrimaryButton(
                     disabled: viewModel.isBusy,
                     loading: viewModel.isBusy,
-                    onPressed: viewModel.sendHelp,
+                    onPressed: viewModel.sendMessage,
                     label: 'Send Help',
                   ),
                 ),
