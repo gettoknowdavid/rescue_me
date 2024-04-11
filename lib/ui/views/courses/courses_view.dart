@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../widgets/app_back_button.dart';
+import '../../widgets/coming_soon_widget.dart';
 import 'courses_viewmodel.dart';
 
 class CoursesView extends StackedView<CoursesViewModel> {
-  const CoursesView({Key? key}) : super(key: key);
+  const CoursesView({super.key});
 
   @override
-  Widget builder(
-    BuildContext context,
-    CoursesViewModel viewModel,
-    Widget? child,
-  ) {
+  Widget builder(context, viewModel, child) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      appBar: AppBar(
+        title: const Text('Medical Courses'),
+        titleTextStyle: context.appBarTitleStyle,
+        leading: const AppBackButton(),
       ),
+      body: const Center(child: ComingSoonWidget()),
     );
   }
 
   @override
-  CoursesViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      CoursesViewModel();
+  CoursesViewModel viewModelBuilder(context) => CoursesViewModel();
 }
