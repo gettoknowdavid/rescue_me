@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart' as fAuth;
+import 'package:firebase_auth/firebase_auth.dart' as f_auth;
 import 'package:rescue_me/core/constants/error_strings.dart';
 import 'package:rescue_me/models/user.dart';
 import 'package:stacked/stacked.dart';
@@ -10,7 +10,7 @@ import '../core/constants/constants.dart';
 import '../core/errors/auth_error.dart';
 
 class AuthService with ListenableServiceMixin {
-  final _firebaseAuth = fAuth.FirebaseAuth.instance;
+  final _firebaseAuth = f_auth.FirebaseAuth.instance;
 
   final _user = ReactiveValue<User?>(null);
   final _isAuthenticated = ReactiveValue<bool>(false);
@@ -24,7 +24,7 @@ class AuthService with ListenableServiceMixin {
       _isVerified,
       _hasPhoneNumber,
     ]);
-    _firebaseAuth.userChanges().listen((fAuth.User? event) {
+    _firebaseAuth.userChanges().listen((f_auth.User? event) {
       _user.value = event?.toUser;
 
       if (event != null) {
@@ -51,7 +51,7 @@ class AuthService with ListenableServiceMixin {
           .sendPasswordResetEmail(email: email)
           .timeout(timeLimit);
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'user-not-found':
           return left(const AuthError.userNotFound());
@@ -101,7 +101,7 @@ class AuthService with ListenableServiceMixin {
       notifyListeners();
 
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'invalid-credential':
           return left(const AuthError.invalidEmailOrPassword());
@@ -144,7 +144,7 @@ class AuthService with ListenableServiceMixin {
       notifyListeners();
 
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthError.emailInUse());
       } else {
@@ -157,8 +157,8 @@ class AuthService with ListenableServiceMixin {
 
   Future<void> verifyPhone({
     String? phoneNumber,
-    required void Function(fAuth.PhoneAuthCredential) verificationCompleted,
-    required void Function(fAuth.FirebaseAuthException) verificationFailed,
+    required void Function(f_auth.PhoneAuthCredential) verificationCompleted,
+    required void Function(f_auth.FirebaseAuthException) verificationFailed,
     required void Function(String, int?) codeSent,
     required void Function(String) codeAutoRetrievalTimeout,
   }) {
@@ -173,7 +173,7 @@ class AuthService with ListenableServiceMixin {
 
   Future<Either<AuthError, Unit>> updatePhone({
     required String phone,
-    required fAuth.PhoneAuthCredential credential,
+    required f_auth.PhoneAuthCredential credential,
   }) async {
     try {
       await _firebaseAuth.currentUser!.updatePhoneNumber(credential);
@@ -184,7 +184,7 @@ class AuthService with ListenableServiceMixin {
       final updatedUser = currentUser!.toUser.copyWith(phoneNumber: phone);
       await usersRef.doc(currentUser.uid).set(updatedUser);
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));
@@ -195,7 +195,7 @@ class AuthService with ListenableServiceMixin {
     try {
       await _firebaseAuth.currentUser!.sendEmailVerification();
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));
@@ -206,7 +206,7 @@ class AuthService with ListenableServiceMixin {
     try {
       await _firebaseAuth.currentUser!.updatePhotoURL(photoURL);
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));
@@ -222,7 +222,7 @@ class AuthService with ListenableServiceMixin {
     try {
       await _firebaseAuth.currentUser!.updateDisplayName(name);
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));
@@ -233,7 +233,7 @@ class AuthService with ListenableServiceMixin {
     try {
       await _firebaseAuth.currentUser!.updatePhotoURL(' ');
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));
@@ -244,7 +244,7 @@ class AuthService with ListenableServiceMixin {
 
   Future<Either<AuthError, Unit>> reauthenticate(String password) async {
     try {
-      final credential = fAuth.EmailAuthProvider.credential(
+      final credential = f_auth.EmailAuthProvider.credential(
         email: _firebaseAuth.currentUser!.email!,
         password: password,
       );
@@ -252,7 +252,7 @@ class AuthService with ListenableServiceMixin {
           .reauthenticateWithCredential(credential)
           .timeout(timeLimit);
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));
@@ -265,7 +265,7 @@ class AuthService with ListenableServiceMixin {
           .verifyBeforeUpdateEmail(email)
           .timeout(timeLimit);
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));
@@ -277,7 +277,7 @@ class AuthService with ListenableServiceMixin {
     required String newPassword,
   }) async {
     try {
-      final credential = fAuth.EmailAuthProvider.credential(
+      final credential = f_auth.EmailAuthProvider.credential(
         email: _firebaseAuth.currentUser!.email!,
         password: oldPassword,
       );
@@ -288,7 +288,7 @@ class AuthService with ListenableServiceMixin {
           .timeout(timeLimit);
 
       return right(unit);
-    } on fAuth.FirebaseAuthException catch (e) {
+    } on f_auth.FirebaseAuthException catch (e) {
       return left(AuthError.error(e.message));
     } on TimeoutException {
       return left(const AuthError.error(keTimeout));

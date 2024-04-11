@@ -18,7 +18,6 @@ import 'package:rescue_me/ui/dialogs/sos/sos_dialog.dart';
 import 'package:rescue_me/ui/views/add_emergency_contact/add_emergency_contact_view.dart';
 import 'package:rescue_me/ui/views/add_incident/add_incident_view.dart';
 import 'package:rescue_me/ui/views/confirmation/confirmation_view.dart';
-import 'package:rescue_me/ui/views/contact/contact_view.dart';
 import 'package:rescue_me/ui/views/courses/courses_view.dart';
 import 'package:rescue_me/ui/views/edit_bio/edit_bio_view.dart';
 import 'package:rescue_me/ui/views/edit_email/edit_email_view.dart';
@@ -76,7 +75,6 @@ import 'package:rescue_me/services/notifications_service.dart';
     MaterialRoute(page: ConfirmationView),
     MaterialRoute(page: VerifyEmailView),
     MaterialRoute(page: ProfileView),
-    MaterialRoute(page: ContactView),
     MaterialRoute(page: HospitalsView),
     MaterialRoute(page: EmergencyContactsView),
     MaterialRoute(page: FirstAidView),

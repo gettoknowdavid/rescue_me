@@ -15,7 +15,6 @@ import 'package:rescue_me/ui/views/add_emergency_contact/add_emergency_contact_v
     as _i18;
 import 'package:rescue_me/ui/views/add_incident/add_incident_view.dart' as _i25;
 import 'package:rescue_me/ui/views/confirmation/confirmation_view.dart' as _i10;
-import 'package:rescue_me/ui/views/contact/contact_view.dart' as _i13;
 import 'package:rescue_me/ui/views/courses/courses_view.dart' as _i17;
 import 'package:rescue_me/ui/views/edit_bio/edit_bio_view.dart' as _i19;
 import 'package:rescue_me/ui/views/edit_email/edit_email_view.dart' as _i22;
@@ -185,10 +184,6 @@ class StackedRouter extends _i1.RouterBase {
       page: _i12.ProfileView,
     ),
     _i1.RouteDef(
-      Routes.contactView,
-      page: _i13.ContactView,
-    ),
-    _i1.RouteDef(
       Routes.hospitalsView,
       page: _i14.HospitalsView,
     ),
@@ -318,12 +313,6 @@ class StackedRouter extends _i1.RouterBase {
     _i12.ProfileView: (data) {
       return _i30.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.ProfileView(),
-        settings: data,
-      );
-    },
-    _i13.ContactView: (data) {
-      return _i30.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i13.ContactView(),
         settings: data,
       );
     },

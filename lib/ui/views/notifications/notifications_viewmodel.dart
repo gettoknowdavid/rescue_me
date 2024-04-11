@@ -16,7 +16,6 @@ class NotificationsViewModel extends StreamViewModel<List<Notification?>>
   final _notificationsService = locator<NotificationsService>();
 
   @override
-  // TODO: implement stream
   Stream<List<Notification?>> get stream =>
       _notificationsService.getNotifications();
 }

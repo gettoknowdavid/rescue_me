@@ -1,8 +1,6 @@
 const String _emailRegex =
     r"""^[\w!#$%&\'*+/=?^_`{|}~-]+(?:\.[\w!#$%&\'*+/=?^_`{|}~-]+)*@(?:[\w-]+\.)+[\w]{2,}$""";
 
-const String _phoneRegex = r'''^(?:[+0][1-9])?[0-9]{10,12}$''';
-
 class FormValidator {
   static String? email(String? input) {
     if (input == null || input.isEmpty == true) {
