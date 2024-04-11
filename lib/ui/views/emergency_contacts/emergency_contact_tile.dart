@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:rescue_me/models/user.dart';
-import 'package:rescue_me/ui/widgets/skeleton.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/avatar.dart';
+import '../../widgets/skeleton.dart';
 import 'emergency_contacts_viewmodel.dart';
 
 class EmergencyContactTile extends ViewModelWidget<EMCViewModel> {

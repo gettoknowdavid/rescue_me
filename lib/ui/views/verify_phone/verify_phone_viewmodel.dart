@@ -76,7 +76,6 @@ class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
           notifyListeners();
         },
       );
-      
     }
   }
 

@@ -26,6 +26,8 @@ class ProfileViewModel extends ReactiveViewModel {
 
   Future<void> goToEditPassword() => _navService.navigateToEditPasswordView();
 
+  Future<void> goToNotifications() => _navService.navigateToNotificationsView();
+
   Future<void> goToUpdatePhone() async {
     final confirmationResponse = await _navService.navigateToReAuthView();
 

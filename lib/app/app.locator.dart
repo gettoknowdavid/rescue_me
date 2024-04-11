@@ -18,6 +18,7 @@ import '../services/incident_service.dart';
 import '../services/location_service.dart';
 import '../services/media_service.dart';
 import '../services/network_service.dart';
+import '../services/notifications_service.dart';
 import '../services/open_mail_app_service.dart';
 import '../services/shared_preferences_service.dart';
 import '../services/sos_service.dart';
@@ -48,4 +49,6 @@ Future<void> setupLocator({
   final sharedPreferencesService = SharedPreferencesService();
   await sharedPreferencesService.init();
   locator.registerSingleton(sharedPreferencesService);
+
+  locator.registerLazySingleton(() => NotificationsService());
 }

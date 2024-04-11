@@ -9,6 +9,7 @@ import 'package:rescue_me/services/shared_preferences_service.dart';
 import 'package:rescue_me/services/media_service.dart';
 import 'package:rescue_me/services/sos_service.dart';
 import 'package:rescue_me/services/location_service.dart';
+import 'package:rescue_me/services/notifications_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -25,6 +26,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<MediaService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<SosService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<LocationService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<NotificationsService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -38,6 +40,7 @@ void registerServices() {
   getAndRegisterMediaService();
   getAndRegisterSosService();
   getAndRegisterLocationService();
+  getAndRegisterNotificationsService();
 // @stacked-mock-register
 }
 
@@ -137,6 +140,13 @@ MockLocationService getAndRegisterLocationService() {
   _removeRegistrationIfExists<LocationService>();
   final service = MockLocationService();
   locator.registerSingleton<LocationService>(service);
+  return service;
+}
+
+MockNotificationsService getAndRegisterNotificationsService() {
+  _removeRegistrationIfExists<NotificationsService>();
+  final service = MockNotificationsService();
+  locator.registerSingleton<NotificationsService>(service);
   return service;
 }
 // @stacked-mock-create

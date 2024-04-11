@@ -22,6 +22,7 @@ import 'package:rescue_me/services/auth_service.dart' as _i11;
 import 'package:rescue_me/services/location_service.dart' as _i21;
 import 'package:rescue_me/services/media_service.dart' as _i17;
 import 'package:rescue_me/services/network_service.dart' as _i14;
+import 'package:rescue_me/services/notifications_service.dart' as _i23;
 import 'package:rescue_me/services/open_mail_app_service.dart' as _i15;
 import 'package:rescue_me/services/shared_preferences_service.dart' as _i16;
 import 'package:rescue_me/services/sos_service.dart' as _i19;
@@ -1786,3 +1787,9 @@ class MockLocationService extends _i1.Mock implements _i21.LocationService {
         returnValueForMissingStub: null,
       );
 }
+
+/// A class which mocks [NotificationsService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockNotificationsService extends _i1.Mock
+    implements _i23.NotificationsService {}

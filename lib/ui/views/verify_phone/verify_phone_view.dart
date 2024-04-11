@@ -50,7 +50,6 @@ class VerifyPhoneView extends StackedView<VerifyPhoneViewModel>
                   phoneController.text = phone.completeNumber;
                   viewModel.onPhoneChanged(phone);
                 },
-                
                 validator: (phone) {
                   if (phone != null && phone.isValidNumber()) return null;
                   const message = 'Please enter a valid phone number';

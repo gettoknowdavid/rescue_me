@@ -51,6 +51,8 @@ import '../ui/dialogs/no_mail_app/no_mail_app_dialog.dart';
 import 'app.router.dart';
 import 'package:rescue_me/ui/views/incident_details/incident_details_view.dart';
 import 'package:rescue_me/ui/views/update_phone/update_phone_view.dart';
+import 'package:rescue_me/ui/views/notifications/notifications_view.dart';
+import 'package:rescue_me/services/notifications_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -90,6 +92,7 @@ import 'package:rescue_me/ui/views/update_phone/update_phone_view.dart';
     MaterialRoute(page: SosReportsView),
     MaterialRoute(page: IncidentDetailsView),
     MaterialRoute(page: UpdatePhoneView),
+    MaterialRoute(page: NotificationsView),
 // @stacked-route
   ],
   dependencies: [
@@ -106,6 +109,7 @@ import 'package:rescue_me/ui/views/update_phone/update_phone_view.dart';
     LazySingleton(classType: LocationService),
     LazySingleton(classType: IncidentService),
     InitializableSingleton(classType: SharedPreferencesService),
+    LazySingleton(classType: NotificationsService),
 // @stacked-service
   ],
   dialogs: [

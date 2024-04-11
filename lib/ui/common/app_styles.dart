@@ -17,6 +17,11 @@ extension AppTextStylesX on BuildContext {
         fontWeight: FontWeight.bold,
       );
 
+  TextStyle? get profileNameStyle => theme.textTheme.headlineSmall?.copyWith(
+        fontWeight: FontWeight.bold,
+        fontSize: 18.r,
+      );
+
   TextStyle? get appBarTitleStyle => theme.textTheme.bodyMedium?.copyWith(
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,

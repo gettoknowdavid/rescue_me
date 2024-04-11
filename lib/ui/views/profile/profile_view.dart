@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:rescue_me/ui/widgets/avatar.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_list_tile.dart';
+import '../../widgets/avatar.dart';
+import 'notification_button_widget.dart';
 import 'profile_viewmodel.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
@@ -12,13 +14,9 @@ class ProfileView extends StackedView<ProfileViewModel> {
 
   @override
   Widget builder(context, viewModel, child) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final textTheme = theme.textTheme;
-
     return Scaffold(
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(32, 60, 32, 16).r,
+        padding: const EdgeInsets.fromLTRB(32, 50, 32, 16).r,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -27,28 +25,17 @@ class ProfileView extends StackedView<ProfileViewModel> {
               imageUrl: viewModel.user.photoURL,
               name: viewModel.user.name,
             ),
-            20.verticalSpace,
+            14.verticalSpace,
             Text(
               viewModel.user.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
-              style: textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 18.r,
-              ),
+              style: context.profileNameStyle,
             ),
-            6.verticalSpace,
-            Text(
-              viewModel.user.email,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: textTheme.bodySmall?.copyWith(
-                color: colorScheme.onBackground.withOpacity(0.6),
-              ),
-            ),
-            30.verticalSpace,
+            24.verticalSpace,
+            NotificationButtonWidget(onTap: viewModel.goToNotifications),
+            16.verticalSpace,
             AppListTile(
               title: 'Edit Bio',
               icon: PhosphorIconsDuotone.user,
@@ -59,6 +46,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
               title: 'Edit Email',
               icon: PhosphorIconsDuotone.envelope,
               onTap: viewModel.goToEditEmail,
+              subtitle: viewModel.user.email,
             ),
             const Divider(),
             AppListTile(
