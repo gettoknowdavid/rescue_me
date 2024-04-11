@@ -8,6 +8,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'app.locator.dart';
 import '../ui/bottom_sheets/emergency_contact/emergency_contact_sheet.dart';
+import '../ui/bottom_sheets/first_aid/first_aid_sheet.dart';
 import '../ui/bottom_sheets/image_source/image_source_sheet.dart';
 import '../ui/bottom_sheets/sos_photos/sos_photos_sheet.dart';
 import '../ui/bottom_sheets/sos_text/sos_text_sheet.dart';
@@ -17,6 +18,7 @@ enum BottomSheetType {
   imageSource,
   sosPhotos,
   sosText,
+  firstAid,
 }
 
 void setupBottomSheetUi() {
@@ -31,6 +33,8 @@ void setupBottomSheetUi() {
         SosPhotosSheet(request: request, completer: completer),
     BottomSheetType.sosText: (context, request, completer) =>
         SosTextSheet(request: request, completer: completer),
+    BottomSheetType.firstAid: (context, request, completer) =>
+        FirstAidSheet(request: request, completer: completer),
   };
 
   bottomsheetService.setCustomSheetBuilders(builders);

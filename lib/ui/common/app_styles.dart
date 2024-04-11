@@ -17,6 +17,22 @@ extension AppTextStylesX on BuildContext {
         fontWeight: FontWeight.bold,
       );
 
+
+  TextStyle? get firstAidItemTitle => theme.textTheme.bodyMedium?.copyWith(
+        fontSize: 13.sp,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle? get firstAidTitle => theme.textTheme.headlineLarge?.copyWith(
+        fontSize: 22.sp,
+        fontWeight: FontWeight.bold,
+      );
+
+  TextStyle? get firstAidSubtitle => theme.textTheme.bodyMedium?.copyWith(
+        fontSize: 12.sp,
+        color: theme.colorScheme.onBackground.withOpacity(0.6),
+      );
+
   TextStyle? get profileNameStyle => theme.textTheme.headlineSmall?.copyWith(
         fontWeight: FontWeight.bold,
         fontSize: 18.r,

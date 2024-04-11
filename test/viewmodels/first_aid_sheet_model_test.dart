@@ -1,0 +1,11 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:rescue_me/app/app.locator.dart';
+
+import '../helpers/test_helpers.dart';
+
+void main() {
+  group('FirstAidSheetModel Tests -', () {
+    setUp(() => registerServices());
+    tearDown(() => locator.reset());
+  });
+}

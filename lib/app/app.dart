@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rescue_me/services/auth_service.dart';
-import 'package:rescue_me/services/emergency_contacts_service.dart';
-import 'package:rescue_me/services/incident_service.dart';
-import 'package:rescue_me/services/location_service.dart';
-import 'package:rescue_me/services/media_service.dart';
-import 'package:rescue_me/services/network_service.dart';
-import 'package:rescue_me/services/open_mail_app_service.dart';
-import 'package:rescue_me/services/shared_preferences_service.dart';
-import 'package:rescue_me/services/sos_service.dart';
 import 'package:rescue_me/ui/bottom_sheets/emergency_contact/emergency_contact_sheet.dart';
 import 'package:rescue_me/ui/bottom_sheets/image_source/image_source_sheet.dart';
 import 'package:rescue_me/ui/bottom_sheets/sos_photos/sos_photos_sheet.dart';
@@ -26,9 +17,11 @@ import 'package:rescue_me/ui/views/emergency_contacts/emergency_contacts_view.da
 import 'package:rescue_me/ui/views/first_aid/first_aid_view.dart';
 import 'package:rescue_me/ui/views/home/home_view.dart';
 import 'package:rescue_me/ui/views/hospitals/hospitals_view.dart';
+import 'package:rescue_me/ui/views/incident_details/incident_details_view.dart';
 import 'package:rescue_me/ui/views/incidents/incidents_view.dart';
 import 'package:rescue_me/ui/views/layout/layout_view.dart';
 import 'package:rescue_me/ui/views/login/login_view.dart';
+import 'package:rescue_me/ui/views/notifications/notifications_view.dart';
 import 'package:rescue_me/ui/views/onboarding/onboarding_view.dart';
 import 'package:rescue_me/ui/views/password_recovery/password_recovery_view.dart';
 import 'package:rescue_me/ui/views/profile/profile_view.dart';
@@ -38,20 +31,29 @@ import 'package:rescue_me/ui/views/settings/settings_view.dart';
 import 'package:rescue_me/ui/views/sos/sos_view.dart';
 import 'package:rescue_me/ui/views/sos_reports/sos_reports_view.dart';
 import 'package:rescue_me/ui/views/startup/startup_view.dart';
+import 'package:rescue_me/ui/views/update_phone/update_phone_view.dart';
 import 'package:rescue_me/ui/views/verify_email/verify_email_view.dart';
 import 'package:rescue_me/ui/views/verify_phone/verify_phone_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
+import '../services/auth_service.dart';
+import '../services/emergency_contacts_service.dart';
+import '../services/first_aid_service.dart';
+import '../services/incident_service.dart';
+import '../services/location_service.dart';
+import '../services/media_service.dart';
+import '../services/network_service.dart';
+import '../services/notifications_service.dart';
+import '../services/open_mail_app_service.dart';
+import '../services/shared_preferences_service.dart';
+import '../services/sos_service.dart';
 import '../ui/common/app_theme.dart';
 import '../ui/dialogs/mail_app/mail_app_dialog.dart';
 import '../ui/dialogs/no_mail_app/no_mail_app_dialog.dart';
 import 'app.router.dart';
-import 'package:rescue_me/ui/views/incident_details/incident_details_view.dart';
-import 'package:rescue_me/ui/views/update_phone/update_phone_view.dart';
-import 'package:rescue_me/ui/views/notifications/notifications_view.dart';
-import 'package:rescue_me/services/notifications_service.dart';
+import 'package:rescue_me/ui/bottom_sheets/first_aid/first_aid_sheet.dart';
 // @stacked-import
 
 @StackedApp(
@@ -108,6 +110,7 @@ import 'package:rescue_me/services/notifications_service.dart';
     LazySingleton(classType: IncidentService),
     InitializableSingleton(classType: SharedPreferencesService),
     LazySingleton(classType: NotificationsService),
+    LazySingleton(classType: FirstAidService),
 // @stacked-service
   ],
   dialogs: [
@@ -122,7 +125,8 @@ import 'package:rescue_me/services/notifications_service.dart';
     StackedBottomsheet(classType: ImageSourceSheet),
     StackedBottomsheet(classType: SosPhotosSheet),
     StackedBottomsheet(classType: SosTextSheet),
-    // @stacked-bottom-sheet
+    StackedBottomsheet(classType: FirstAidSheet),
+// @stacked-bottom-sheet
   ],
 )
 class App extends StatelessWidget {

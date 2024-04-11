@@ -42,7 +42,6 @@ class AppListTile extends StatelessWidget {
   }
 }
 
-
 class AppListTileSkeleton extends StatelessWidget {
   final bool loading;
   const AppListTileSkeleton({super.key, this.loading = true});

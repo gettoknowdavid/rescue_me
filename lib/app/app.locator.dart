@@ -14,6 +14,7 @@ import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/auth_service.dart';
 import '../services/emergency_contacts_service.dart';
+import '../services/first_aid_service.dart';
 import '../services/incident_service.dart';
 import '../services/location_service.dart';
 import '../services/media_service.dart';
@@ -51,4 +52,5 @@ Future<void> setupLocator({
   locator.registerSingleton(sharedPreferencesService);
 
   locator.registerLazySingleton(() => NotificationsService());
+  locator.registerLazySingleton(() => FirstAidService());
 }

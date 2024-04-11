@@ -1792,4 +1792,28 @@ class MockLocationService extends _i1.Mock implements _i21.LocationService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockNotificationsService extends _i1.Mock
-    implements _i23.NotificationsService {}
+    implements _i23.NotificationsService {
+  @override
+  _i9.Stream<List<_i3.Notification?>> getNotifications(
+          [bool? isRead = false]) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getNotifications,
+          [isRead],
+        ),
+        returnValue: _i9.Stream<List<_i3.Notification?>>.empty(),
+        returnValueForMissingStub: _i9.Stream<List<_i3.Notification?>>.empty(),
+      ) as _i9.Stream<List<_i3.Notification?>>);
+
+  @override
+  List<_i3.Notification?> mapStreamList(
+          _i3.NotificationQuerySnapshot? snapshot) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #mapStreamList,
+          [snapshot],
+        ),
+        returnValue: <_i3.Notification?>[],
+        returnValueForMissingStub: <_i3.Notification?>[],
+      ) as List<_i3.Notification?>);
+}
