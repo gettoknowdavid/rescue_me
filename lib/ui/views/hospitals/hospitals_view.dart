@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
+import 'package:rescue_me/ui/widgets/app_back_button.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../widgets/coming_soon_widget.dart';
 import 'hospitals_viewmodel.dart';
 
 class HospitalsView extends StackedView<HospitalsViewModel> {
-  const HospitalsView({Key? key}) : super(key: key);
+  const HospitalsView({super.key});
 
   @override
-  Widget builder(
-    BuildContext context,
-    HospitalsViewModel viewModel,
-    Widget? child,
-  ) {
+  Widget builder(context, viewModel, child) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      appBar: AppBar(
+        title: const Text('Nearby Hospitals'),
+        titleTextStyle: context.appBarTitleStyle,
+        leading: const AppBackButton(),
       ),
+      body: const Center(child: ComingSoonWidget()),
     );
   }
 
   @override
-  HospitalsViewModel viewModelBuilder(
-    BuildContext context,
-  ) =>
-      HospitalsViewModel();
+  HospitalsViewModel viewModelBuilder(context) => HospitalsViewModel();
 }
