@@ -43,18 +43,18 @@ class HomeViewModel extends ReactiveViewModel {
       route: Routes.emergencyContactsView,
     ),
     DashboardItem(
-      title: 'Nearby Hospitals',
-      icon: PhosphorIconsDuotone.heartbeat,
-      color: const Color(0xFFff7951),
-      secondaryColor: const Color(0xFFffe4dc),
-      route: Routes.hospitalsView,
-    ),
-    DashboardItem(
       title: 'First Aid',
       icon: PhosphorIconsDuotone.bandaids,
       color: const Color(0xff3b998e),
       secondaryColor: const Color(0xFFcfffe8),
       route: Routes.firstAidView,
+    ),
+    DashboardItem(
+      title: 'Nearby Hospitals',
+      icon: PhosphorIconsDuotone.heartbeat,
+      color: const Color(0xFFff7951),
+      secondaryColor: const Color(0xFFffe4dc),
+      route: Routes.hospitalsView,
     ),
     DashboardItem(
       title: 'Medical Courses',
