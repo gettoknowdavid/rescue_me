@@ -17,6 +17,10 @@ class SettingsViewModel extends BaseViewModel with ListenableServiceMixin {
 
   Future<void> goToAbout() => _navigationService.navigateToAboutView();
 
+  Future<void> goToHelpSupport() => _navigationService.navigateToComingSoonView(
+        title: 'Help & Support',
+      );
+
   void onThemeChanged(bool? value, BuildContext context) {
     if (value == true) {
       _themeMode.value = ThemeMode.dark;

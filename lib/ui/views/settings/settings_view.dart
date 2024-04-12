@@ -43,9 +43,10 @@ class SettingsView extends StackedView<SettingsViewModel> {
               onTap: viewModel.goToAbout,
             ),
             const Divider(),
-            const AppListTile(
+            AppListTile(
               title: 'Help & Support',
               icon: PhosphorIconsDuotone.question,
+              onTap: viewModel.goToHelpSupport,
             ),
           ],
         ),

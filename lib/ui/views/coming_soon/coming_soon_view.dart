@@ -4,16 +4,17 @@ import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_back_button.dart';
 import '../../widgets/coming_soon_widget.dart';
-import 'courses_viewmodel.dart';
+import 'coming_soon_viewmodel.dart';
 
-class CoursesView extends StackedView<CoursesViewModel> {
-  const CoursesView({super.key});
+class ComingSoonView extends StackedView<ComingSoonViewModel> {
+  const ComingSoonView({super.key, required this.title});
+  final String title;
 
   @override
   Widget builder(context, viewModel, child) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Medical Courses'),
+        title: Text(title),
         titleTextStyle: context.appBarTitleStyle,
         leading: const AppBackButton(),
       ),
@@ -22,5 +23,5 @@ class CoursesView extends StackedView<CoursesViewModel> {
   }
 
   @override
-  CoursesViewModel viewModelBuilder(context) => CoursesViewModel();
+  ComingSoonViewModel viewModelBuilder(context) => ComingSoonViewModel();
 }

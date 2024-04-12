@@ -22,6 +22,7 @@ class HomeViewModel extends ReactiveViewModel {
 
   final List<DashboardItem> items = [
     DashboardItem(
+      id: 1,
       title: 'Incident Reports',
       icon: PhosphorIconsDuotone.rss,
       color: const Color(0xFFFFF351),
@@ -29,6 +30,7 @@ class HomeViewModel extends ReactiveViewModel {
       route: Routes.incidentsView,
     ),
     DashboardItem(
+      id: 2,
       title: 'SOS Reports',
       icon: PhosphorIconsDuotone.asterisk,
       color: const Color(0xFFFF5168),
@@ -36,6 +38,7 @@ class HomeViewModel extends ReactiveViewModel {
       route: Routes.sosReportsView,
     ),
     DashboardItem(
+      id: 3,
       title: 'Emergency Numbers',
       icon: PhosphorIconsDuotone.usersThree,
       color: const Color(0xFF5799ff),
@@ -43,6 +46,7 @@ class HomeViewModel extends ReactiveViewModel {
       route: Routes.emergencyContactsView,
     ),
     DashboardItem(
+      id: 4,
       title: 'First Aid',
       icon: PhosphorIconsDuotone.bandaids,
       color: const Color(0xff3b998e),
@@ -50,33 +54,37 @@ class HomeViewModel extends ReactiveViewModel {
       route: Routes.firstAidView,
     ),
     DashboardItem(
+      id: 5,
       title: 'Nearby Hospitals',
       icon: PhosphorIconsDuotone.heartbeat,
       color: const Color(0xFFff7951),
       secondaryColor: const Color(0xFFffe4dc),
-      route: Routes.hospitalsView,
+      route: Routes.comingSoonView,
     ),
     DashboardItem(
+      id: 6,
       title: 'Medical Courses',
       icon: PhosphorIconsDuotone.books,
       color: const Color(0xFFa863f1),
       secondaryColor: const Color(0xFFeddcff),
-      route: Routes.coursesView,
+      route: Routes.comingSoonView,
     ),
   ];
 
   Stream<EmergencyReport?> get emergencyStream => _sosService.emergency;
 
-  void goToDashboardItem(String route) => switch (route) {
-        Routes.incidentsView => _navigationService.navigateToIncidentsView(),
-        Routes.sosReportsView => _navigationService.navigateToSosReportsView(),
-        Routes.hospitalsView => _navigationService.navigateToHospitalsView(),
-        Routes.emergencyContactsView =>
-          _navigationService.navigateToEmergencyContactsView(),
-        Routes.firstAidView => _navigationService.navigateToFirstAidView(),
-        Routes.coursesView => _navigationService.navigateToCoursesView(),
+  void goToDashboardItem(int id) => switch (id) {
+        1 => _navigationService.navigateToIncidentsView(),
+        2 => _navigationService.navigateToSosReportsView(),
+        3 => _navigationService.navigateToFirstAidView(),
+        4 => _navigationService.navigateToEmergencyContactsView(),
+        5 => _comingSoon('Nearby Hospitals'),
+        6 => _comingSoon('Medical Courses'),
         _ => null
       };
+
+  void _comingSoon(String title) =>
+      _navigationService.navigateToComingSoonView(title: title);
 
   Future<void> goToSOS(EmergencyReport? report) async {
     if (report == null) return;

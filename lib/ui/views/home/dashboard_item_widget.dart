@@ -33,7 +33,7 @@ class DashboardItemWidget extends ViewModelWidget<HomeViewModel> {
     final containerHeight = screenWidth / 2;
 
     return InkWell(
-      onTap: () => viewModel.goToDashboardItem(item.route),
+      onTap: () => viewModel.goToDashboardItem(item.id),
       customBorder: _smoothRectangleBorder,
       child: Container(
         height: containerHeight,

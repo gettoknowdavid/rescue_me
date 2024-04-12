@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DashboardItem {
+  final int id;
   final String title;
   final IconData icon;
   final Color color;
@@ -8,6 +9,7 @@ class DashboardItem {
   final String route;
 
   DashboardItem({
+    required this.id,
     required this.title,
     required this.icon,
     required this.color,
