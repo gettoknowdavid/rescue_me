@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rescue_me/app/app.locator.dart';
+import 'package:rescue_me/app/app.router.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
 class SettingsViewModel extends BaseViewModel with ListenableServiceMixin {
@@ -9,6 +12,10 @@ class SettingsViewModel extends BaseViewModel with ListenableServiceMixin {
 
   final _themeMode = ReactiveValue<ThemeMode>(ThemeMode.light);
   ThemeMode get themeMode => _themeMode.value;
+
+  final _navigationService = locator<NavigationService>();
+
+  Future<void> goToAbout() => _navigationService.navigateToAboutView();
 
   void onThemeChanged(bool? value, BuildContext context) {
     if (value == true) {
