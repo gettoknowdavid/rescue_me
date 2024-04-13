@@ -45,3 +45,5 @@ app.*.map.json
 .env
 *.g.dart
 *.freezed.dart
+/android/key.properties
+/rescue-me-upload-keystore.jks

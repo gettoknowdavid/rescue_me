@@ -24,7 +24,7 @@
         </intent>
     </queries>
     <application
-        android:label="rescue_me"
+        android:label="RescueMe"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:enableOnBackInvokedCallback="true">
