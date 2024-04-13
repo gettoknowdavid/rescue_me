@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl_phone_field/phone_number.dart';
+import 'package:logger/logger.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
@@ -52,7 +53,11 @@ class VerifyPhoneViewModel extends FormViewModel with ListenableServiceMixin {
     if (phoneValue != null) {
       await _authService.verifyPhone(
         phoneNumber: phoneValue,
-        verificationCompleted: (phoneAuthCredential) {},
+        verificationCompleted: (phoneAuthCredential) async {
+          Logger().w(phoneAuthCredential);
+          await _authService.signInWithCredentials(phoneAuthCredential);
+          await _navigationService.clearStackAndShow(Routes.layoutView);
+        },
         verificationFailed: (p0) {
           setBusy(false);
           _snackbarService.showCustomSnackBar(

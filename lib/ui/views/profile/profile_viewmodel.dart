@@ -18,6 +18,7 @@ class ProfileViewModel extends ReactiveViewModel {
   User get user => _authService.user!;
 
   Future<void> logout() async {
+    setBusy(true);
     _navService.clearStackAndShow(Routes.loginView);
     await _authService.logout();
   }

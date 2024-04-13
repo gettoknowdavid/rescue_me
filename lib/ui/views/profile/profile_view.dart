@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:rescue_me/ui/common/app_styles.dart';
+import 'package:rescue_me/ui/widgets/loading_widget.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_list_tile.dart';
@@ -14,6 +15,8 @@ class ProfileView extends StackedView<ProfileViewModel> {
 
   @override
   Widget builder(context, viewModel, child) {
+    if (viewModel.isBusy) return const Scaffold(body: LoadingWidget());
+
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(32, 50, 32, 16).r,

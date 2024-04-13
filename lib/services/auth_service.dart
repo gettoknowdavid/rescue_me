@@ -155,6 +155,12 @@ class AuthService with ListenableServiceMixin {
     }
   }
 
+  Future<f_auth.UserCredential> signInWithCredentials(
+    f_auth.AuthCredential credential,
+  ) {
+    return _firebaseAuth.signInWithCredential(credential);
+  }
+
   Future<void> verifyPhone({
     String? phoneNumber,
     required void Function(f_auth.PhoneAuthCredential) verificationCompleted,
