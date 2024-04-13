@@ -76,8 +76,8 @@ class HomeViewModel extends ReactiveViewModel {
   void goToDashboardItem(int id) => switch (id) {
         1 => _navigationService.navigateToIncidentsView(),
         2 => _navigationService.navigateToSosReportsView(),
-        3 => _navigationService.navigateToFirstAidView(),
-        4 => _navigationService.navigateToEmergencyContactsView(),
+        3 => _navigationService.navigateToEmergencyContactsView(),
+        4 => _navigationService.navigateToFirstAidView(),
         5 => _comingSoon('Nearby Hospitals'),
         6 => _comingSoon('Medical Courses'),
         _ => null
