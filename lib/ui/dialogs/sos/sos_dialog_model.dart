@@ -10,7 +10,6 @@ import 'package:rescue_me/services/location_service.dart';
 import 'package:rescue_me/services/sos_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../models/emergency_status.dart';
@@ -26,7 +25,6 @@ class SosDialogModel extends ReactiveViewModel with ListenableServiceMixin {
   final _snackbarService = locator<SnackbarService>();
   final _sosService = locator<SosService>();
   final _locationService = locator<LocationService>();
-  final _snackBarService = locator<SnackbarService>();
 
   final _selectedTypes = ReactiveValue<Map<EmergencyContactType, bool>>({
     EmergencyContactType.ambulance: true,
@@ -41,27 +39,6 @@ class SosDialogModel extends ReactiveViewModel with ListenableServiceMixin {
   void onSelectType(bool? value, EmergencyContactType type) {
     _selectedTypes.value[type] = value!;
     notifyListeners();
-  }
-
-  Future<void> sendMessage() async {
-    // final url = Uri.parse('sms:+$phoneNumber');
-    final url2 = Uri(
-      scheme: 'sms',
-      path: '+2348026065490',
-      queryParameters: <String, String>{
-        'body': Uri.encodeComponent(
-          'Hello, please, I am currently in an emergency. Send help to me at $geo.',
-        ),
-      },
-    );
-    if (await canLaunchUrl(url2)) {
-      await launchUrl(url2);
-    } else {
-      _snackBarService.showCustomSnackBar(
-        variant: SnackbarType.error,
-        message: 'An error occurred. Please try again.',
-      );
-    }
   }
 
   void cancel() => _navigationService.popRepeated(1);
