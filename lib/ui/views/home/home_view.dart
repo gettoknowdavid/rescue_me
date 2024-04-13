@@ -1,5 +1,6 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:neumorphic_ui/neumorphic_ui.dart';
+import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/user_avatar.dart';
@@ -11,30 +12,16 @@ class HomeView extends StackedView<HomeViewModel> {
 
   @override
   Widget builder(context, viewModel, child) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-
-    final titleStyle = textTheme.titleMedium?.copyWith(fontSize: 16.sp);
-
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Hello, ${viewModel.firstName}'),
+        titleTextStyle: context.appBarTitleStyle,
+        centerTitle: false,
+        actions: [const UserAvatar(), 16.horizontalSpace],
+      ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(32).r,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            16.verticalSpace,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text('Hello, ${viewModel.firstName}', style: titleStyle),
-                const UserAvatar(),
-              ],
-            ),
-            32.verticalSpace,
-            const DashboardItemsGrid(),
-          ],
-        ),
+        padding: const EdgeInsets.all(16).r,
+        child: const DashboardItemsGrid(),
       ),
     );
   }

@@ -13,7 +13,7 @@ class UserAvatar extends ViewModelWidget<LayoutViewModel> {
   Widget build(BuildContext context, LayoutViewModel viewModel) {
     final hasPhoto = viewModel.hasPhoto;
     return InkWell(
-      onTap: () => viewModel.handleNavigation(2),
+      onTap: () => viewModel.handleNavigation(1),
       child: CircleAvatar(
         radius: radius.r,
         foregroundImage: hasPhoto ? NetworkImage(viewModel.photoURL!) : null,
