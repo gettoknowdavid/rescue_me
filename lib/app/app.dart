@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rescue_me/app/app.locator.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
@@ -129,9 +130,46 @@ import 'app.router.dart';
 // @stacked-bottom-sheet
   ],
 )
-class App extends StatelessWidget {
+class App extends StatefulWidget {
   const App({super.key});
 
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  late final AppLifecycleListener _listener;
+
+  @override
+  void dispose() {
+    // Do not forget to dispose the listener
+    _listener.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the AppLifecycleListener class and pass callbacks
+    _listener = AppLifecycleListener(onStateChange: _onStateChanged);
+  }
+
+  // Listen to the app lifecycle state changes
+  void _onStateChanged(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
+      case AppLifecycleState.paused:
+        locator<NetworkService>().pause();
+        break;
+      case AppLifecycleState.resumed:
+      case AppLifecycleState.inactive:
+        if (locator<NetworkService>().isPaused) {
+          locator<NetworkService>().resume();
+        }
+        break;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

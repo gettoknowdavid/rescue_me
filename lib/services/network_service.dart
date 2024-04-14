@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:logger/logger.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
 import 'package:stacked/stacked.dart';
@@ -14,11 +15,32 @@ class NetworkService with ListenableServiceMixin {
 
   NetworkService() {
     listenToReactiveValues([_status]);
-    _listenForChange();
+    _subscription = _listenForChange();
   }
 
-  StreamSubscription<InternetConnectionStatus> _listenForChange() {
+  void dispose() {
+    _subscription.cancel();
+    Logger().w('Closed internet connection subscription');
+  }
+
+  void pause() {
+    _subscription.pause();
+    Logger().w('Internet connection subscription PAUSED');
+  }
+
+  void resume() {
+    _subscription.resume();
+    Logger().w('Internet connection subscription RESUMED');
+  }
+
+  bool get isPaused => _subscription.isPaused;
+
+  late StreamSubscription<InternetConnectionStatus> _subscription;
+
+  _listenForChange() {
+    Logger().i('Starting for internet connection');
     return InternetConnectionChecker().onStatusChange.listen((event) {
+      Logger().i('Listening for internet connection');
       switch (event) {
         case InternetConnectionStatus.connected:
           if (_status.value != NetworkStatus.connected) {
