@@ -3,6 +3,7 @@ import 'package:neumorphic_ui/neumorphic_ui.dart';
 import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../widgets/notification_button_widget.dart';
 import '../../widgets/user_avatar.dart';
 import 'dashboard_items_grid.dart';
 import 'home_viewmodel.dart';
@@ -21,7 +22,26 @@ class HomeView extends StackedView<HomeViewModel> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16).r,
-        child: const DashboardItemsGrid(),
+        child: Column(
+          children: [
+            StreamBuilder<bool>(
+              stream: viewModel.hasNotifications,
+              builder: (context, snapshot) {
+                if (snapshot.hasData && snapshot.data == true) {
+                  return NotificationButtonWidget(
+                    onTap: viewModel.goToNotifications,
+                    title: 'SOS Notification',
+                    subtitle: 'Tap to view the urgent notification.',
+                  );
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
+            16.verticalSpace,
+            const DashboardItemsGrid(),
+          ],
+        ),
       ),
     );
   }

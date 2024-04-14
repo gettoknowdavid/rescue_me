@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:rescue_me/ui/common/app_styles.dart';
-import 'package:rescue_me/ui/widgets/loading_widget.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_list_tile.dart';
 import '../../widgets/avatar.dart';
-import 'notification_button_widget.dart';
+import '../../widgets/loading_widget.dart';
+import '../../widgets/notification_button_widget.dart';
 import 'profile_viewmodel.dart';
 
 class ProfileView extends StackedView<ProfileViewModel> {
@@ -37,7 +37,22 @@ class ProfileView extends StackedView<ProfileViewModel> {
               style: context.profileNameStyle,
             ),
             24.verticalSpace,
-            NotificationButtonWidget(onTap: viewModel.goToNotifications),
+            StreamBuilder<int>(
+              stream: viewModel.notificationNumber,
+              builder: (context, snapshot) {
+                if (snapshot.hasData && snapshot.data! > 0) {
+                  return NotificationButtonWidget(
+                    onTap: viewModel.goToNotifications,
+                    title: '${snapshot.data} urgent notification(s).',
+                    subtitle: 'Tap to view the urgent notification.',
+                  );
+                } else {
+                  return NotificationButtonWidget(
+                    onTap: viewModel.goToNotifications,
+                  );
+                }
+              },
+            ),
             16.verticalSpace,
             AppListTile(
               title: 'Edit Bio',

@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
-import 'package:rescue_me/models/dashboard_item.dart';
-import 'package:rescue_me/models/user.dart';
-import 'package:rescue_me/services/auth_service.dart';
-import 'package:rescue_me/services/sos_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+import '../../../app/app.locator.dart';
+import '../../../models/dashboard_item.dart';
+import '../../../models/user.dart';
+import '../../../services/auth_service.dart';
+import '../../../services/notifications_service.dart';
+import '../../../services/sos_service.dart';
 
 class HomeViewModel extends ReactiveViewModel {
   final _authService = locator<AuthService>();
   final _navigationService = locator<NavigationService>();
+  final _notificationService = locator<NotificationsService>();
   final _sosService = locator<SosService>();
 
-  void goToOnboarding() => _navigationService.navigateTo(Routes.onboardingView);
+  Stream<bool> get hasNotifications => _notificationService.hasNotifications;
+
+  Stream<int> get notificationNumber => _notificationService.notificationNumber;
+
+  void goToNotifications() => _navigationService.navigateToNotificationsView();
 
   String? get firstName => user?.name.split(' ')[0];
 

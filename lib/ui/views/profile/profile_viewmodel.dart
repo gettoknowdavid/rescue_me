@@ -2,18 +2,23 @@ import 'package:dartz/dartz.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
 import 'package:rescue_me/app/app.snackbars.dart';
-import 'package:rescue_me/core/constants/error_strings.dart';
-import 'package:rescue_me/core/errors/auth_error.dart';
-import 'package:rescue_me/models/user.dart';
-import 'package:rescue_me/services/auth_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+import '../../../core/constants/error_strings.dart';
+import '../../../core/errors/auth_error.dart';
+import '../../../models/user.dart';
+import '../../../services/auth_service.dart';
+import '../../../services/notifications_service.dart';
 
 class ProfileViewModel extends ReactiveViewModel {
   final _authService = locator<AuthService>();
   final _navService = locator<NavigationService>();
   final _snackbarService = locator<SnackbarService>();
   final _navigationService = locator<NavigationService>();
+    final _notificationService = locator<NotificationsService>();
+ 
+  Stream<int> get notificationNumber => _notificationService.notificationNumber;
 
   User get user => _authService.user!;
 

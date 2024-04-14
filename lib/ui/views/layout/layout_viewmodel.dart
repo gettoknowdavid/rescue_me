@@ -1,16 +1,21 @@
 import 'package:rescue_me/app/app.dialogs.dart';
 import 'package:rescue_me/app/app.locator.dart';
 import 'package:rescue_me/app/app.router.dart';
-import 'package:rescue_me/models/user.dart';
-import 'package:rescue_me/services/auth_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+import '../../../models/user.dart';
+import '../../../services/auth_service.dart';
+import '../../../services/notifications_service.dart';
 
 class LayoutViewModel extends IndexTrackingViewModel
     with ListenableServiceMixin {
   final _authService = locator<AuthService>();
   final _dialogService = locator<DialogService>();
   final _navigationService = locator<NavigationService>();
+  final _notificationService = locator<NotificationsService>();
+
+  Stream<bool> get hasNotifications => _notificationService.hasNotifications;
 
   String? get firstName => user?.name.split(' ')[0];
 

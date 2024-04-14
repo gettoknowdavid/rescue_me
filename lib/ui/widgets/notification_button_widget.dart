@@ -10,18 +10,27 @@ final _smoothBorderRadius = SmoothBorderRadius(
 );
 
 class NotificationButtonWidget extends StatelessWidget {
-  const NotificationButtonWidget({super.key, required this.onTap});
+  const NotificationButtonWidget({
+    super.key,
+    required this.onTap,
+    this.title,
+    this.subtitle,
+  });
+
   final VoidCallback onTap;
+  final String? title, subtitle;
 
   @override
   Widget build(BuildContext context) {
+    final color =
+        Theme.of(context).colorScheme.primaryContainer.withOpacity(0.4);
+
     return InkWell(
       onTap: onTap,
       borderRadius: _smoothBorderRadius,
       child: Container(
         decoration: BoxDecoration(
-          color:
-              Theme.of(context).colorScheme.primaryContainer.withOpacity(0.4),
+          color: color,
           borderRadius: _smoothBorderRadius,
         ),
         padding: const EdgeInsets.all(16).r,
@@ -31,9 +40,9 @@ class NotificationButtonWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text('Notifications', style: context.titleStyle),
+                  Text(title ?? 'Notifications', style: context.titleStyle),
                   Text(
-                    'You have no new notifications',
+                    subtitle ?? 'You have no new notifications',
                     style: context.subtitleStyle,
                   ),
                 ],
