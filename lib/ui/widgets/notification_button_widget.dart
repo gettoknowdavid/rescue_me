@@ -15,10 +15,12 @@ class NotificationButtonWidget extends StatelessWidget {
     required this.onTap,
     this.title,
     this.subtitle,
+    this.showIcon = true,
   });
 
   final VoidCallback onTap;
   final String? title, subtitle;
+  final bool showIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class NotificationButtonWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(PhosphorIconsRegular.caretRight, size: 16.r),
+            if (showIcon) Icon(PhosphorIconsRegular.caretRight, size: 16.r),
           ],
         ),
       ),

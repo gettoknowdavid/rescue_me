@@ -55,6 +55,7 @@ import '../ui/views/update_phone/update_phone_view.dart';
 import '../ui/views/verify_email/verify_email_view.dart';
 import '../ui/views/verify_phone/verify_phone_view.dart';
 import 'app.router.dart';
+import 'package:rescue_me/ui/bottom_sheets/sos/sos_sheet.dart';
 // @stacked-import
 
 @StackedApp(
@@ -127,6 +128,7 @@ import 'app.router.dart';
     StackedBottomsheet(classType: SosPhotosSheet),
     StackedBottomsheet(classType: SosTextSheet),
     StackedBottomsheet(classType: FirstAidSheet),
+    StackedBottomsheet(classType: SosSheet),
 // @stacked-bottom-sheet
   ],
 )
@@ -170,6 +172,7 @@ class _AppState extends State<App> {
         break;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

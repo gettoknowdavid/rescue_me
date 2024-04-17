@@ -17,14 +17,12 @@ import 'package:uuid/uuid.dart';
 typedef EMCList = List<EmergencyContact?>;
 typedef EMCViewModel = EmergencyContactsViewModel;
 
-class EmergencyContactsViewModel extends ReactiveViewModel with Initialisable {
+class EmergencyContactsViewModel
+    extends StreamViewModel<List<EmergencyContact?>> {
   final _bottomSheetService = locator<BottomSheetService>();
   final _emcService = locator<EmergencyContactsService>();
   final _navigationService = locator<NavigationService>();
   final _snackBarService = locator<SnackbarService>();
-
-  List<EmergencyContact?> get contacts => _emcService.contacts;
-  bool get isLoading => _emcService.isLoading;
 
   Future<void> call(String phoneNumber) async {
     final url = Uri.parse('tel:+$phoneNumber');
@@ -56,8 +54,6 @@ class EmergencyContactsViewModel extends ReactiveViewModel with Initialisable {
         EmergencyContactType.fire => PhosphorIconsDuotone.fire,
         EmergencyContactType.personal => PhosphorIconsDuotone.asterisk,
       };
-
-  Future<void> refresh() => _emcService.getEmergencyContacts();
 
   void goToContactFormView() async {
     final result = await _bottomSheetService.showCustomSheet(
@@ -126,8 +122,5 @@ class EmergencyContactsViewModel extends ReactiveViewModel with Initialisable {
   }
 
   @override
-  List<ListenableServiceMixin> get listenableServices => [_emcService];
-
-  @override
-  Future<void> initialise() => _emcService.getEmergencyContacts();
+  Stream<List<EmergencyContact?>> get stream => _emcService.contactsStream;
 }

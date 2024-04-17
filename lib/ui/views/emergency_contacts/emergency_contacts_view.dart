@@ -18,22 +18,19 @@ class EmergencyContactsView extends StackedView<EMCViewModel> {
         title: Text('Emergency Contacts', style: context.appBarTitleStyle),
         leading: const AppBackButton(),
       ),
-      body: RefreshIndicator(
-        onRefresh: viewModel.refresh,
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12).r,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Click on any of the names listed to call the contact. Or tap the + to add a new Emergency Contact.',
-                style: context.subtitleStyle,
-              ),
-              32.verticalSpace,
-              const EmergencyContactsList(),
-            ],
-          ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12).r,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Click on any of the names listed to call the contact. Or tap the + to add a new Emergency Contact.',
+              style: context.subtitleStyle,
+            ),
+            32.verticalSpace,
+            const EmergencyContactsList(),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -31,18 +31,14 @@ class AddEmergencyContactViewModel extends FormViewModel
   final _image = ReactiveValue<File?>(null);
   File? get image => _image.value;
 
-  List<EmergencyContact?> get contacts => _emcService.contacts;
-
   AddEmergencyContactViewModel() {
     listenToReactiveValues([_emcType, _image]);
   }
+
   bool get disabled => !isFormValid || !hasName || !hasPhone || isBusy;
 
   @override
-  List<ListenableServiceMixin> get listenableServices => [
-        _networkService,
-        _emcService,
-      ];
+  List<ListenableServiceMixin> get listenableServices => [_networkService];
 
   NetworkStatus get _networkStatus => _networkService.status;
 

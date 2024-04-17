@@ -7,6 +7,7 @@ import 'package:rescue_me/core/constants/error_strings.dart';
 import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/location_service.dart';
+import 'package:rescue_me/services/notifications_service.dart';
 import 'package:rescue_me/services/sos_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -25,12 +26,16 @@ class SosDialogModel extends ReactiveViewModel with ListenableServiceMixin {
   final _snackbarService = locator<SnackbarService>();
   final _sosService = locator<SosService>();
   final _locationService = locator<LocationService>();
+  final _notificationService = locator<NotificationsService>();
+
+  bool get disabled => isBusy || geo == null;
 
   final _selectedTypes = ReactiveValue<Map<EmergencyContactType, bool>>({
     EmergencyContactType.ambulance: true,
     EmergencyContactType.fire: false,
     EmergencyContactType.police: false
   });
+
   Map<EmergencyContactType, bool> get selectedTypes => _selectedTypes.value;
 
   User get user => _authService.user!;
@@ -44,6 +49,8 @@ class SosDialogModel extends ReactiveViewModel with ListenableServiceMixin {
   void cancel() => _navigationService.popRepeated(1);
 
   Future<void> sendHelp() async {
+    if (geo == null) return;
+
     final emergencyTypes = _selectedTypes.value.entries
         .where((e) => e.value)
         .map((e) => e.key)
@@ -75,9 +82,14 @@ class SosDialogModel extends ReactiveViewModel with ListenableServiceMixin {
           timeOut: (_) => keTimeout,
         ),
       ),
-      (_) => _navigationService.navigateToSosView(report: report),
+      (_) async {
+        await _notificationService.sendNotifications(report).whenComplete(
+            () => _navigationService.navigateToSosView(report: report));
+      },
     );
   }
+
+  Future<void> sendNotifications() async {}
 
   @override
   List<ListenableServiceMixin> get listenableServices => [

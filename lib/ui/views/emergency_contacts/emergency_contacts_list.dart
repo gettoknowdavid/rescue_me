@@ -9,7 +9,9 @@ class EmergencyContactsList extends ViewModelWidget<EMCViewModel> {
 
   @override
   Widget build(BuildContext context, EMCViewModel viewModel) {
-    if (viewModel.isLoading) {
+    final isBusy = viewModel.isBusy | !viewModel.dataReady;
+
+    if (isBusy) {
       return ListView.separated(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -19,18 +21,18 @@ class EmergencyContactsList extends ViewModelWidget<EMCViewModel> {
       );
     }
 
-    if (viewModel.contacts.isEmpty) {
+    final contacts = viewModel.data;
+
+    if (!isBusy && contacts != null && contacts.isEmpty) {
       return const Center(child: Text('Nothing to show here'));
     }
 
     return ListView.separated(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: viewModel.contacts.length,
+      itemCount: contacts!.length,
       separatorBuilder: (context, index) => const Divider(),
-      itemBuilder: (context, i) => EmergencyContactTile(
-        contact: viewModel.contacts[i]!,
-      ),
+      itemBuilder: (context, i) => EmergencyContactTile(contact: contacts[i]!),
     );
   }
 }

@@ -14,40 +14,30 @@ class EmergencyContactsService with ListenableServiceMixin {
   final _networkService = locator<NetworkService>();
 
   EmergencyContactsService() {
-    listenToReactiveValues([_contacts, _isLoading]);
+    listenToReactiveValues([_contacts]);
   }
 
   final _contacts = ReactiveValue<List<EmergencyContact?>>([]);
   List<EmergencyContact?> get contacts => _contacts.value;
 
-  final _isLoading = ReactiveValue<bool>(false);
-  bool get isLoading => _isLoading.value;
+  Future<User?> isContactRegistered(String phoneNumber) async {
+    final user = await usersRef.wherePhoneNumber(isEqualTo: phoneNumber).get();
+    return user.docs.first.data;
+  }
 
   User? get user => _authService.user;
 
-  Future<void> getEmergencyContacts() async {
-    _isLoading.value = true;
+  Stream<List<EmergencyContact?>> get contactsStream async* {
     final ref = usersRef.doc(user!.uid).emergencyContacts;
-    final result = await ref.orderByIsPriority(descending: true).get();
-    final list = result.docs.map((e) => e.data).toList();
-    _contacts.value = list;
-    _isLoading.value = false;
-    notifyListeners();
+    yield* ref.snapshots().map((e) {
+      final result = e.docs.map((e) => e.data).toList();
+      _contacts.value = result;
+      notifyListeners();
+      return result;
+    });
   }
 
-  // Future<List<EmergencyContact?>> getEmergencyContactsForUser(
-  //   String userId,
-  // ) async {
-
-  //   final result =
-  //       await emergencyContactsRef.whe.orderByIsPriority(descending: true).get();
-  //   final list = result.docs.map((e) => e.data).toList();
-  //   _contacts.value = list;
-  //   _isLoading.value = false;
-  //   notifyListeners();
-  // }
-
-  Future<Either<CloudError, EmergencyContact?>> createEmergencyContact(
+  Future<Either<CloudError, Unit>> createEmergencyContact(
     EmergencyContact contact,
   ) async {
     if (_networkService.status == NetworkStatus.disconnected) {
@@ -56,10 +46,13 @@ class EmergencyContactsService with ListenableServiceMixin {
 
     try {
       final ref = usersRef.doc(user!.uid).emergencyContacts;
-      await ref.doc(contact.uid).set(contact);
-      final result = await ref.doc(contact.uid).get();
-      await getEmergencyContacts();
-      return right(result.data);
+      final cUser = await isContactRegistered(contact.phone);
+      final newContact = contact.copyWith(
+        isRegistered: cUser != null,
+        userId: cUser?.uid,
+      );
+      await ref.doc(contact.uid).set(newContact);
+      return right(unit);
     } on FirebaseException catch (e) {
       return left(CloudError.error(e.message));
     } on Exception {
@@ -67,7 +60,7 @@ class EmergencyContactsService with ListenableServiceMixin {
     }
   }
 
-  Future<Either<CloudError, EmergencyContact?>> updateEmergencyContact(
+  Future<Either<CloudError, Unit>> updateEmergencyContact(
     EmergencyContact contact,
   ) async {
     if (_networkService.status == NetworkStatus.disconnected) {
@@ -78,9 +71,8 @@ class EmergencyContactsService with ListenableServiceMixin {
     try {
       final ref = usersRef.doc(user!.uid).emergencyContacts;
       await ref.doc(uid).set(contact);
-      final result = await ref.doc(uid).get();
-      await getEmergencyContacts();
-      return right(result.data);
+
+      return right(unit);
     } on FirebaseException catch (e) {
       return left(CloudError.error(e.message));
     } on Exception {
@@ -99,7 +91,6 @@ class EmergencyContactsService with ListenableServiceMixin {
           await _mediaService.storageRef.child(path).delete();
         }
       });
-      await getEmergencyContacts();
       return right(unit);
     } on FirebaseException catch (e) {
       return left(CloudError.error(e.message));

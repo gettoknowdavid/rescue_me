@@ -16,8 +16,8 @@ class ProfileViewModel extends ReactiveViewModel {
   final _navService = locator<NavigationService>();
   final _snackbarService = locator<SnackbarService>();
   final _navigationService = locator<NavigationService>();
-    final _notificationService = locator<NotificationsService>();
- 
+  final _notificationService = locator<NotificationsService>();
+
   Stream<int> get notificationNumber => _notificationService.notificationNumber;
 
   User get user => _authService.user!;

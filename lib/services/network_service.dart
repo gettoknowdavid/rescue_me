@@ -54,13 +54,20 @@ class NetworkService with ListenableServiceMixin {
           }
           break;
 
+        case InternetConnectionStatus.disconnected:
+          if (_status.value == NetworkStatus.disconnected) {
+            _status.value = NetworkStatus.disconnected;
+            _snackbarService.closeSnackbar();
+            _snackbarService.showCustomSnackBar(
+              message: 'You are offline.',
+              variant: SnackbarType.networkOffline,
+              duration: const Duration(days: 1000),
+            );
+          }
+          break;
+
         default:
-          _status.value = NetworkStatus.disconnected;
-          _snackbarService.showCustomSnackBar(
-            message: 'You are offline.',
-            variant: SnackbarType.networkOffline,
-            duration: const Duration(days: 1000),
-          );
+          _snackbarService.closeSnackbar();
           break;
       }
     });

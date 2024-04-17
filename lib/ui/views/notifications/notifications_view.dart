@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:rescue_me/ui/widgets/app_list_tile.dart';
+import 'package:rescue_me/ui/widgets/loading_widget.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../widgets/app_back_button.dart';
+import '../../widgets/notification_button_widget.dart';
 import 'notifications_viewmodel.dart';
 
 class NotificationsView extends StackedView<NotificationsViewModel> {
@@ -18,12 +20,19 @@ class NotificationsView extends StackedView<NotificationsViewModel> {
         titleTextStyle: context.appBarTitleStyle,
         leading: const AppBackButton(),
       ),
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            NotificationsList(),
-          ],
-        ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(16).r,
+            child: const Column(
+              children: [
+                NotificationsList(),
+              ],
+            ),
+          ),
+          if (viewModel.isSOSLoading)
+            const LoadingWidget(size: WidgetSize.xLarge),
+        ],
       ),
     );
   }
@@ -60,16 +69,20 @@ class NotificationsList extends ViewModelWidget<NotificationsViewModel> {
       shrinkWrap: true,
       primary: false,
       physics: const NeverScrollableScrollPhysics(),
+      separatorBuilder: (context, index) => const Divider(),
+      itemCount: notifications.length,
       itemBuilder: (context, index) {
         final notification = notifications[index]!;
-
-        return AppListTile(
+        return NotificationButtonWidget(
           title: notification.title,
           subtitle: 'From: ${notification.recipientName}',
+          showIcon: false,
+          onTap: () => viewModel.showSOSBottomSheet(
+            sosId: notification.sosId,
+            userId: notification.recipientId,
+          ),
         );
       },
-      separatorBuilder: (context, index) => 10.verticalSpace,
-      itemCount: notifications.length,
     );
   }
 }

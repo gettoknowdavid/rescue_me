@@ -16,12 +16,14 @@ class SosViewModel extends ReactiveViewModel with ListenableServiceMixin {
     listenToReactiveValues([_description, _images, _imageUrls]);
   }
 
-  final _emergencyContactsService = locator<EmergencyContactsService>();
+  final _emcService = locator<EmergencyContactsService>();
   final _mediaService = locator<MediaService>();
   final _navigationService = locator<NavigationService>();
   final _snackBarService = locator<SnackbarService>();
   final _sosService = locator<SosService>();
   final _snackbarService = locator<SnackbarService>();
+
+  List<EmergencyContact?> get emergencyContacts => _emcService.contacts;
 
   final _images = ReactiveValue<List<File?>>([]);
   List<File?> get images => _images.value;
@@ -33,9 +35,6 @@ class SosViewModel extends ReactiveViewModel with ListenableServiceMixin {
   List<String?> get imageUrls => _imageUrls.value;
 
   bool get hasImages => _images.value.isNotEmpty == true;
-
-  List<EmergencyContact?> get emergencyContacts =>
-      _emergencyContactsService.contacts;
 
   Future<void> call(String phoneNumber) async {
     final url = Uri.parse('tel:+$phoneNumber');
@@ -125,7 +124,5 @@ class SosViewModel extends ReactiveViewModel with ListenableServiceMixin {
   }
 
   @override
-  List<ListenableServiceMixin> get listenableServices => [
-        _emergencyContactsService,
-      ];
+  List<ListenableServiceMixin> get listenableServices => [_emcService];
 }

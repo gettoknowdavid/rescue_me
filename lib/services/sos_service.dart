@@ -26,6 +26,11 @@ class SosService with ListenableServiceMixin {
     return result.docs.map((e) => EmergencyReport.fromJson(e.data())).toList();
   }
 
+  Future<EmergencyReport?> getSOSByUserId(String sosId, String userId) async {
+    final res = await usersRef.doc(userId).emergencyReports.doc(sosId).get();
+    return res.data;
+  }
+
   Stream<EmergencyReport?> get emergency async* {
     final ref = usersRef.doc(user!.uid).emergencyReports;
     yield* ref

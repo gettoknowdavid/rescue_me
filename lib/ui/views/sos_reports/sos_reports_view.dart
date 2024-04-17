@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:rescue_me/ui/common/app_styles.dart';
 import 'package:rescue_me/ui/widgets/app_back_button.dart';
 import 'package:rescue_me/ui/widgets/loading_widget.dart';
+import 'package:rescue_me/ui/widgets/notification_button_widget.dart';
 import 'package:stacked/stacked.dart';
 
-import 'sos_report_card.dart';
 import 'sos_reports_viewmodel.dart';
 
 class SosReportsView extends StackedView<SosReportsViewModel> {
@@ -28,8 +29,13 @@ class SosReportsView extends StackedView<SosReportsViewModel> {
         shrinkWrap: true,
         primary: false,
         physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, i) => SosReportCard(report: reports[i]!),
-        separatorBuilder: (context, i) => 10.verticalSpace,
+        itemBuilder: (context, i) => NotificationButtonWidget(
+          onTap: () => viewModel.showSOSBottomSheet(reports[i]),
+          title: DateFormat.yMMMMEEEEd().format(reports[i].createdAt),
+          subtitle:
+              'Time: ${TimeOfDay.fromDateTime(reports[i].createdAt).format(context)}',
+        ),
+        separatorBuilder: (context, i) => 16.verticalSpace,
         itemCount: reports.length,
       );
     }

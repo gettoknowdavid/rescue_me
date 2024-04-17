@@ -77,7 +77,9 @@ class EmergencyContact with _$EmergencyContact {
     required bool isPriority,
     String? email,
     String? imageUrl,
+    String? userId,
     @Default(false) bool pinned,
+    @Default(false) bool isRegistered,
   }) = _EmergencyContact;
 
   factory EmergencyContact.fromJson(Map<String, dynamic> json) =>
@@ -99,7 +101,7 @@ class Notification with _$Notification {
     required String recipientName,
     required String recipientPhone,
     String? recipientPhotoURL,
-    required DateTime createdAt,
+    @FirestoreDateTimeConverter() required DateTime createdAt,
     @Default(false) bool read,
   }) = _Notification;
 
