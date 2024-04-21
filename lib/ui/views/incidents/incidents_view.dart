@@ -45,17 +45,15 @@ class IncidentsView extends StackedView<IncidentsViewModel> {
         title: Text('Incidents Reports', style: context.appBarTitleStyle),
         leading: const AppBackButton(),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(12).r,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const IncidentFilterButton(),
-              20.verticalSpace,
-              body,
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const IncidentFilterButton(),
+            20.verticalSpace,
+            body,
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

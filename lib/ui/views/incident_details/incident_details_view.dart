@@ -121,6 +121,10 @@ class IncidentDetailsView extends StackedView<IncidentDetailsViewModel> {
                 icon: PhosphorIconsRegular.mapPin,
                 label: 'Location',
                 title: incident.address,
+                onTap: () => viewModel.viewOnMap(
+                  latitude: incident.location.latitude,
+                  longitude: incident.location.longitude,
+                ),
               ),
               16.verticalSpace,
             ],
@@ -128,6 +132,12 @@ class IncidentDetailsView extends StackedView<IncidentDetailsViewModel> {
         ),
       ),
     );
+  }
+
+  @override
+  void onViewModelReady(IncidentDetailsViewModel viewModel) {
+    viewModel.initialize(incident);
+    super.onViewModelReady(viewModel);
   }
 
   @override

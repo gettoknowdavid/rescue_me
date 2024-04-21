@@ -66,6 +66,7 @@ class AddIncidentView extends StackedView<AddIncidentViewModel>
               controller: titleController,
               focusNode: titleFocusNode,
               validator: FormValidator.title,
+              enabled: !viewModel.isBusy,
             ),
             15.verticalSpace,
             AppTextFormField(
@@ -74,6 +75,7 @@ class AddIncidentView extends StackedView<AddIncidentViewModel>
               controller: addressController,
               focusNode: addressFocusNode,
               validator: FormValidator.address,
+              enabled: !viewModel.isBusy,
             ),
             15.verticalSpace,
             Column(
@@ -96,6 +98,7 @@ class AddIncidentView extends StackedView<AddIncidentViewModel>
                     hintText: 'What\'s happening?',
                     contentPadding: const EdgeInsets.all(12).r,
                     counter: const Offstage(),
+                    enabled: !viewModel.isBusy,
                   ),
                 ),
               ],

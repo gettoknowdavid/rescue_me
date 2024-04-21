@@ -15,8 +15,8 @@ class SosReportsViewModel extends FutureViewModel {
   void goToSOSView(EmergencyReport report) =>
       _navigationService.navigateToSosView(report: report);
 
-  Future<void> showSOSBottomSheet(EmergencyReport report)  {
-  return  _bottomSheetService.showCustomSheet<void, EmergencyReport>(
+  Future<void> showSOSBottomSheet(EmergencyReport report) {
+    return _bottomSheetService.showCustomSheet<void, EmergencyReport>(
       variant: BottomSheetType.sos,
       takesInput: true,
       data: report,

@@ -26,7 +26,10 @@ class IncidentDetailsViewModel extends ReactiveViewModel
 
   int get currentImageIndex => _currentImageIndex.value;
 
-  Incident get incident => _navigationService.currentArguments.incident;
+
+  late Incident incident;
+
+  void initialize(Incident i) => incident = i;
 
   User? get user => _authService.user;
 
@@ -49,6 +52,16 @@ class IncidentDetailsViewModel extends ReactiveViewModel
         ),
       ),
       (_) => _navigationService.back(),
+    );
+  }
+
+  Future<void> viewOnMap({
+    required double latitude,
+    required double longitude,
+  }) {
+    return _navigationService.navigateToMapView(
+      latitude: latitude,
+      longitude: longitude,
     );
   }
 

@@ -9,6 +9,7 @@ import 'package:rescue_me/models/incident.dart';
 import 'package:rescue_me/models/user.dart';
 import 'package:rescue_me/services/auth_service.dart';
 import 'package:rescue_me/services/incident_service.dart';
+import 'package:rescue_me/services/location_service.dart';
 import 'package:rescue_me/services/media_service.dart';
 import 'package:rescue_me/services/network_service.dart';
 import 'package:rescue_me/ui/views/add_incident/add_incident_view.form.dart';
@@ -16,7 +17,8 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:uuid/uuid.dart';
 
-class AddIncidentViewModel extends FormViewModel with ListenableServiceMixin {
+class AddIncidentViewModel extends FormViewModel
+    with ListenableServiceMixin, Initialisable {
   final _currentIndex = ReactiveValue<int>(0);
   final _editing = ReactiveValue<bool>(false);
   final _images = ReactiveValue<List<File?>>([]);
@@ -34,6 +36,8 @@ class AddIncidentViewModel extends FormViewModel with ListenableServiceMixin {
   IncidentSeverity get severity => _incidentSeverity.value;
   bool get anonymous => _anonymous.value;
   GeoPoint? get location => _location.value;
+
+  GeoPoint? get _currentLocation => _locationService.geo;
 
   AddIncidentViewModel() {
     listenToReactiveValues([
@@ -53,6 +57,7 @@ class AddIncidentViewModel extends FormViewModel with ListenableServiceMixin {
   final _navigationService = locator<NavigationService>();
   final _networkService = locator<NetworkService>();
   final _snackbarService = locator<SnackbarService>();
+  final _locationService = locator<LocationService>();
 
   Incident? get incident => _navigationService.currentArguments?.incident;
 
@@ -69,7 +74,8 @@ class AddIncidentViewModel extends FormViewModel with ListenableServiceMixin {
       !hasChanges;
 
   @override
-  List<ListenableServiceMixin> get listenableServices => [_networkService];
+  List<ListenableServiceMixin> get listenableServices =>
+      [_networkService, _locationService];
 
   bool get hasChanges =>
       titleValue != incident?.title ||
@@ -155,7 +161,7 @@ class AddIncidentViewModel extends FormViewModel with ListenableServiceMixin {
         anonymous: _anonymous.value,
         createdAt: DateTime.now(),
         photoUrls: _photoUrls.value.isEmpty ? [] : _photoUrls.value,
-        location: _location.value ?? const GeoPoint(0, 0),
+        location: _location.value!,
         type: _incidentType.value,
         severity: _incidentSeverity.value,
         status: EmergencyStatus.pending,
@@ -183,5 +189,12 @@ class AddIncidentViewModel extends FormViewModel with ListenableServiceMixin {
         },
       );
     }
+  }
+
+  @override
+  Future<void> initialise() async {
+    await _locationService
+        .determinePosition()
+        .whenComplete(() => _location.value = _currentLocation);
   }
 }

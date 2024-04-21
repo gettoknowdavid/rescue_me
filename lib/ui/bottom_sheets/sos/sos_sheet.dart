@@ -62,10 +62,13 @@ class SosSheet extends StackedView<SosSheetModel> {
                     icon: PhosphorIconsRegular.userCircle,
                   ),
                   AppListTile(
-                    title:
-                        '[${report.location.latitude}, ${report.location.longitude}]',
-                    subtitle: 'Location Co-ordinates of SOS',
-                    icon: PhosphorIconsRegular.batteryFull,
+                    title: 'View on Map',
+                    subtitle: 'Tap to view location on map',
+                    icon: PhosphorIconsRegular.mapPin,
+                    onTap: () => viewModel.viewOnMap(
+                      latitude: report.location.latitude,
+                      longitude: report.location.longitude,
+                    ),
                   ),
                   AppListTile(
                     title: 'Battery Level: ${report.batteryPercentage}%',
@@ -75,7 +78,7 @@ class SosSheet extends StackedView<SosSheetModel> {
                   AppListTile(
                     title: 'Status: ${report.status.name.toUpperCase()}',
                     subtitle: 'If the SOS has been resolved or not.',
-                    icon: PhosphorIconsRegular.batteryFull,
+                    icon: PhosphorIconsRegular.info,
                   ),
                   16.verticalSpace,
                   // BulletList(title: 'Steps To Administer:', items: firstAid.steps),

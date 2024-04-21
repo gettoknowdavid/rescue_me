@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:logger/logger.dart';
 import 'package:rescue_me/core/constants/app_strings.dart';
 import 'package:stacked/stacked.dart';
 
@@ -38,6 +39,7 @@ class LocationService with ListenableServiceMixin {
     _geo.value = GeoPoint(result.latitude, result.longitude);
 
     _position.value = result;
+    Logger().w('Location Gotten => ${_geo.value}');
 
     notifyListeners();
   }

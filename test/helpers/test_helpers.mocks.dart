@@ -1649,6 +1649,23 @@ class MockSosService extends _i1.Mock implements _i19.SosService {
       ) as _i10.Future<List<_i4.EmergencyReport?>>);
 
   @override
+  _i10.Future<_i4.EmergencyReport?> getSOSByUserId(
+    String? sosId,
+    String? userId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getSOSByUserId,
+          [
+            sosId,
+            userId,
+          ],
+        ),
+        returnValue: _i10.Future<_i4.EmergencyReport?>.value(),
+        returnValueForMissingStub: _i10.Future<_i4.EmergencyReport?>.value(),
+      ) as _i10.Future<_i4.EmergencyReport?>);
+
+  @override
   _i10.Future<_i2.Either<_i20.CloudError, _i2.Unit>> createEmergency(
           _i4.EmergencyReport? report) =>
       (super.noSuchMethod(

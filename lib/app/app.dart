@@ -56,6 +56,7 @@ import '../ui/views/verify_email/verify_email_view.dart';
 import '../ui/views/verify_phone/verify_phone_view.dart';
 import 'app.router.dart';
 import 'package:rescue_me/ui/bottom_sheets/sos/sos_sheet.dart';
+import 'package:rescue_me/ui/views/map/map_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -95,6 +96,7 @@ import 'package:rescue_me/ui/bottom_sheets/sos/sos_sheet.dart';
     MaterialRoute(page: NotificationsView),
     MaterialRoute(page: AboutView),
     MaterialRoute(page: ComingSoonView),
+    MaterialRoute(page: MapView),
 // @stacked-route
   ],
   dependencies: [
